@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html lang="en" class="mdl-js"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Working with Cloud Build | Qwiklabs</title>
+<script type="text/javascript" id="www-widgetapi-script" src="./Working with Cloud Build _ Qwiklabs_files/www-widgetapi.js.download" async=""></script><script type="text/javascript" async="" src="./Working with Cloud Build _ Qwiklabs_files/js"></script><script type="text/javascript" async="" src="./Working with Cloud Build _ Qwiklabs_files/iframe_api"></script><script type="text/javascript" async="" src="./Working with Cloud Build _ Qwiklabs_files/analytics.js.download"></script><script type="text/javascript" async="" src="./Working with Cloud Build _ Qwiklabs_files/js(1)"></script><script type="text/javascript" async="" src="./Working with Cloud Build _ Qwiklabs_files/recaptcha__en.js.download" crossorigin="anonymous" integrity="sha384-f1gfYQgq4OmhARgCSe1q7WV7tIcPpqu0qD+jYdSEMczD1YXPg0ibdIzvD/fZzwKc"></script><script type="text/javascript" async="" src="./Working with Cloud Build _ Qwiklabs_files/analytics.min.js.download"></script><script type="text/javascript" async="" src="./Working with Cloud Build _ Qwiklabs_files/recaptcha__en.js.download" crossorigin="anonymous" integrity="sha384-f1gfYQgq4OmhARgCSe1q7WV7tIcPpqu0qD+jYdSEMczD1YXPg0ibdIzvD/fZzwKc"></script><script async="" src="./Working with Cloud Build _ Qwiklabs_files/gtm.js.download"></script><script>
+//<![CDATA[
+window.gon={};gon.current_user={"firstname":"Bishnu","lastname":"Poudel","fullname":"Bishnu Poudel","company":"Coursera","email":"replytobishnu@yahoo.com","origin":"googlecoursera-run, lti-coursera","subscriptions":0,"id":"024695ed22bf9de3de73cb0272a95fe9","qlCreatedAt":"2021-06-09 06:07:35 UTC","optIn":null,"current_organization_id":null,"current_organization_role":null};gon.segment="j4Im8pqIko0Lxq4wVVZWMPMM0EroHUvb";gon.deployment="googlecoursera-run";gon.content={"type":"Lab","id":2293,"name":"Working with Cloud Build"};
+//]]>
+</script>
+<script>
+  dataLayer = [
+    {user: gon.current_user},
+    {content: gon.content}
+  ];
+</script>
+<script>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer',"GTM-TQR88QK");
+</script>
+<script>
+  EVENT_SOURCE_BASE_URL = "https://googlecoursera-run.qwiklabs.com/nchan-sub?id=";
+</script>
+<script src="./Working with Cloud Build _ Qwiklabs_files/webcomponents-loader-408088dc333247a761de5f2b2a4ba1cabd2bc36579f83ba92a559eb3682a9b77.js.download"></script>
+<script src="./Working with Cloud Build _ Qwiklabs_files/vendor-45d462772c30000424907184f70c7157e95fb6227698d1671c5051818a6f60d8.js.download"></script>
+<script src="./Working with Cloud Build _ Qwiklabs_files/application-33b23f92df5102bcb0f4f8547379eb35a7efe4c3300b66e43ff8f50e5fad1cf3.js.download"></script>
+<script src="./Working with Cloud Build _ Qwiklabs_files/hallofmirrors-19e951a685fa8811a8b36d459ec6b1b160a131261e98c781f18e69535f0d9a9e.js.download"></script>
+<custom-style>
+  <style is="custom-style">[hidden] {
+  display: none !important;
+}
+
+</style>
+</custom-style>
+<custom-style>
+  <style is="custom-style">html {
+  --layout_-_display:  flex;;
+
+      --layout-inline_-_display:  inline-flex;;
+
+      --layout-horizontal_-_display:  var(--layout_-_display); --layout-horizontal_-_-ms-flex-direction:  row; --layout-horizontal_-_-webkit-flex-direction:  row; --layout-horizontal_-_flex-direction:  row;;
+
+      --layout-horizontal-reverse_-_display:  var(--layout_-_display); --layout-horizontal-reverse_-_-ms-flex-direction:  row-reverse; --layout-horizontal-reverse_-_-webkit-flex-direction:  row-reverse; --layout-horizontal-reverse_-_flex-direction:  row-reverse;;
+
+      --layout-vertical_-_display:  var(--layout_-_display); --layout-vertical_-_-ms-flex-direction:  column; --layout-vertical_-_-webkit-flex-direction:  column; --layout-vertical_-_flex-direction:  column;;
+
+      --layout-vertical-reverse_-_display:  var(--layout_-_display); --layout-vertical-reverse_-_-ms-flex-direction:  column-reverse; --layout-vertical-reverse_-_-webkit-flex-direction:  column-reverse; --layout-vertical-reverse_-_flex-direction:  column-reverse;;
+
+      --layout-wrap_-_-ms-flex-wrap:  wrap; --layout-wrap_-_-webkit-flex-wrap:  wrap; --layout-wrap_-_flex-wrap:  wrap;;
+
+      --layout-wrap-reverse_-_-ms-flex-wrap:  wrap-reverse; --layout-wrap-reverse_-_-webkit-flex-wrap:  wrap-reverse; --layout-wrap-reverse_-_flex-wrap:  wrap-reverse;;
+
+      --layout-flex-auto_-_-ms-flex:  1 1 auto; --layout-flex-auto_-_-webkit-flex:  1 1 auto; --layout-flex-auto_-_flex:  1 1 auto;;
+
+      --layout-flex-none_-_-ms-flex:  none; --layout-flex-none_-_-webkit-flex:  none; --layout-flex-none_-_flex:  none;;
+
+      --layout-flex_-_-ms-flex:  1 1 0.000000001px; --layout-flex_-_-webkit-flex:  1; --layout-flex_-_flex:  1; --layout-flex_-_-webkit-flex-basis:  0.000000001px; --layout-flex_-_flex-basis:  0.000000001px;;
+
+      --layout-flex-2_-_-ms-flex:  2; --layout-flex-2_-_-webkit-flex:  2; --layout-flex-2_-_flex:  2;;
+
+      --layout-flex-3_-_-ms-flex:  3; --layout-flex-3_-_-webkit-flex:  3; --layout-flex-3_-_flex:  3;;
+
+      --layout-flex-4_-_-ms-flex:  4; --layout-flex-4_-_-webkit-flex:  4; --layout-flex-4_-_flex:  4;;
+
+      --layout-flex-5_-_-ms-flex:  5; --layout-flex-5_-_-webkit-flex:  5; --layout-flex-5_-_flex:  5;;
+
+      --layout-flex-6_-_-ms-flex:  6; --layout-flex-6_-_-webkit-flex:  6; --layout-flex-6_-_flex:  6;;
+
+      --layout-flex-7_-_-ms-flex:  7; --layout-flex-7_-_-webkit-flex:  7; --layout-flex-7_-_flex:  7;;
+
+      --layout-flex-8_-_-ms-flex:  8; --layout-flex-8_-_-webkit-flex:  8; --layout-flex-8_-_flex:  8;;
+
+      --layout-flex-9_-_-ms-flex:  9; --layout-flex-9_-_-webkit-flex:  9; --layout-flex-9_-_flex:  9;;
+
+      --layout-flex-10_-_-ms-flex:  10; --layout-flex-10_-_-webkit-flex:  10; --layout-flex-10_-_flex:  10;;
+
+      --layout-flex-11_-_-ms-flex:  11; --layout-flex-11_-_-webkit-flex:  11; --layout-flex-11_-_flex:  11;;
+
+      --layout-flex-12_-_-ms-flex:  12; --layout-flex-12_-_-webkit-flex:  12; --layout-flex-12_-_flex:  12;;
+
+      
+
+      --layout-start_-_-ms-flex-align:  start; --layout-start_-_-webkit-align-items:  flex-start; --layout-start_-_align-items:  flex-start;;
+
+      --layout-center_-_-ms-flex-align:  center; --layout-center_-_-webkit-align-items:  center; --layout-center_-_align-items:  center;;
+
+      --layout-end_-_-ms-flex-align:  end; --layout-end_-_-webkit-align-items:  flex-end; --layout-end_-_align-items:  flex-end;;
+
+      --layout-baseline_-_-ms-flex-align:  baseline; --layout-baseline_-_-webkit-align-items:  baseline; --layout-baseline_-_align-items:  baseline;;
+
+      
+
+      --layout-start-justified_-_-ms-flex-pack:  start; --layout-start-justified_-_-webkit-justify-content:  flex-start; --layout-start-justified_-_justify-content:  flex-start;;
+
+      --layout-center-justified_-_-ms-flex-pack:  center; --layout-center-justified_-_-webkit-justify-content:  center; --layout-center-justified_-_justify-content:  center;;
+
+      --layout-end-justified_-_-ms-flex-pack:  end; --layout-end-justified_-_-webkit-justify-content:  flex-end; --layout-end-justified_-_justify-content:  flex-end;;
+
+      --layout-around-justified_-_-ms-flex-pack:  distribute; --layout-around-justified_-_-webkit-justify-content:  space-around; --layout-around-justified_-_justify-content:  space-around;;
+
+      --layout-justified_-_-ms-flex-pack:  justify; --layout-justified_-_-webkit-justify-content:  space-between; --layout-justified_-_justify-content:  space-between;;
+
+      --layout-center-center_-_-ms-flex-align:  var(--layout-center_-_-ms-flex-align); --layout-center-center_-_-webkit-align-items:  var(--layout-center_-_-webkit-align-items); --layout-center-center_-_align-items:  var(--layout-center_-_align-items); --layout-center-center_-_-ms-flex-pack:  var(--layout-center-justified_-_-ms-flex-pack); --layout-center-center_-_-webkit-justify-content:  var(--layout-center-justified_-_-webkit-justify-content); --layout-center-center_-_justify-content:  var(--layout-center-justified_-_justify-content);;
+
+      
+
+      --layout-self-start_-_-ms-align-self:  flex-start; --layout-self-start_-_-webkit-align-self:  flex-start; --layout-self-start_-_align-self:  flex-start;;
+
+      --layout-self-center_-_-ms-align-self:  center; --layout-self-center_-_-webkit-align-self:  center; --layout-self-center_-_align-self:  center;;
+
+      --layout-self-end_-_-ms-align-self:  flex-end; --layout-self-end_-_-webkit-align-self:  flex-end; --layout-self-end_-_align-self:  flex-end;;
+
+      --layout-self-stretch_-_-ms-align-self:  stretch; --layout-self-stretch_-_-webkit-align-self:  stretch; --layout-self-stretch_-_align-self:  stretch;;
+
+      --layout-self-baseline_-_-ms-align-self:  baseline; --layout-self-baseline_-_-webkit-align-self:  baseline; --layout-self-baseline_-_align-self:  baseline;;
+
+      
+
+      --layout-start-aligned_-_-ms-flex-line-pack:  start; --layout-start-aligned_-_-ms-align-content:  flex-start; --layout-start-aligned_-_-webkit-align-content:  flex-start; --layout-start-aligned_-_align-content:  flex-start;;
+
+      --layout-end-aligned_-_-ms-flex-line-pack:  end; --layout-end-aligned_-_-ms-align-content:  flex-end; --layout-end-aligned_-_-webkit-align-content:  flex-end; --layout-end-aligned_-_align-content:  flex-end;;
+
+      --layout-center-aligned_-_-ms-flex-line-pack:  center; --layout-center-aligned_-_-ms-align-content:  center; --layout-center-aligned_-_-webkit-align-content:  center; --layout-center-aligned_-_align-content:  center;;
+
+      --layout-between-aligned_-_-ms-flex-line-pack:  justify; --layout-between-aligned_-_-ms-align-content:  space-between; --layout-between-aligned_-_-webkit-align-content:  space-between; --layout-between-aligned_-_align-content:  space-between;;
+
+      --layout-around-aligned_-_-ms-flex-line-pack:  distribute; --layout-around-aligned_-_-ms-align-content:  space-around; --layout-around-aligned_-_-webkit-align-content:  space-around; --layout-around-aligned_-_align-content:  space-around;;
+
+      
+
+      --layout-block_-_display:  block;;
+
+      --layout-invisible_-_visibility:  hidden !important;;
+
+      --layout-relative_-_position:  relative;;
+
+      --layout-fit_-_position:  absolute; --layout-fit_-_top:  0; --layout-fit_-_right:  0; --layout-fit_-_bottom:  0; --layout-fit_-_left:  0;;
+
+      --layout-scroll_-_-webkit-overflow-scrolling:  touch; --layout-scroll_-_overflow:  auto;;
+
+      --layout-fullbleed_-_margin:  0; --layout-fullbleed_-_height:  100vh;;
+
+      
+
+      --layout-fixed-top_-_position:  fixed; --layout-fixed-top_-_top:  0; --layout-fixed-top_-_left:  0; --layout-fixed-top_-_right:  0;;
+
+      --layout-fixed-right_-_position:  fixed; --layout-fixed-right_-_top:  0; --layout-fixed-right_-_right:  0; --layout-fixed-right_-_bottom:  0;;
+
+      --layout-fixed-bottom_-_position:  fixed; --layout-fixed-bottom_-_right:  0; --layout-fixed-bottom_-_bottom:  0; --layout-fixed-bottom_-_left:  0;;
+
+      --layout-fixed-left_-_position:  fixed; --layout-fixed-left_-_top:  0; --layout-fixed-left_-_bottom:  0; --layout-fixed-left_-_left:  0;;
+}
+
+</style>
+</custom-style><style>[hidden] { display: none !important; }</style><custom-style>
+  <style is="custom-style">html {
+  --google-red-100: #f4c7c3;
+      --google-red-300: #e67c73;
+      --google-red-500: #db4437;
+      --google-red-700: #c53929;
+
+      --google-blue-100: #c6dafc;
+      --google-blue-300: #7baaf7;
+      --google-blue-500: #4285f4;
+      --google-blue-700: #3367d6;
+
+      --google-green-100: #b7e1cd;
+      --google-green-300: #57bb8a;
+      --google-green-500: #0f9d58;
+      --google-green-700: #0b8043;
+
+      --google-yellow-100: #fce8b2;
+      --google-yellow-300: #f7cb4d;
+      --google-yellow-500: #f4b400;
+      --google-yellow-700: #f09300;
+
+      --google-grey-100: #f5f5f5;
+      --google-grey-300: #e0e0e0;
+      --google-grey-500: #9e9e9e;
+      --google-grey-700: #616161;
+
+      
+
+      --paper-red-50: #ffebee;
+      --paper-red-100: #ffcdd2;
+      --paper-red-200: #ef9a9a;
+      --paper-red-300: #e57373;
+      --paper-red-400: #ef5350;
+      --paper-red-500: #f44336;
+      --paper-red-600: #e53935;
+      --paper-red-700: #d32f2f;
+      --paper-red-800: #c62828;
+      --paper-red-900: #b71c1c;
+      --paper-red-a100: #ff8a80;
+      --paper-red-a200: #ff5252;
+      --paper-red-a400: #ff1744;
+      --paper-red-a700: #d50000;
+
+      --paper-pink-50: #fce4ec;
+      --paper-pink-100: #f8bbd0;
+      --paper-pink-200: #f48fb1;
+      --paper-pink-300: #f06292;
+      --paper-pink-400: #ec407a;
+      --paper-pink-500: #e91e63;
+      --paper-pink-600: #d81b60;
+      --paper-pink-700: #c2185b;
+      --paper-pink-800: #ad1457;
+      --paper-pink-900: #880e4f;
+      --paper-pink-a100: #ff80ab;
+      --paper-pink-a200: #ff4081;
+      --paper-pink-a400: #f50057;
+      --paper-pink-a700: #c51162;
+
+      --paper-purple-50: #f3e5f5;
+      --paper-purple-100: #e1bee7;
+      --paper-purple-200: #ce93d8;
+      --paper-purple-300: #ba68c8;
+      --paper-purple-400: #ab47bc;
+      --paper-purple-500: #9c27b0;
+      --paper-purple-600: #8e24aa;
+      --paper-purple-700: #7b1fa2;
+      --paper-purple-800: #6a1b9a;
+      --paper-purple-900: #4a148c;
+      --paper-purple-a100: #ea80fc;
+      --paper-purple-a200: #e040fb;
+      --paper-purple-a400: #d500f9;
+      --paper-purple-a700: #aa00ff;
+
+      --paper-deep-purple-50: #ede7f6;
+      --paper-deep-purple-100: #d1c4e9;
+      --paper-deep-purple-200: #b39ddb;
+      --paper-deep-purple-300: #9575cd;
+      --paper-deep-purple-400: #7e57c2;
+      --paper-deep-purple-500: #673ab7;
+      --paper-deep-purple-600: #5e35b1;
+      --paper-deep-purple-700: #512da8;
+      --paper-deep-purple-800: #4527a0;
+      --paper-deep-purple-900: #311b92;
+      --paper-deep-purple-a100: #b388ff;
+      --paper-deep-purple-a200: #7c4dff;
+      --paper-deep-purple-a400: #651fff;
+      --paper-deep-purple-a700: #6200ea;
+
+      --paper-indigo-50: #e8eaf6;
+      --paper-indigo-100: #c5cae9;
+      --paper-indigo-200: #9fa8da;
+      --paper-indigo-300: #7986cb;
+      --paper-indigo-400: #5c6bc0;
+      --paper-indigo-500: #3f51b5;
+      --paper-indigo-600: #3949ab;
+      --paper-indigo-700: #303f9f;
+      --paper-indigo-800: #283593;
+      --paper-indigo-900: #1a237e;
+      --paper-indigo-a100: #8c9eff;
+      --paper-indigo-a200: #536dfe;
+      --paper-indigo-a400: #3d5afe;
+      --paper-indigo-a700: #304ffe;
+
+      --paper-blue-50: #e3f2fd;
+      --paper-blue-100: #bbdefb;
+      --paper-blue-200: #90caf9;
+      --paper-blue-300: #64b5f6;
+      --paper-blue-400: #42a5f5;
+      --paper-blue-500: #2196f3;
+      --paper-blue-600: #1e88e5;
+      --paper-blue-700: #1976d2;
+      --paper-blue-800: #1565c0;
+      --paper-blue-900: #0d47a1;
+      --paper-blue-a100: #82b1ff;
+      --paper-blue-a200: #448aff;
+      --paper-blue-a400: #2979ff;
+      --paper-blue-a700: #2962ff;
+
+      --paper-light-blue-50: #e1f5fe;
+      --paper-light-blue-100: #b3e5fc;
+      --paper-light-blue-200: #81d4fa;
+      --paper-light-blue-300: #4fc3f7;
+      --paper-light-blue-400: #29b6f6;
+      --paper-light-blue-500: #03a9f4;
+      --paper-light-blue-600: #039be5;
+      --paper-light-blue-700: #0288d1;
+      --paper-light-blue-800: #0277bd;
+      --paper-light-blue-900: #01579b;
+      --paper-light-blue-a100: #80d8ff;
+      --paper-light-blue-a200: #40c4ff;
+      --paper-light-blue-a400: #00b0ff;
+      --paper-light-blue-a700: #0091ea;
+
+      --paper-cyan-50: #e0f7fa;
+      --paper-cyan-100: #b2ebf2;
+      --paper-cyan-200: #80deea;
+      --paper-cyan-300: #4dd0e1;
+      --paper-cyan-400: #26c6da;
+      --paper-cyan-500: #00bcd4;
+      --paper-cyan-600: #00acc1;
+      --paper-cyan-700: #0097a7;
+      --paper-cyan-800: #00838f;
+      --paper-cyan-900: #006064;
+      --paper-cyan-a100: #84ffff;
+      --paper-cyan-a200: #18ffff;
+      --paper-cyan-a400: #00e5ff;
+      --paper-cyan-a700: #00b8d4;
+
+      --paper-teal-50: #e0f2f1;
+      --paper-teal-100: #b2dfdb;
+      --paper-teal-200: #80cbc4;
+      --paper-teal-300: #4db6ac;
+      --paper-teal-400: #26a69a;
+      --paper-teal-500: #009688;
+      --paper-teal-600: #00897b;
+      --paper-teal-700: #00796b;
+      --paper-teal-800: #00695c;
+      --paper-teal-900: #004d40;
+      --paper-teal-a100: #a7ffeb;
+      --paper-teal-a200: #64ffda;
+      --paper-teal-a400: #1de9b6;
+      --paper-teal-a700: #00bfa5;
+
+      --paper-green-50: #e8f5e9;
+      --paper-green-100: #c8e6c9;
+      --paper-green-200: #a5d6a7;
+      --paper-green-300: #81c784;
+      --paper-green-400: #66bb6a;
+      --paper-green-500: #4caf50;
+      --paper-green-600: #43a047;
+      --paper-green-700: #388e3c;
+      --paper-green-800: #2e7d32;
+      --paper-green-900: #1b5e20;
+      --paper-green-a100: #b9f6ca;
+      --paper-green-a200: #69f0ae;
+      --paper-green-a400: #00e676;
+      --paper-green-a700: #00c853;
+
+      --paper-light-green-50: #f1f8e9;
+      --paper-light-green-100: #dcedc8;
+      --paper-light-green-200: #c5e1a5;
+      --paper-light-green-300: #aed581;
+      --paper-light-green-400: #9ccc65;
+      --paper-light-green-500: #8bc34a;
+      --paper-light-green-600: #7cb342;
+      --paper-light-green-700: #689f38;
+      --paper-light-green-800: #558b2f;
+      --paper-light-green-900: #33691e;
+      --paper-light-green-a100: #ccff90;
+      --paper-light-green-a200: #b2ff59;
+      --paper-light-green-a400: #76ff03;
+      --paper-light-green-a700: #64dd17;
+
+      --paper-lime-50: #f9fbe7;
+      --paper-lime-100: #f0f4c3;
+      --paper-lime-200: #e6ee9c;
+      --paper-lime-300: #dce775;
+      --paper-lime-400: #d4e157;
+      --paper-lime-500: #cddc39;
+      --paper-lime-600: #c0ca33;
+      --paper-lime-700: #afb42b;
+      --paper-lime-800: #9e9d24;
+      --paper-lime-900: #827717;
+      --paper-lime-a100: #f4ff81;
+      --paper-lime-a200: #eeff41;
+      --paper-lime-a400: #c6ff00;
+      --paper-lime-a700: #aeea00;
+
+      --paper-yellow-50: #fffde7;
+      --paper-yellow-100: #fff9c4;
+      --paper-yellow-200: #fff59d;
+      --paper-yellow-300: #fff176;
+      --paper-yellow-400: #ffee58;
+      --paper-yellow-500: #ffeb3b;
+      --paper-yellow-600: #fdd835;
+      --paper-yellow-700: #fbc02d;
+      --paper-yellow-800: #f9a825;
+      --paper-yellow-900: #f57f17;
+      --paper-yellow-a100: #ffff8d;
+      --paper-yellow-a200: #ffff00;
+      --paper-yellow-a400: #ffea00;
+      --paper-yellow-a700: #ffd600;
+
+      --paper-amber-50: #fff8e1;
+      --paper-amber-100: #ffecb3;
+      --paper-amber-200: #ffe082;
+      --paper-amber-300: #ffd54f;
+      --paper-amber-400: #ffca28;
+      --paper-amber-500: #ffc107;
+      --paper-amber-600: #ffb300;
+      --paper-amber-700: #ffa000;
+      --paper-amber-800: #ff8f00;
+      --paper-amber-900: #ff6f00;
+      --paper-amber-a100: #ffe57f;
+      --paper-amber-a200: #ffd740;
+      --paper-amber-a400: #ffc400;
+      --paper-amber-a700: #ffab00;
+
+      --paper-orange-50: #fff3e0;
+      --paper-orange-100: #ffe0b2;
+      --paper-orange-200: #ffcc80;
+      --paper-orange-300: #ffb74d;
+      --paper-orange-400: #ffa726;
+      --paper-orange-500: #ff9800;
+      --paper-orange-600: #fb8c00;
+      --paper-orange-700: #f57c00;
+      --paper-orange-800: #ef6c00;
+      --paper-orange-900: #e65100;
+      --paper-orange-a100: #ffd180;
+      --paper-orange-a200: #ffab40;
+      --paper-orange-a400: #ff9100;
+      --paper-orange-a700: #ff6500;
+
+      --paper-deep-orange-50: #fbe9e7;
+      --paper-deep-orange-100: #ffccbc;
+      --paper-deep-orange-200: #ffab91;
+      --paper-deep-orange-300: #ff8a65;
+      --paper-deep-orange-400: #ff7043;
+      --paper-deep-orange-500: #ff5722;
+      --paper-deep-orange-600: #f4511e;
+      --paper-deep-orange-700: #e64a19;
+      --paper-deep-orange-800: #d84315;
+      --paper-deep-orange-900: #bf360c;
+      --paper-deep-orange-a100: #ff9e80;
+      --paper-deep-orange-a200: #ff6e40;
+      --paper-deep-orange-a400: #ff3d00;
+      --paper-deep-orange-a700: #dd2c00;
+
+      --paper-brown-50: #efebe9;
+      --paper-brown-100: #d7ccc8;
+      --paper-brown-200: #bcaaa4;
+      --paper-brown-300: #a1887f;
+      --paper-brown-400: #8d6e63;
+      --paper-brown-500: #795548;
+      --paper-brown-600: #6d4c41;
+      --paper-brown-700: #5d4037;
+      --paper-brown-800: #4e342e;
+      --paper-brown-900: #3e2723;
+
+      --paper-grey-50: #fafafa;
+      --paper-grey-100: #f5f5f5;
+      --paper-grey-200: #eeeeee;
+      --paper-grey-300: #e0e0e0;
+      --paper-grey-400: #bdbdbd;
+      --paper-grey-500: #9e9e9e;
+      --paper-grey-600: #757575;
+      --paper-grey-700: #616161;
+      --paper-grey-800: #424242;
+      --paper-grey-900: #212121;
+
+      --paper-blue-grey-50: #eceff1;
+      --paper-blue-grey-100: #cfd8dc;
+      --paper-blue-grey-200: #b0bec5;
+      --paper-blue-grey-300: #90a4ae;
+      --paper-blue-grey-400: #78909c;
+      --paper-blue-grey-500: #607d8b;
+      --paper-blue-grey-600: #546e7a;
+      --paper-blue-grey-700: #455a64;
+      --paper-blue-grey-800: #37474f;
+      --paper-blue-grey-900: #263238;
+
+      
+      --dark-divider-opacity: 0.12;
+      --dark-disabled-opacity: 0.38; 
+      --dark-secondary-opacity: 0.54;
+      --dark-primary-opacity: 0.87;
+
+      
+      --light-divider-opacity: 0.12;
+      --light-disabled-opacity: 0.3; 
+      --light-secondary-opacity: 0.7;
+      --light-primary-opacity: 1.0;
+}
+
+</style>
+</custom-style><custom-style>
+  <style is="custom-style">html {
+  --primary-text-color: var(--light-theme-text-color);
+      --primary-background-color: var(--light-theme-background-color);
+      --secondary-text-color: var(--light-theme-secondary-color);
+      --disabled-text-color: var(--light-theme-disabled-color);
+      --divider-color: var(--light-theme-divider-color);
+      --error-color: var(--paper-deep-orange-a700);
+
+      
+      --primary-color: var(--paper-indigo-500);
+      --light-primary-color: var(--paper-indigo-100);
+      --dark-primary-color: var(--paper-indigo-700);
+
+      --accent-color: var(--paper-pink-a200);
+      --light-accent-color: var(--paper-pink-a100);
+      --dark-accent-color: var(--paper-pink-a400);
+
+
+      
+      --light-theme-background-color: #ffffff;
+      --light-theme-base-color: #000000;
+      --light-theme-text-color: var(--paper-grey-900);
+      --light-theme-secondary-color: #737373;  
+      --light-theme-disabled-color: #9b9b9b;  
+      --light-theme-divider-color: #dbdbdb;
+
+      
+      --dark-theme-background-color: var(--paper-grey-900);
+      --dark-theme-base-color: #ffffff;
+      --dark-theme-text-color: #ffffff;
+      --dark-theme-secondary-color: #bcbcbc;  
+      --dark-theme-disabled-color: #646464;  
+      --dark-theme-divider-color: #3c3c3c;
+
+      
+      --text-primary-color: var(--dark-theme-text-color);
+      --default-primary-color: var(--primary-color);
+}
+
+</style>
+</custom-style><script async="" src="./Working with Cloud Build _ Qwiklabs_files/lazy.min.js.download"></script><script src="./Working with Cloud Build _ Qwiklabs_files/loader.js.download"></script>
+<!--[if lt IE 9]>
+<script src='http://html5shim.googlecode.com/svn/trunk/html5.js' type='text/javascript'></script>
+<![endif]-->
+<!--[endif]>  <![endif]-->
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "WebSite",
+  "url": "https://www.qwiklabs.com/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://www.qwiklabs.com/catalog?keywords={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script id="ze-snippet" src="./Working with Cloud Build _ Qwiklabs_files/snippet.js.download"></script>
+
+
+<meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="zC/JAgOJ9Gf/OB/uSAOCXsBCUAFLR0l/jfSV2OoV5PdUkRG47CTeqSYMB6DkZB2dOlhfpFg6cy2oGi2nmhnVlQ==">
+<meta content="width=device-width, initial-scale=1.0, user-scalable=yes" name="viewport">
+<meta content="1rRsY0INj8RvwB5EF5pwdxt2A2P9aDgAlsICaJ0d5w0" name="google-site-verification">
+<meta content="#3681E4" property="msapplication-TileColor">
+<meta content="/favicon-144.png" property="msapplication-TileImage">
+<meta content="[{&quot;id&quot;:&quot;recaptcha_experiment&quot;,&quot;optimize_id&quot;:&quot;dpViOcLkT3qS4TvL2mRojA&quot;,&quot;title&quot;:&quot;No Recaptcha shown for trusted users&quot;,&quot;variant_index&quot;:0,&quot;variant&quot;:&quot;original&quot;}]" name="active-experiments">
+<meta content="{&quot;userId&quot;:5037645}" name="help-api-product-data">
+<meta content="Architecting with Google Kubernetes Engine: Working with Cloud Build" name="description">
+<meta content="Qwiklabs" name="author">
+<meta content="Working with Cloud Build | Qwiklabs" property="og:title">
+<meta content="website" property="og:type">
+<meta content="/favicon-144.png" property="og:image">
+<meta content="Qwiklabs" property="og:site_name">
+<meta content="Architecting with Google Kubernetes Engine: Working with Cloud Build" property="og:description">
+<meta content="/qwiklabs_logo_900x887.png" property="og:logo" size="900x887">
+<meta content="/qwiklabs_logo_994x187.png" property="og:logo" size="994x187">
+
+
+<link href="https://googlecoursera.qwiklabs.com/favicon-32.png" rel="shortcut icon">
+<link color="#3681E4" href="https://googlecoursera.qwiklabs.com/favicon-svg.svg" rel="mask-icon">
+<link href="https://googlecoursera.qwiklabs.com/favicon-180.png" rel="apple-touch-icon-precomposed">
+
+
+
+<link rel="stylesheet" media="screen" href="./Working with Cloud Build _ Qwiklabs_files/css">
+
+
+<link rel="stylesheet" media="all" href="./Working with Cloud Build _ Qwiklabs_files/application-fb473edc053b24560c69f1d5be0cd02986f15b92ec98669f3b5cf737362461cc.css">
+
+
+
+</head>
+<body class="lab-show l-full no-nav application-new focuses focuses-show lab-show l-full no-nav">
+<noscript>
+<iframe height='0' src='https://www.googletagmanager.com/ns.html?id=GTM-TQR88QK' style='display:none;visibility:hidden;' width='0'></iframe>
+</noscript>
+<span class="hidden" id="flash-sibling-before"></span>
+
+<div class="header-container">
+<div class="header">
+<ql-icon-button class="js-nav-toggle header__nav-panel-button l-mrm">menu</ql-icon-button>
+<div class="header__title">
+<ql-icon-button label="Back" href="https://www.coursera.org/" id="feb41e1afe4ba4ef" target="_self" tabindex="0">arrow_back</ql-icon-button><div class="mdl-tooltip" data-mdl-for="feb41e1afe4ba4ef" data-upgraded=",MaterialTooltip" style="left: 44px; margin-left: -22px; top: 66px;">Back</div>
+
+<h1 class="headline-5">
+Working with Cloud Build
+</h1>
+</div>
+<div class="header__actions">
+<ql-icon-button class="header__button--search js-header-search-bar-button">search</ql-icon-button>
+<ql-icon-button id="control-panel-target" style="display: none;" aria-haspopup="true" aria-controls="control-panel-menu">
+dashboard
+</ql-icon-button>
+<ql-menu for="control-panel-target" id="control-panel-menu" style="left: -1000px; top: -1000px; opacity: 0; visibility: hidden;" role="menu" aria-labelledby="control-panel-target"></ql-menu>
+
+<ql-icon-button id="help-menu-button" aria-haspopup="true" aria-controls="help-menu" tabindex="0">help</ql-icon-button>
+<div class="mdl-tooltip js-tooltip" data-mdl-for="help-menu-button" data-upgraded=",MaterialTooltip" style="left: 1320px; margin-left: -21px; top: 66px;">
+Help
+</div>
+<ql-menu for="help-menu-button" id="help-menu" style="left: -1000px; top: -1000px; opacity: 0; visibility: hidden;" role="menu" aria-labelledby="help-menu-button">
+<ql-menu-item>
+<ql-help context="lab" data-analytics-action="opened_help" data-analytics-label="lab" productdata="{&quot;userId&quot;:5037645}">
+Help Center
+</ql-help>
+</ql-menu-item>
+<ql-menu-item>
+<a target="_blank" class="ql-body-1" href="https://support.google.com/qwiklabs/contact/contact_us" tabindex="-1" role="menuitem">Email support</a>
+</ql-menu-item>
+<ql-menu-item>
+<a class="ql-body-1" onclick="ql.chat.open()" tabindex="-1" role="menuitem">Chat support</a>
+</ql-menu-item>
+</ql-menu>
+
+<ql-icon-button id="language">language</ql-icon-button>
+<div class="mdl-menu__container is-upgraded"><div class="mdl-menu__outline"></div><div class="mdl-menu mdl-menu__bottom-right mdl-js-menu elevation-3" for="language" data-upgraded=",MaterialMenu">
+<a class="mdl-menu__item locale-link" data-analytics-action="changed_locale" data-analytics-label="ar" href="https://googlecoursera.qwiklabs.com/focuses/16186405?locale=ar&amp;parent=lti_session" tabindex="-1">العربية‬‎
+</a><a class="mdl-menu__item locale-link" data-analytics-action="changed_locale" data-analytics-label="de" href="https://googlecoursera.qwiklabs.com/focuses/16186405?locale=de&amp;parent=lti_session" tabindex="-1">Deutsch
+</a><a class="mdl-menu__item locale-link" data-analytics-action="changed_locale" data-analytics-label="en" href="https://googlecoursera.qwiklabs.com/focuses/16186405?locale=en&amp;parent=lti_session" tabindex="-1">English
+</a><a class="mdl-menu__item locale-link" data-analytics-action="changed_locale" data-analytics-label="es" href="https://googlecoursera.qwiklabs.com/focuses/16186405?locale=es&amp;parent=lti_session" tabindex="-1">español (Latinoamérica)
+</a><a class="mdl-menu__item locale-link" data-analytics-action="changed_locale" data-analytics-label="fr" href="https://googlecoursera.qwiklabs.com/focuses/16186405?locale=fr&amp;parent=lti_session" tabindex="-1">français
+</a><a class="mdl-menu__item locale-link" data-analytics-action="changed_locale" data-analytics-label="id" href="https://googlecoursera.qwiklabs.com/focuses/16186405?locale=id&amp;parent=lti_session" tabindex="-1">bahasa Indonesia
+</a><a class="mdl-menu__item locale-link" data-analytics-action="changed_locale" data-analytics-label="it" href="https://googlecoursera.qwiklabs.com/focuses/16186405?locale=it&amp;parent=lti_session" tabindex="-1">Italiano
+</a><a class="mdl-menu__item locale-link" data-analytics-action="changed_locale" data-analytics-label="ja" href="https://googlecoursera.qwiklabs.com/focuses/16186405?locale=ja&amp;parent=lti_session" tabindex="-1">日本語
+</a><a class="mdl-menu__item locale-link" data-analytics-action="changed_locale" data-analytics-label="ko" href="https://googlecoursera.qwiklabs.com/focuses/16186405?locale=ko&amp;parent=lti_session" tabindex="-1">한국어
+</a><a class="mdl-menu__item locale-link" data-analytics-action="changed_locale" data-analytics-label="pl" href="https://googlecoursera.qwiklabs.com/focuses/16186405?locale=pl&amp;parent=lti_session" tabindex="-1">Polski
+</a><a class="mdl-menu__item locale-link" data-analytics-action="changed_locale" data-analytics-label="pt_BR" href="https://googlecoursera.qwiklabs.com/focuses/16186405?locale=pt_BR&amp;parent=lti_session" tabindex="-1">português (Brasil)
+</a><a class="mdl-menu__item locale-link" data-analytics-action="changed_locale" data-analytics-label="pt_PT" href="https://googlecoursera.qwiklabs.com/focuses/16186405?locale=pt_PT&amp;parent=lti_session" tabindex="-1">português (Portugal)
+</a><a class="mdl-menu__item locale-link" data-analytics-action="changed_locale" data-analytics-label="ru" href="https://googlecoursera.qwiklabs.com/focuses/16186405?locale=ru&amp;parent=lti_session" tabindex="-1">русский
+</a><a class="mdl-menu__item locale-link" data-analytics-action="changed_locale" data-analytics-label="tr" href="https://googlecoursera.qwiklabs.com/focuses/16186405?locale=tr&amp;parent=lti_session" tabindex="-1">Türkçe
+</a><a class="mdl-menu__item locale-link" data-analytics-action="changed_locale" data-analytics-label="zh" href="https://googlecoursera.qwiklabs.com/focuses/16186405?locale=zh&amp;parent=lti_session" tabindex="-1">简体中文
+</a><a class="mdl-menu__item locale-link" data-analytics-action="changed_locale" data-analytics-label="zh_TW" href="https://googlecoursera.qwiklabs.com/focuses/16186405?locale=zh_TW&amp;parent=lti_session" tabindex="-1">繁體中文
+</a></div></div>
+<button aria-label="My Account menu button" class="icon-button" id="my_account" aria-haspopup="true" aria-controls="">
+<ql-avatar></ql-avatar>
+</button>
+<ql-menu for="my_account" open="" style="left: -1000px; top: -1000px; opacity: 0; visibility: hidden;" role="menu" aria-labelledby="my_account">
+<div class="my-account-menu">
+<ql-avatar class="l-mtl l-mbl" size="120"></ql-avatar>
+<div class="my-account-menu__user-info l-mbl">
+<h4 class="ql-subhead-1">Bishnu Poudel</h4>
+<p class="ql-body-2 text--light">replytobishnu@yahoo.com</p>
+<p class="ql-body-2 text--light">
+</p>
+<a class="text--green ql-subhead-2" href="https://googlecoursera.qwiklabs.com/my_account/payments"><ql-chip positive="">
+0 Credits
+</ql-chip>
+</a></div>
+<div class="buttons l-mbl">
+<a class="button button--hairline" id="settings" href="https://googlecoursera.qwiklabs.com/my_account/profile">Settings</a>
+</div>
+<hr>
+<ql-button data-analytics-action="clicked_sign_out" href="/users/sign_out" method="delete">
+Sign Out
+</ql-button>
+<div class="privacy l-mtl">
+<a class="ql-caption text--light" href="https://googlecoursera.qwiklabs.com/privacy_policy">Privacy</a>
+<span class="ql-caption text--light l-mls l-mrs">·</span>
+<a class="ql-caption text--light" href="https://googlecoursera.qwiklabs.com/terms_of_service">Terms</a>
+</div>
+</div>
+</ql-menu>
+
+</div>
+</div>
+<div class="header__search-bar js-header-search-bar">
+<form class="js-search-form-mobile" onsubmit="ql.searchFilter(); return false;" action="https://googlecoursera.qwiklabs.com/searches/elasticsearch" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="zC/JAgOJ9Gf/OB/uSAOCXsBCUAFLR0l/jfSV2OoV5PdUkRG47CTeqSYMB6DkZB2dOlhfpFg6cy2oGi2nmhnVlQ==">
+<input type="text" name="keywords" id="keywords" placeholder="Search" maxlength="255" aria-label="catalog search bar">
+</form>
+
+<ql-icon-button class="js-close-search-bar">close</ql-icon-button>
+</div>
+</div>
+
+<nav class="nav-bar">
+<a class="nav-bar__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/"><ql-icon class="nav-bar__item__icon">
+home
+</ql-icon>
+<span class="nav-bar__item__label">
+Home
+</span>
+</a>
+<a class="nav-bar__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/catalog"><ql-icon class="nav-bar__item__icon">
+school
+</ql-icon>
+<span class="nav-bar__item__label">
+Catalog
+</span>
+</a>
+<a class="nav-bar__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_learning"><ql-icon class="nav-bar__item__icon">
+event_note
+</ql-icon>
+<span class="nav-bar__item__label">
+My Learning
+</span>
+</a>
+</nav>
+
+<nav class="nav-panel js-nav-panel">
+<div class="nav-panel__logo">
+<div class="logo logo--blue"></div>
+</div>
+<a title="Home" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/"><ql-icon class="nav-panel__item__icon">
+home
+</ql-icon>
+<div class="nav-panel__item__label">
+Home
+</div>
+</a>
+<a title="Catalog" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/catalog"><ql-icon class="nav-panel__item__icon">
+school
+</ql-icon>
+<div class="nav-panel__item__label">
+Catalog
+</div>
+</a>
+<a title="My Learning" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_learning"><ql-icon class="nav-panel__item__icon">
+event_note
+</ql-icon>
+<div class="nav-panel__item__label">
+My Learning
+</div>
+</a>
+<div class="nav-panel__spacer"></div>
+<a title="Profile" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_account/profile"><ql-icon class="nav-panel__item__icon">
+account_circle
+</ql-icon>
+<div class="nav-panel__item__label">
+Profile
+</div>
+</a>
+<a title="Credits &amp; Subscriptions" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_account/credits"><ql-icon class="nav-panel__item__icon">
+money
+</ql-icon>
+<div class="nav-panel__item__label">
+Credits &amp; Subscriptions
+</div>
+</a>
+<a title="Security" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_account/security"><ql-icon class="nav-panel__item__icon">
+security
+</ql-icon>
+<div class="nav-panel__item__label">
+Security
+</div>
+</a>
+<div class="nav-panel__spacer"></div>
+<a class="nav-panel__item" tabindex="-1" href="https://googlecoursera.qwiklabs.com/focuses/16186405?parent=lti_session#"><ql-help>
+<div class="nav-panel__help-item">
+<ql-icon class="nav-panel__item__icon">help</ql-icon>
+<div class="nav-panel__item__label">
+Help
+</div>
+</div>
+</ql-help>
+</a><div class="nav-panel__small-links">
+<a tabindex="-1" href="https://googlecoursera.qwiklabs.com/privacy_policy">Privacy</a>
+<a tabindex="-1" href="https://googlecoursera.qwiklabs.com/terms_of_service">Terms</a>
+</div>
+</nav>
+<div class="nav-panel__overlay js-nav-toggle"></div>
+
+<main class="js-main">
+<div class="l-main-wrapper" id="main-wrapper">
+
+
+
+
+
+
+
+<div class="lab-assessment__tab js-open-lab-assessment-panel">
+<h6 class="js-lab-assessment-total-score">—/10</h6>
+</div>
+<div class="lab-assessment__panel js-lab-assessment-panel">
+<div class="lab-assessment__panel__header">
+<h4>Checkpoints</h4>
+<ql-icon-button class="js-close-lab-assessment-panel">arrow_forward</ql-icon-button>
+</div>
+<div class="lab-assessment__step">
+<p class="lab-assessment__step__title">
+Build two Container images in Cloud Build
+</p>
+<div class="lab-assessment__step__action">
+<a class="button js-show-run-step-button" step_no="1">
+Check my progress
+</a>
+<p class="lab-assessment__step__score">
+<span class="js-assessment-step-score-1">—</span>
+/ 5
+</p>
+</div>
+</div>
+
+<div class="lab-assessment__step">
+<p class="lab-assessment__step__title">
+Build and Test Containers with a build configuration file and Cloud Build
+</p>
+<div class="lab-assessment__step__action">
+<a class="button js-show-run-step-button" step_no="2">
+Check my progress
+</a>
+<p class="lab-assessment__step__score">
+<span class="js-assessment-step-score-2">—</span>
+/ 5
+</p>
+</div>
+</div>
+
+</div>
+<ql-drawer-container class="js-lab-state" data-analytics-payload="{&quot;label&quot;:&quot;Working with Cloud Build&quot;,&quot;lab_name&quot;:&quot;Working with Cloud Build&quot;,&quot;classroom_name&quot;:null,&quot;deployment&quot;:&quot;googlecoursera-run&quot;}" data-focus-id="16186405" data-lab-billing-limit="0.0" data-lab-duration="3600" data-parent="lti_session" data-recaptcha-enabled="" id="lab-container">
+<ql-drawer id="terminal-drawer" slot="drawer" style="width: calc(100% - 480px)">
+<iframe allow="clipboard-read" class="terminal" id="embedded-resource" data-gtm-yt-inspected-1_25="true" src="./Working with Cloud Build _ Qwiklabs_files/saved_resource(3).html"></iframe>
+</ql-drawer>
+<ql-drawer-content class="js-lab-wrapper" id="lab-content" slot="drawer-content">
+<ql-drawer-container id="lab-content-container">
+<ql-drawer id="control-panel-drawer" open="" slot="drawer" width="320" style="width: 320px;">
+
+<ql-lab-control-panel class="ql-lab-control-panel__max-height control-panel js-lab-control-panel" connectionfiles="[]" labcontrolbutton="{&quot;disabled&quot;:false,&quot;pending&quot;:false,&quot;running&quot;:false}" labdetails="[]" labtimer="{&quot;ticking&quot;:false,&quot;secondsRemaining&quot;:3600}" studentresources="[]">
+<script src="./Working with Cloud Build _ Qwiklabs_files/api.js.download"></script>
+        <script>
+          // Define function so that we can call it again later if we need to reset it
+          // This executes reCAPTCHA and then calls our callback.
+          function executeRecaptchaForStartLab() {
+            grecaptcha.ready(function() {
+              grecaptcha.execute('6LeVI8IUAAAAAJNdox5eTkYrw9SbvhZ1TFyv3iHr', {action: 'start_lab'}).then(function(token) {
+                setInputWithRecaptchaResponseTokenForStartLab('g-recaptcha-response-data-start-lab', token)
+              });
+            });
+          };
+          // Invoke immediately
+          executeRecaptchaForStartLab()
+
+          // Async variant so you can await this function from another async function (no need for
+          // an explicit callback function then!)
+          // Returns a Promise that resolves with the response token.
+          async function executeRecaptchaForStartLabAsync() {
+            return new Promise((resolve, reject) => {
+              grecaptcha.ready(async function() {
+                resolve(await grecaptcha.execute('6LeVI8IUAAAAAJNdox5eTkYrw9SbvhZ1TFyv3iHr', {action: 'start_lab'}))
+              });
+            })
+          };
+
+                    var setInputWithRecaptchaResponseTokenForStartLab = function(id, token) {
+            var element = document.getElementById(id);
+            element.value = token;
+          }
+
+        </script>
+<input type="hidden" name="g-recaptcha-response-data[start_lab]" id="g-recaptcha-response-data-start-lab" data-sitekey="6LeVI8IUAAAAAJNdox5eTkYrw9SbvhZ1TFyv3iHr" class="g-recaptcha g-recaptcha-response " style="" value="03AGdBq244cYjhQtV434Ld-SzBpX7uzKQ1q_MaDI1nB_oITSSL3DWwzr5DaGHxQ18GlK84c5hM5O_RRbV0I2D7_--ImDSUiCKGM7xVVltRnWqX_bewp_gHIwgfURwqqP88uy89ew2hvbZe5kzZhYm0EaAvyrEKqbTpq5Zq7oi2YZTTlcQSuEDoGK3BIflQDLVTScnlgGYsOHiV0Qn81lylkC8cC_d788_gOEllmYr76uHtkRvllfXjZC2jxjxKAWvzygDEMgIXHb_19dyljpw_f4nb42eJ8kA3JmiI-VpdYjz1M4c7pnRJSG9b5Ewy4-AAd3M900S8vhfDMDoG1HrxMZNDFIWoClW1fwBLlyt9SJi-RGBpXBUkI02K_9xO2g9etQMGbY5qGheIirsThqh3wTSsFKFwFex3kjWjoy5yYobkhfCV8EmpOkX9Y3xu4_otJeK8tCQXSRrNUHKQrJfcWx1rEH8qBEPxvF0I3eR3L_ze7ecArJmDNB7LIrBfNL2-zMqCeOOQlty6WcnCE-vx3UdLL6_LIm8DqowIW01Ife2WQkzTL3pA6h0EYR_wiEZcvU0VpIA7Glby0ebaZt2JjtSwyr3brZsHqWfVoJo_UlMQOHN_Wg2rF6wSYQgtHcKcasW1PfpSuomBx6IwAUdJeQ0PX2Y_r7U5XjOPmpdj6fSzxHcTWcz5c8bQqSrMhUDYsjy9h-vsi--ZishNU8ZcMLJ7C273lOk0HFiYGAfmpSeKqGMnZuLm3RVhyi97MedLpsn-tvooPe2TIpzwIsITckqtGykafSPGF-SrgndOYqcMcIumFVPXBAL34sNSQPgPWSFiP033adLA6nUTkorM22KCNGbduR-XPFEeJYPi6ZCOo6R8Jehz3LRi7vJtEIVeVLiEQ9Ika-YBhlgTPINjS1Us4Uyna7oYASQJyH9QfFmKRZaQa8yOdiZkkYkqbahuc6QuUSAYBtNKbCh3uN0AQjKVWcli_78i1BB76MpouA_ezDi2Ig5n2TNW_xj8WorkYAF_7Wsa44QfQe6Gb90ob0ow63sfti7gTX4wXi4rtFsZW86lb2OuAY5J9pBzGDs30TszBUQNLQSCtgqoTmqWk31uou1kynjuQ20BP7pmZn4KrGbwFyElOQPO8pvVLNnCFV-YdeJGxyB7eZDNFJUnvEepA3G9OizZ2g"><div style="width: 304px; height: 78px;"><div><iframe title="reCAPTCHA" src="./Working with Cloud Build _ Qwiklabs_files/anchor.html" width="304" height="78" role="presentation" name="a-4j6ra5vpeav1" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox" data-gtm-yt-inspected-1_25="true"></iframe></div><textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div></input>
+
+<div class="hidden" id="recaptcha-v2-start-lab" slot="recaptcha">
+<script src="./Working with Cloud Build _ Qwiklabs_files/api.js(1).download" async="" defer=""></script>
+<div data-sitekey="6LeOI8IUAAAAAPkHlMAE9NReCD_1WD81iYlBlCnV" data-callback="recaptchaComplete" data-expired-callback="expireV2Token" class="g-recaptcha "><div style="width: 304px; height: 78px;"><div><iframe title="reCAPTCHA" src="./Working with Cloud Build _ Qwiklabs_files/anchor(1).html" width="304" height="78" role="presentation" name="a-kvf5n7q4sy6a" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox" data-gtm-yt-inspected-1_25="true"></iframe></div><textarea id="g-recaptcha-response-1" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div><iframe data-gtm-yt-inspected-1_25="true" style="display: none;" src="./Working with Cloud Build _ Qwiklabs_files/saved_resource(4).html"></iframe></div>
+          <noscript>
+            <div>
+              <div style="width: 302px; height: 422px; position: relative;">
+                <div style="width: 302px; height: 422px; position: absolute;">
+                  <iframe
+                    src="https://www.recaptcha.net/recaptcha/api/fallback?k=6LeOI8IUAAAAAPkHlMAE9NReCD_1WD81iYlBlCnV"
+                    name="ReCAPTCHA"
+                    style="width: 302px; height: 422px; border-style: none; border: 0; overflow: hidden;">
+                  </iframe>
+                </div>
+              </div>
+              <div style="width: 300px; height: 60px; border-style: none;
+                bottom: 12px; left: 25px; margin: 0px; padding: 0px; right: 25px;
+                background: #f9f9f9; border: 1px solid #c1c1c1; border-radius: 3px;">
+                <textarea id="g-recaptcha-response" name="g-recaptcha-response"
+                  class="g-recaptcha-response"
+                  style="width: 250px; height: 40px; border: 1px solid #c1c1c1;
+                  margin: 10px 25px; padding: 0px; resize: none;">
+                </textarea>
+              </div>
+            </div>
+          </noscript>
+
+</div>
+</ql-lab-control-panel></ql-drawer>
+<ql-drawer-content id="lab-instructions" slot="drawer-content">
+<div class="alert alert--fake js-alert alert-success" style="display: flex;">
+<p class="alert__message js-alert-message">Thanks for reviewing this lab.</p>
+<a class="alert__close js-alert-close">
+<i class="fa fa-times"></i>
+</a>
+<iframe class="l-ie-iframe-fix" data-gtm-yt-inspected-1_25="true" src="./Working with Cloud Build _ Qwiklabs_files/saved_resource(5).html"></iframe>
+</div>
+<div class="js-lab-content lab-content__renderable-instructions">
+<div class="lab-preamble">
+<h1 class="lab-preamble__title">
+Working with Cloud Build
+</h1>
+<div class="lab-preamble__details subtitle-headline-1">
+<span>1 hour </span>
+<span>Free</span>
+<div class="lab__rating">
+<a href="https://googlecoursera.qwiklabs.com/focuses/16186405/reviews?parent=lti_session"><div class="rateit" data-rateit-readonly="true" data-rateit-value="4.4235"><div class="rateit-reset" style="display: none;"></div><div class="rateit-range" style="width: 80px; height: 16px;"><div class="rateit-selected" style="height: 16px; width: 70.776px;"></div><div class="rateit-hover" style="height:16px"></div></div></div>
+
+</a></div>
+</div>
+</div>
+
+<div class="js-markdown-instructions markdown-lab-instructions" id="markdown-lab-instructions">
+
+
+
+<h2 id="step1">Overview</h2>
+<p>In this lab you will build a Docker container image from provided code and a Dockerfile using Cloud Build. You will then upload the container to Container Registry.</p>
+<h2 id="step2">Objectives</h2>
+<p>In this lab, you learn how to perform the following tasks:</p>
+<ul>
+<li>
+<p>Use Cloud Build to build and push containers</p>
+</li>
+<li>
+<p>Use Container Registry to store and deploy containers</p>
+</li>
+</ul>
+<h2 id="step3">Task 0. Lab Setup</h2>
+<h3><strong>Access Qwiklabs</strong></h3>
+<p>For each lab, you get a new GCP project and set of resources for a fixed time at no cost.</p>
+<ol>
+<li>
+<p>Make sure you signed into Qwiklabs using an <strong>incognito window</strong>.</p>
+</li>
+<li>
+<p>Note the lab's access time (for example, <img alt="img/time.png" src="./Working with Cloud Build _ Qwiklabs_files/aZQJ4BT7uCmM9XR6BTXgTRP1Hfu1T7q6V+cnbdEsbpU="> and make sure you can finish in that time block.</p>
+</li>
+</ol>
+<aside> <p>
+  There is no pause feature. You can restart if needed, but you have to start at the beginning.
+  </p>
+
+</aside>
+<ol start="3">
+<li>
+<p>When ready, click <img alt="img/start_lab.png" src="./Working with Cloud Build _ Qwiklabs_files/XE8x7uvQokyubNwnYKKc+vBBNrMlo5iNZiDDzQQ3Ddo=">.</p>
+</li>
+<li>
+<p>Note your lab credentials. You will use them to sign in to Cloud Platform Console.
+<img alt="img/open_google_console.png" src="./Working with Cloud Build _ Qwiklabs_files/0d78dhX6IVMVWmixCPPSBbmi5O2GPokCXf1Ps1AkTgI="></p>
+</li>
+<li>
+<p>Click <strong>Open Google Console</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Use another account</strong> and copy/paste credentials for <strong>this</strong> lab into the prompts.</p>
+</li>
+</ol>
+<aside class="warning"><p>
+  If you use other credentials, you'll get errors or <strong>incur charges</strong>.
+  </p>
+</aside>
+<ol start="7">
+<li>Accept the terms and skip the recovery resource page.</li>
+</ol>
+<aside class="warning"><p>
+  Do not click <strong>End Lab</strong> unless you are finished with the lab or want to restart it. This clears your work and removes the project.
+  </p>
+</aside>
+
+<p>After you complete the initial sign-in steps, the project dashboard appears.</p>
+<p><img alt="c679b27aa332f22d.png" src="./Working with Cloud Build _ Qwiklabs_files/dxfeoOcn1ObyC0BYyoqqqSi4rO_eMdbWPFjoK6C0YYk="></p>
+<h2 id="step4">Task 1: Confirm that needed APIs are enabled</h2>
+<ol>
+<li>
+<p>Make a note of the name of your Google Cloud project. This value is shown in the top bar of the Google Cloud Console. It will be of the form <code>qwiklabs-gcp-</code> followed by hexadecimal numbers.</p>
+</li>
+<li>
+<p>In the Google Cloud Console, on the <strong>Navigation menu</strong>(<img alt="Navigation menu" src="./Working with Cloud Build _ Qwiklabs_files/fXo8j8i_KJoMkZ7FeHUYU7Vvu2PQfFZtFbLISSnYEaY=">), click <strong>APIs &amp; Services</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Enable APIs and Services</strong>.</p>
+</li>
+<li>
+<p>In the <strong>Search for APIs &amp; Services</strong> box, enter <code>Cloud Build</code>.</p>
+</li>
+<li>
+<p>In the resulting card for the Cloud Build API, if you do not see a message confirming that the Cloud Build API is enabled, click the <code>ENABLE</code> button.</p>
+</li>
+<li>
+<p>Use the Back button to return to the previous screen with a search box. In the search box, enter <code>Container Registry</code>.</p>
+</li>
+<li>
+<p>In the resulting card for the Container Registry API, if you do not see a message confirming that the Container Registry API is enabled, click the <code>ENABLE</code> button.</p>
+</li>
+</ol>
+<h2 id="step5">Task 2. Building Containers with DockerFile and Cloud Build</h2>
+<p>You can write build configuration files to provide instructions to Cloud Build as to which tasks to perform when building a container. These build files can fetch dependencies, run unit tests, analyses and more. In this task, you'll create a DockerFile and use it as a build configuration script with Cloud Build. You will also create a simple shell script (quickstart.sh) which will represent an application inside the container.</p>
+<ol>
+<li>
+<p>On the Google Cloud Console title bar, click <strong>Activate Cloud Shell</strong>.</p>
+</li>
+<li>
+<p>When prompted, click <strong>Continue</strong>.</p>
+</li>
+</ol>
+<p>Cloud Shell opens at the bottom of the Google Cloud Console window.</p>
+<ol start="3">
+<li>
+<p>Create an empty <code>quickstart.sh</code> file using the nano text editor.</p>
+</li>
+</ol>
+<pre><code>nano quickstart.sh
+</code><button class="button button--text button--small copy-button js-copy-button-0" title="" data-original-title="Copied"><ql-icon>content_copy</ql-icon></button></pre>
+<ol start="4">
+<li>
+<p>Add the following lines in to the <code>quickstart.sh</code> file:</p>
+</li>
+</ol>
+<pre><code>#!/bin/sh
+echo "Hello, world! The time is $(date)."
+</code><button class="button button--text button--small copy-button js-copy-button-1" title="" data-original-title="Copied"><ql-icon>content_copy</ql-icon></button></pre>
+<ol start="5">
+<li>
+<p>Save the file and close nano by pressing the <strong>CTRL+X</strong> key,  then press <strong>Y</strong> and <strong>Enter</strong>.</p>
+</li>
+<li>
+<p>Create an empty <code>Dockerfile</code> file using the nano text editor.</p>
+</li>
+</ol>
+<pre><code>nano Dockerfile
+</code><button class="button button--text button--small copy-button js-copy-button-2" title="" data-original-title="Copied"><ql-icon>content_copy</ql-icon></button></pre>
+<ol start="7">
+<li>
+<p>Add the following Dockerfile command:</p>
+</li>
+</ol>
+<pre><code>FROM alpine
+</code><button class="button button--text button--small copy-button js-copy-button-3" title="" data-original-title="Copied"><ql-icon>content_copy</ql-icon></button></pre>
+<p>This instructs the build to use the Alpine Linux base image.</p>
+<ol start="8">
+<li>
+<p>Add the following Dockerfile command to the end of the Dockerfile:</p>
+</li>
+</ol>
+<pre><code>COPY quickstart.sh /
+</code><button class="button button--text button--small copy-button js-copy-button-4" title="" data-original-title="Copied"><ql-icon>content_copy</ql-icon></button></pre>
+<p>This adds the  <code>quickstart.sh</code> script to the / directory in the image.</p>
+<ol start="9">
+<li>
+<p>Add the following Dockerfile command to the end of the Dockerfile:</p>
+</li>
+</ol>
+<pre><code>CMD ["/quickstart.sh"]
+</code><button class="button button--text button--small copy-button js-copy-button-5" title="" data-original-title="Copied"><ql-icon>content_copy</ql-icon></button></pre>
+<p>This configures the image to execute the <code>/quickstart.sh</code> script when the associated container is created and run.</p>
+<p>The Dockerfile should now look like:</p>
+<pre><code>FROM alpine
+COPY quickstart.sh /
+CMD ["/quickstart.sh"]
+</code><button class="button button--text button--small copy-button js-copy-button-6"><ql-icon>content_copy</ql-icon></button></pre>
+<ol start="10">
+<li>
+<p>Save the file and close nano by pressing the <strong>CTRL+X</strong> key,  then press <strong>Y</strong> and <strong>Enter</strong>.</p>
+</li>
+<li>
+<p>In Cloud Shell, run the following command to make the <code>quickstart.sh</code> script executable.</p>
+</li>
+</ol>
+<pre><code>chmod +x quickstart.sh
+</code><button class="button button--text button--small copy-button js-copy-button-7" title="" data-original-title="Copied"><ql-icon>content_copy</ql-icon></button></pre>
+<ol start="12">
+<li>
+<p>In Cloud Shell, run the following command to build the Docker container image in Cloud Build.</p>
+</li>
+</ol>
+<pre><code>gcloud builds submit --tag gcr.io/${GOOGLE_CLOUD_PROJECT}/quickstart-image .
+</code><button class="button button--text button--small copy-button js-copy-button-8" title="" data-original-title="Copied"><ql-icon>content_copy</ql-icon></button></pre>
+<aside class="special"><p><strong>Important</strong></p>
+<p>Don't miss the dot (".") at the end of the command. The dot specifies that the source code is in the current working directory at build time.</p>
+</aside>
+<p>When the build completes, your Docker image is built and pushed to Container Registry.</p>
+<ol start="13">
+<li>In the Google Cloud Console, on the <strong>Navigation menu</strong> (<img alt="Navigation menu" src="./Working with Cloud Build _ Qwiklabs_files/fXo8j8i_KJoMkZ7FeHUYU7Vvu2PQfFZtFbLISSnYEaY=">), click <strong>Container Registry</strong> &gt; <strong>Images</strong>.</li>
+</ol>
+<p><img alt="5ea63873c5756db4.png" src="./Working with Cloud Build _ Qwiklabs_files/Qj7SNdo1E4nLPdSjRNkyhEiFDD7wDpfrFR+XqJ75GGY="></p>
+<p>The <code>quickstart-image</code> Docker image appears in the list</p>
+<h2 id="step6">Task 3. Building Containers with a build configuration file and Cloud Build</h2>
+<p>Cloud Build also supports custom build configuration files. In this task you will incorporate an existing Docker container using a custom YAML-formatted build file with Cloud Build.</p>
+<ol>
+<li>
+<p>In Cloud Shell enter the following command  to clone the repository to the lab Cloud Shell.</p>
+</li>
+</ol>
+<pre><code>git clone https://github.com/GoogleCloudPlatform/training-data-analyst
+</code><button class="button button--text button--small copy-button js-copy-button-9" title="" data-original-title="Copied"><ql-icon>content_copy</ql-icon></button></pre>
+<ol start="2">
+<li>
+<p>Create a soft link as a shortcut to the working directory.</p>
+</li>
+</ol>
+<pre><code>ln -s ~/training-data-analyst/courses/ak8s/v1.1 ~/ak8s
+</code><button class="button button--text button--small copy-button js-copy-button-10" title="" data-original-title="Copied"><ql-icon>content_copy</ql-icon></button></pre>
+<ol start="3">
+<li>
+<p>Change to the directory that contains the sample files for this lab.</p>
+</li>
+</ol>
+<pre><code>cd ~/ak8s/Cloud_Build/a
+</code><button class="button button--text button--small copy-button js-copy-button-11" title="" data-original-title="Copied"><ql-icon>content_copy</ql-icon></button></pre>
+<p>A sample custom cloud build configuration file called <code>cloudbuild.yaml</code> has been provided for you in this directory as well as copies of the <code>Dockerfile</code> and the <code>quickstart.sh</code> script you created in the first task.</p>
+<ol start="4">
+<li>
+<p>In Cloud Shell, execute the following command to view the contents of <code>cloudbuild.yaml</code>.</p>
+</li>
+</ol>
+<pre><code>cat cloudbuild.yaml
+</code><button class="button button--text button--small copy-button js-copy-button-12"><ql-icon>content_copy</ql-icon></button></pre>
+<p>You will see the following:</p>
+<pre><code>steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/quickstart-image', '.' ]
+images:
+- 'gcr.io/$PROJECT_ID/quickstart-image'
+</code><button class="button button--text button--small copy-button js-copy-button-13" title="" data-original-title="Copied"><ql-icon>content_copy</ql-icon></button></pre>
+<p>This file instructs Cloud Build to use Docker to build an image using the Dockerfile specification in the current local directory, tag it with <code>gcr.io/$PROJECT_ID/quickstart-image</code> (<code>$PROJECT_ID</code> is a substitution variable automatically populated by Cloud Build with the project ID of the associated project) and then push that image to Container Registry.</p>
+<ol start="5">
+<li>
+<p>In Cloud Shell, execute the following command to start a Cloud Build using <code>cloudbuild.yaml</code> as the build configuration file:</p>
+</li>
+</ol>
+<pre><code>gcloud builds submit --config cloudbuild.yaml .
+</code><button class="button button--text button--small copy-button js-copy-button-14" title="" data-original-title="Copied"><ql-icon>content_copy</ql-icon></button></pre>
+<p>The build output to Cloud Shell should be the same as before. When the build completes, a new version of the same image is pushed to Container Registry.</p>
+<ol start="6">
+<li>In the Google Cloud Console, on the <strong>Navigation menu</strong> (<img alt="Navigation menu" src="./Working with Cloud Build _ Qwiklabs_files/fXo8j8i_KJoMkZ7FeHUYU7Vvu2PQfFZtFbLISSnYEaY=">), click <strong>Container Registry</strong> &gt; <strong>Images</strong> and then click <code>quickstart-image</code>.</li>
+</ol>
+<p><img alt="20760c66fe33e5c7.png" src="./Working with Cloud Build _ Qwiklabs_files/mylH9Pp+cYlbRpVp5HOjGthybnn717ZJhGNy+fLA70M="></p>
+<p>Two versions of <code>quickstart-image</code> are now in the list.</p>
+<p>Click <em>Check my progress</em> to verify the objective.
+<ql-activity-tracking step="1" labinstanceid="31019906">
+Build two Container images in Cloud Build.
+</ql-activity-tracking></p>
+<ol start="7">
+<li>In the Google Cloud Console, on the <strong>Navigation menu</strong> (<img alt="Navigation menu" src="./Working with Cloud Build _ Qwiklabs_files/fXo8j8i_KJoMkZ7FeHUYU7Vvu2PQfFZtFbLISSnYEaY=">), click <strong>Cloud Build</strong> &gt; <strong>History</strong>.</li>
+</ol>
+<p><img alt="build1.png" src="./Working with Cloud Build _ Qwiklabs_files/mqUXBAq+yIuDVyD8BONP_FdGUQ2tZIx54TnQtTsAhEs="></p>
+<p>Two builds appear in the list.</p>
+<ol start="8">
+<li>Click the build ID for the build at the top of the list.</li>
+</ol>
+<p><img alt="build2.png" src="./Working with Cloud Build _ Qwiklabs_files/sFxkQJqyhLEDPzkL12IRlPTETIPOMoV83f3AbQjrZjo="></p>
+<p>The details of the build, including the build log, are displayed.</p>
+<h2 id="step7">Task 4. Building and Testing Containers with a build configuration file and Cloud Build</h2>
+<p>The true power of custom build configuration files is their ability
+to perform other actions, in parallel or in sequence, in addition
+to simply building containers: running tests on your newly built
+containers, pushing them to various destinations, and even deploying
+them to Kubernetes Engine. In this lab, we will see a simple example:
+a build configuration file that tests the container it built and reports
+the result to its calling environment.</p>
+<ol>
+<li>
+<p>In Cloud Shell, change to the directory that contains the sample files for this lab.</p>
+</li>
+</ol>
+<pre><code>cd ~/ak8s/Cloud_Build/b
+</code><button class="button button--text button--small copy-button js-copy-button-15" title="" data-original-title="Copied"><ql-icon>content_copy</ql-icon></button></pre>
+<p>As before, the <code>quickstart.sh</code> script and the a sample custom cloud
+build configuration file called <code>cloudbuild.yaml</code> has been provided
+for you in this directory. These have been slightly modified to demonstrate Cloud Build's ability to test the
+containers it has build. There is also a Dockerfile present, which is identical to the one used for the previous task.</p>
+<ol start="2">
+<li>
+<p>In Cloud Shell, execute the following command to view the contents of <code>cloudbuild.yaml</code>.</p>
+</li>
+</ol>
+<pre><code>cat cloudbuild.yaml
+</code><button class="button button--text button--small copy-button js-copy-button-16" title="" data-original-title="Copied"><ql-icon>content_copy</ql-icon></button></pre>
+<p>You will see the following:</p>
+<pre><code>steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/quickstart-image', '.' ]
+- name: 'gcr.io/$PROJECT_ID/quickstart-image'
+  args: ['fail']
+images:
+- 'gcr.io/$PROJECT_ID/quickstart-image
+</code><button class="button button--text button--small copy-button js-copy-button-17"><ql-icon>content_copy</ql-icon></button></pre>
+<p>In addition to its previous actions, this build configuration file runs the <code>quickstart-image</code> it has created. In this task, the <code>quickstart.sh</code>
+script has been modified so that it simulates a test failure when an argument <code>['fail']</code> is passed to it.</p>
+<ol start="3">
+<li>
+<p>In Cloud Shell, execute the following command to start a Cloud Build using <code>cloudbuild.yaml</code> as the build configuration file:</p>
+</li>
+</ol>
+<pre><code>gcloud builds submit --config cloudbuild.yaml .
+</code><button class="button button--text button--small copy-button js-copy-button-18" title="" data-original-title="Copied"><ql-icon>content_copy</ql-icon></button></pre>
+<p>You will see output from the command that ends with text like this:</p>
+<p><strong>Output (do not copy)</strong></p>
+<pre><code>Finished Step #1
+ERROR
+ERROR: build step 1 "gcr.io/ivil-charmer-227922klabs-gcp-49ab2930eea05/quickstart-image" failed: exit status 127
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+ERROR: (gcloud.builds.submit) build f3e94c28-fba4-4012-a419-48e90fca7491 completed with status "FAILURE"
+</code><button class="button button--text button--small copy-button js-copy-button-19"><ql-icon>content_copy</ql-icon></button></pre>
+<ol start="4">
+<li>
+<p>Confirm that your command shell knows that the build failed:</p>
+</li>
+</ol>
+<pre><code>echo $?
+</code><button class="button button--text button--small copy-button js-copy-button-20" title="" data-original-title="Copied"><ql-icon>content_copy</ql-icon></button></pre>
+<p>The command will reply with a non-zero value. If you had embedded this build in a script, your script would be able to
+act up on the build's failure.</p>
+<p>Click <em>Check my progress</em> to verify the objective.
+<ql-activity-tracking step="2" labinstanceid="31019906">
+Build and Test Containers with a build configuration file and Cloud Build
+</ql-activity-tracking></p>
+<h2 id="step8">End your lab</h2>
+<p>When you have completed your lab, click <strong>End Lab</strong>. Qwiklabs removes the resources you’ve used and cleans the account for you.</p>
+<p>You will be given an opportunity to rate the lab experience. Select the applicable number of stars, type a comment, and then click <strong>Submit</strong>.</p>
+<p>The number of stars indicates the following:</p>
+<ul>
+<li>1 star = Very dissatisfied</li>
+<li>2 stars = Dissatisfied</li>
+<li>3 stars = Neutral</li>
+<li>4 stars = Satisfied</li>
+<li>5 stars = Very satisfied</li>
+</ul>
+<p>You can close the dialog box if you don't want to provide feedback.</p>
+<p>For feedback, suggestions, or corrections, please use the <strong>Support</strong> tab.</p>
+
+<p>Copyright 2021 Google LLC All rights reserved. Google and the Google logo are trademarks of Google LLC. All other company and product names may be trademarks of the respective companies with which they are associated.</p>
+
+
+
+</div>
+</div>
+
+
+<div class="hidden js-end-lab-button-container lab-content__end-lab-button">
+<ql-lab-control-button class="js-end-lab-button" running=""></ql-lab-control-button>
+</div>
+<!-- / TODO: Move recommendations into the end lab modal -->
+</ql-drawer-content>
+<ql-drawer end="" id="outline-drawer" open="" slot="drawer" width="320" style="width: 320px;">
+<div class="js-lab-content-outline lab-content__outline">
+<a href="https://googlecoursera.qwiklabs.com/focuses/16186405?parent=lti_session#step1" class="">Overview</a><a href="https://googlecoursera.qwiklabs.com/focuses/16186405?parent=lti_session#step2" class="">Objectives</a><a href="https://googlecoursera.qwiklabs.com/focuses/16186405?parent=lti_session#step3" class="">Task 0. Lab Setup</a><a href="https://googlecoursera.qwiklabs.com/focuses/16186405?parent=lti_session#step4" class="">Task 1: Confirm that needed APIs are enabled</a><a href="https://googlecoursera.qwiklabs.com/focuses/16186405?parent=lti_session#step5" class="">Task 2. Building Containers with DockerFile and Cloud Build</a><a href="https://googlecoursera.qwiklabs.com/focuses/16186405?parent=lti_session#step6" class="">Task 3. Building Containers with a build configuration file and Cloud Build</a><a href="https://googlecoursera.qwiklabs.com/focuses/16186405?parent=lti_session#step7" class="">Task 4. Building and Testing Containers with a build configuration file and Cloud Build</a><a href="https://googlecoursera.qwiklabs.com/focuses/16186405?parent=lti_session#step8" class="is-active">End your lab</a>
+</div>
+</ql-drawer>
+</ql-drawer-container>
+</ql-drawer-content>
+</ql-drawer-container>
+<div class="lab-introduction js-lab-introduction is-hidden">
+<div class="lab-introduction__inner">
+<h1 class="headline-1">Welcome to Your First Lab!</h1>
+<ql-icon-button class="js-skip-button">close</ql-icon-button>
+<div class="lab-introduction__video">
+<iframe allow="autoplay; encrypted-media" allowfullscreen="" frameborder="0" id="lab-introduction" src="./Working with Cloud Build _ Qwiklabs_files/yF7EDXKTmoQ.html" data-gtm-yt-inspected-1_25="true"></iframe>
+</div>
+<a class="js-skip-button button button--outline">Skip this video</a>
+</div>
+</div>
+
+
+
+</div>
+</main>
+
+
+<div class="modal fade" id="lab-details-modal">
+<div class="modal-container">
+<div class="mdl-shadow--24dp modal-content">
+<div class="modal-body">
+<p class="l-mbm">
+Architecting with Google Kubernetes Engine: Working with Cloud Build
+</p>
+<p class="small-label l-mbs">
+<strong>
+Duration:
+</strong>
+0m setup
+·
+60m access
+·
+60m completion
+</p>
+<p class="small-label l-mbs">
+<span><strong>Levels: </strong>fundamental</span>
+</p>
+<p class="small-label">
+<strong>
+Permalink:
+</strong>
+<a href="https://googlecoursera.qwiklabs.com/catalog_lab/2293">https://googlecoursera.qwiklabs.com/catalog_lab/2293</a>
+</p>
+</div>
+<div class="modal-actions">
+<a class="button button--text" data-dismiss="modal">
+Got It
+</a>
+</div>
+
+
+</div>
+</div>
+<iframe class="l-ie-iframe-fix" data-gtm-yt-inspected-1_25="true" src="./Working with Cloud Build _ Qwiklabs_files/saved_resource(6).html"></iframe>
+</div>
+<div class="modal fade" id="lab-review-modal" style="display: none;">
+<div class="modal-container">
+<div class="mdl-shadow--24dp modal-content">
+<form class="simple_form js-lab-review-form" id="new_lab_review" action="https://googlecoursera.qwiklabs.com/lab_reviews" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓"><div class="modal-body">
+<p class="label">
+How satisfied are you with this lab?*
+</p>
+<div class="rateit js-rateit" data-rateit-max="5" data-rateit-min="0" data-rateit-resetable="false" data-rateit-step="1" data-rateit-value="0"><div class="rateit-reset" style="display: none;"></div><div class="rateit-range" style="width: 80px; height: 16px;"><div class="rateit-selected" style="height: 16px; width: 80px; display: block;"></div><div class="rateit-hover" style="height: 16px; width: 0px; display: none;"></div></div></div>
+<div class="l-mtm">
+
+<div class="control-group hidden lab_review_user_id"><div class="controls"><input class="hidden" type="hidden" value="5037645" name="lab_review[user_id]" id="lab_review_user_id"></div></div>
+<div class="control-group hidden lab_review_classroom_id"><div class="controls"><input class="hidden" type="hidden" name="lab_review[classroom_id]" id="lab_review_classroom_id"></div></div>
+<div class="control-group hidden lab_review_lab_id"><div class="controls"><input class="hidden" type="hidden" value="2293" name="lab_review[lab_id]" id="lab_review_lab_id"></div></div>
+<div class="control-group hidden lab_review_focus_id"><div class="controls"><input class="hidden" type="hidden" name="lab_review[focus_id]" id="lab_review_focus_id"></div></div>
+<div class="control-group hidden lab_review_rating"><div class="controls"><input class="hidden js-rating-input" type="hidden" name="lab_review[rating]" id="lab_review_rating" value="2"></div></div>
+<div class="control-group text optional lab_review_comment"><label class="text optional control-label" for="lab_review_comment">Comment</label><div class="controls"><textarea class="text optional" name="lab_review[comment]" id="lab_review_comment"></textarea></div></div>
+</div>
+</div>
+<div class="modal-actions">
+<a class="button button--text" data-dismiss="modal">
+Cancel
+</a>
+<input type="submit" name="commit" value="Submit" id="submit" data-disabled="false" class="button" data-disable-with="Submit">
+</div>
+</form>
+
+</div>
+</div>
+<iframe class="l-ie-iframe-fix" data-gtm-yt-inspected-1_25="true" src="./Working with Cloud Build _ Qwiklabs_files/saved_resource(7).html"></iframe>
+</div>
+
+
+<script>
+  $( function() {
+    ql.initMaterialInputs();
+    initChosen();
+    initSearch();
+    initTabs();
+    ql.list.init();
+    ql.favoriting.init();
+    ql.header.myAccount.init();
+    initTooltips();
+    ql.autocomplete.init();
+    ql.modals.init();
+    ql.toggleButtons.init();
+    ql.analytics.init();
+    ql.labControlPanel.addRecaptchaErrorHandler();
+  initLabContent();
+  ql.labOutline.links.init();
+  initLabReviewModal();
+  ql.labAssessment.init();
+  ql.labIntroduction.init( true );
+  ql.labData.init();
+  initLabTranslations( {"are_you_sure":"All done? If you end this lab, you will lose all your work. You may not be able to restart the lab if there is a quota limit. Are you sure you want to end this lab?\n","in_progress":"*In Progress*","ending":"*Ending*","starting":"*Starting, please wait*","end_concurrent_labs":"Sorry, you can only run one lab at a time. To start this lab, please confirm that you want all of your existing labs to end.\n","copied":"Copied","no_resource":"Error retrieving resource.","no_support":"No Support","mac_press":"Press ⌘-C to copy","thanks_review":"Thanks for reviewing this lab.","windows_press":"Press Ctrl-C to copy","days":"days"} );
+  ql.labRun.init();
+  ql.chat.init();
+  ql.initHeader();
+  ql.navigation.init();
+  ql.navPanel.init();
+  ql.navigation.init();
+  
+  });
+</script>
+
+
+
+
+<div><div class="grecaptcha-badge" data-style="bottomright" style="width: 256px; height: 60px; display: block; transition: right 0.3s ease 0s; position: fixed; bottom: 14px; right: -186px; box-shadow: gray 0px 0px 5px; border-radius: 2px; overflow: hidden;"><div class="grecaptcha-logo"><iframe title="reCAPTCHA" src="./Working with Cloud Build _ Qwiklabs_files/anchor(2).html" width="256" height="60" role="presentation" name="a-ewcyy4hgmuts" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox" data-gtm-yt-inspected-1_25="true"></iframe></div><div class="grecaptcha-error"></div><textarea id="g-recaptcha-response-100000" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div></div><iframe data-product="web_widget" title="No content" tabindex="-1" aria-hidden="true" src="./Working with Cloud Build _ Qwiklabs_files/saved_resource(8).html" data-gtm-yt-inspected-1_25="true" style="width: 0px; height: 0px; border: 0px; position: absolute; top: -9999px;"></iframe><div><iframe title="Opens a widget where you can chat to one of our agents" id="launcher" tabindex="-1" data-gtm-yt-inspected-1_25="true" style="width: 107px; height: 50px; padding: 0px; margin: 10px 20px; position: fixed; bottom: 30px; overflow: visible; opacity: 0; border: 0px; z-index: 999998; transition-duration: 250ms; transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1); transition-property: opacity, top, bottom; top: -9999px; visibility: hidden;" src="./Working with Cloud Build _ Qwiklabs_files/saved_resource(9).html"></iframe></div><div style="background-color: rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204); box-shadow: rgba(0, 0, 0, 0.2) 2px 2px 3px; position: absolute; transition: visibility 0s linear 0.3s, opacity 0.3s linear 0s; opacity: 0; visibility: hidden; z-index: 2000000000; left: 0px; top: -10000px;"><div style="width: 100%; height: 100%; position: fixed; top: 0px; left: 0px; z-index: 2000000000; background-color: rgb(255, 255, 255); opacity: 0.05;"></div><div class="g-recaptcha-bubble-arrow" style="border: 11px solid transparent; width: 0px; height: 0px; position: absolute; pointer-events: none; margin-top: -11px; z-index: 2000000000;"></div><div class="g-recaptcha-bubble-arrow" style="border: 10px solid transparent; width: 0px; height: 0px; position: absolute; pointer-events: none; margin-top: -10px; z-index: 2000000000;"></div><div style="z-index: 2000000000; position: relative;"><iframe title="recaptcha challenge" src="./Working with Cloud Build _ Qwiklabs_files/bframe.html" name="c-kvf5n7q4sy6a" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox" style="width: 100%; height: 100%;" data-gtm-yt-inspected-1_25="true"></iframe></div></div></body></html>
