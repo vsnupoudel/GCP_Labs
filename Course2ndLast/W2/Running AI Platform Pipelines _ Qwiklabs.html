@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html lang="en" class="mdl-js"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Running AI Platform Pipelines | Qwiklabs</title>
+<script type="text/javascript" async="" src="./Running AI Platform Pipelines _ Qwiklabs_files/js"></script><script type="text/javascript" async="" src="./Running AI Platform Pipelines _ Qwiklabs_files/analytics.js.download"></script><script type="text/javascript" id="www-widgetapi-script" src="./Running AI Platform Pipelines _ Qwiklabs_files/www-widgetapi.js.download" async=""></script><script type="text/javascript" async="" src="./Running AI Platform Pipelines _ Qwiklabs_files/iframe_api"></script><script type="text/javascript" async="" src="./Running AI Platform Pipelines _ Qwiklabs_files/js(1)"></script><script type="text/javascript" async="" src="./Running AI Platform Pipelines _ Qwiklabs_files/recaptcha__en.js.download" crossorigin="anonymous" integrity="sha384-H6agjAsIibNdraTEKloEQaK71A6JbG9q3R29vQr9QPSuqEIyYcoRDHIjh1XvEFQX"></script><script type="text/javascript" async="" src="./Running AI Platform Pipelines _ Qwiklabs_files/analytics.min.js.download"></script><script type="text/javascript" async="" src="./Running AI Platform Pipelines _ Qwiklabs_files/recaptcha__en.js.download" crossorigin="anonymous" integrity="sha384-H6agjAsIibNdraTEKloEQaK71A6JbG9q3R29vQr9QPSuqEIyYcoRDHIjh1XvEFQX"></script><script async="" src="./Running AI Platform Pipelines _ Qwiklabs_files/gtm.js.download"></script><script>
+//<![CDATA[
+window.gon={};gon.current_user={"firstname":"Bishnu","lastname":"Poudel","fullname":"Bishnu Poudel","company":"Coursera","email":"replytobishnu@yahoo.com","origin":"googlecoursera-run, lti-coursera","subscriptions":0,"id":"024695ed22bf9de3de73cb0272a95fe9","qlCreatedAt":"2021-06-09 06:07:35 UTC","optIn":null,"current_organization_id":null,"current_organization_role":null};gon.segment="j4Im8pqIko0Lxq4wVVZWMPMM0EroHUvb";gon.deployment="googlecoursera-run";gon.content={"type":"Lab","id":3148,"name":"Running AI Platform Pipelines"};
+//]]>
+</script>
+<script>
+  dataLayer = [
+    {user: gon.current_user},
+    {content: gon.content}
+  ];
+</script>
+<script>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer',"GTM-TQR88QK");
+</script>
+<script>
+  EVENT_SOURCE_BASE_URL = "https://googlecoursera-run.qwiklabs.com/nchan-sub?id=";
+</script>
+<script src="./Running AI Platform Pipelines _ Qwiklabs_files/webcomponents-loader-bc6366f057e8ef5484398e321627c4f68460bc628567bfa2c568757fb504a477.js.download"></script>
+<script src="./Running AI Platform Pipelines _ Qwiklabs_files/vendor-45d462772c30000424907184f70c7157e95fb6227698d1671c5051818a6f60d8.js.download"></script>
+<script src="./Running AI Platform Pipelines _ Qwiklabs_files/application-1156323c5bd05b518cdf1a2b48a9fc4b037bfd63be185c3cefb23fe1b35d840e.js.download"></script>
+<script src="./Running AI Platform Pipelines _ Qwiklabs_files/hallofmirrors-bfc620530be19407e9bba533fe4dde2e90712c8500ef021f6c6ae2f9fcde56f5.js.download"></script>
+<custom-style>
+  <style is="custom-style">[hidden] {
+  display: none !important;
+}
+
+</style>
+</custom-style>
+<custom-style>
+  <style is="custom-style">html {
+  --layout_-_display:  flex;;
+
+      --layout-inline_-_display:  inline-flex;;
+
+      --layout-horizontal_-_display:  var(--layout_-_display); --layout-horizontal_-_-ms-flex-direction:  row; --layout-horizontal_-_-webkit-flex-direction:  row; --layout-horizontal_-_flex-direction:  row;;
+
+      --layout-horizontal-reverse_-_display:  var(--layout_-_display); --layout-horizontal-reverse_-_-ms-flex-direction:  row-reverse; --layout-horizontal-reverse_-_-webkit-flex-direction:  row-reverse; --layout-horizontal-reverse_-_flex-direction:  row-reverse;;
+
+      --layout-vertical_-_display:  var(--layout_-_display); --layout-vertical_-_-ms-flex-direction:  column; --layout-vertical_-_-webkit-flex-direction:  column; --layout-vertical_-_flex-direction:  column;;
+
+      --layout-vertical-reverse_-_display:  var(--layout_-_display); --layout-vertical-reverse_-_-ms-flex-direction:  column-reverse; --layout-vertical-reverse_-_-webkit-flex-direction:  column-reverse; --layout-vertical-reverse_-_flex-direction:  column-reverse;;
+
+      --layout-wrap_-_-ms-flex-wrap:  wrap; --layout-wrap_-_-webkit-flex-wrap:  wrap; --layout-wrap_-_flex-wrap:  wrap;;
+
+      --layout-wrap-reverse_-_-ms-flex-wrap:  wrap-reverse; --layout-wrap-reverse_-_-webkit-flex-wrap:  wrap-reverse; --layout-wrap-reverse_-_flex-wrap:  wrap-reverse;;
+
+      --layout-flex-auto_-_-ms-flex:  1 1 auto; --layout-flex-auto_-_-webkit-flex:  1 1 auto; --layout-flex-auto_-_flex:  1 1 auto;;
+
+      --layout-flex-none_-_-ms-flex:  none; --layout-flex-none_-_-webkit-flex:  none; --layout-flex-none_-_flex:  none;;
+
+      --layout-flex_-_-ms-flex:  1 1 0.000000001px; --layout-flex_-_-webkit-flex:  1; --layout-flex_-_flex:  1; --layout-flex_-_-webkit-flex-basis:  0.000000001px; --layout-flex_-_flex-basis:  0.000000001px;;
+
+      --layout-flex-2_-_-ms-flex:  2; --layout-flex-2_-_-webkit-flex:  2; --layout-flex-2_-_flex:  2;;
+
+      --layout-flex-3_-_-ms-flex:  3; --layout-flex-3_-_-webkit-flex:  3; --layout-flex-3_-_flex:  3;;
+
+      --layout-flex-4_-_-ms-flex:  4; --layout-flex-4_-_-webkit-flex:  4; --layout-flex-4_-_flex:  4;;
+
+      --layout-flex-5_-_-ms-flex:  5; --layout-flex-5_-_-webkit-flex:  5; --layout-flex-5_-_flex:  5;;
+
+      --layout-flex-6_-_-ms-flex:  6; --layout-flex-6_-_-webkit-flex:  6; --layout-flex-6_-_flex:  6;;
+
+      --layout-flex-7_-_-ms-flex:  7; --layout-flex-7_-_-webkit-flex:  7; --layout-flex-7_-_flex:  7;;
+
+      --layout-flex-8_-_-ms-flex:  8; --layout-flex-8_-_-webkit-flex:  8; --layout-flex-8_-_flex:  8;;
+
+      --layout-flex-9_-_-ms-flex:  9; --layout-flex-9_-_-webkit-flex:  9; --layout-flex-9_-_flex:  9;;
+
+      --layout-flex-10_-_-ms-flex:  10; --layout-flex-10_-_-webkit-flex:  10; --layout-flex-10_-_flex:  10;;
+
+      --layout-flex-11_-_-ms-flex:  11; --layout-flex-11_-_-webkit-flex:  11; --layout-flex-11_-_flex:  11;;
+
+      --layout-flex-12_-_-ms-flex:  12; --layout-flex-12_-_-webkit-flex:  12; --layout-flex-12_-_flex:  12;;
+
+      
+
+      --layout-start_-_-ms-flex-align:  start; --layout-start_-_-webkit-align-items:  flex-start; --layout-start_-_align-items:  flex-start;;
+
+      --layout-center_-_-ms-flex-align:  center; --layout-center_-_-webkit-align-items:  center; --layout-center_-_align-items:  center;;
+
+      --layout-end_-_-ms-flex-align:  end; --layout-end_-_-webkit-align-items:  flex-end; --layout-end_-_align-items:  flex-end;;
+
+      --layout-baseline_-_-ms-flex-align:  baseline; --layout-baseline_-_-webkit-align-items:  baseline; --layout-baseline_-_align-items:  baseline;;
+
+      
+
+      --layout-start-justified_-_-ms-flex-pack:  start; --layout-start-justified_-_-webkit-justify-content:  flex-start; --layout-start-justified_-_justify-content:  flex-start;;
+
+      --layout-center-justified_-_-ms-flex-pack:  center; --layout-center-justified_-_-webkit-justify-content:  center; --layout-center-justified_-_justify-content:  center;;
+
+      --layout-end-justified_-_-ms-flex-pack:  end; --layout-end-justified_-_-webkit-justify-content:  flex-end; --layout-end-justified_-_justify-content:  flex-end;;
+
+      --layout-around-justified_-_-ms-flex-pack:  distribute; --layout-around-justified_-_-webkit-justify-content:  space-around; --layout-around-justified_-_justify-content:  space-around;;
+
+      --layout-justified_-_-ms-flex-pack:  justify; --layout-justified_-_-webkit-justify-content:  space-between; --layout-justified_-_justify-content:  space-between;;
+
+      --layout-center-center_-_-ms-flex-align:  var(--layout-center_-_-ms-flex-align); --layout-center-center_-_-webkit-align-items:  var(--layout-center_-_-webkit-align-items); --layout-center-center_-_align-items:  var(--layout-center_-_align-items); --layout-center-center_-_-ms-flex-pack:  var(--layout-center-justified_-_-ms-flex-pack); --layout-center-center_-_-webkit-justify-content:  var(--layout-center-justified_-_-webkit-justify-content); --layout-center-center_-_justify-content:  var(--layout-center-justified_-_justify-content);;
+
+      
+
+      --layout-self-start_-_-ms-align-self:  flex-start; --layout-self-start_-_-webkit-align-self:  flex-start; --layout-self-start_-_align-self:  flex-start;;
+
+      --layout-self-center_-_-ms-align-self:  center; --layout-self-center_-_-webkit-align-self:  center; --layout-self-center_-_align-self:  center;;
+
+      --layout-self-end_-_-ms-align-self:  flex-end; --layout-self-end_-_-webkit-align-self:  flex-end; --layout-self-end_-_align-self:  flex-end;;
+
+      --layout-self-stretch_-_-ms-align-self:  stretch; --layout-self-stretch_-_-webkit-align-self:  stretch; --layout-self-stretch_-_align-self:  stretch;;
+
+      --layout-self-baseline_-_-ms-align-self:  baseline; --layout-self-baseline_-_-webkit-align-self:  baseline; --layout-self-baseline_-_align-self:  baseline;;
+
+      
+
+      --layout-start-aligned_-_-ms-flex-line-pack:  start; --layout-start-aligned_-_-ms-align-content:  flex-start; --layout-start-aligned_-_-webkit-align-content:  flex-start; --layout-start-aligned_-_align-content:  flex-start;;
+
+      --layout-end-aligned_-_-ms-flex-line-pack:  end; --layout-end-aligned_-_-ms-align-content:  flex-end; --layout-end-aligned_-_-webkit-align-content:  flex-end; --layout-end-aligned_-_align-content:  flex-end;;
+
+      --layout-center-aligned_-_-ms-flex-line-pack:  center; --layout-center-aligned_-_-ms-align-content:  center; --layout-center-aligned_-_-webkit-align-content:  center; --layout-center-aligned_-_align-content:  center;;
+
+      --layout-between-aligned_-_-ms-flex-line-pack:  justify; --layout-between-aligned_-_-ms-align-content:  space-between; --layout-between-aligned_-_-webkit-align-content:  space-between; --layout-between-aligned_-_align-content:  space-between;;
+
+      --layout-around-aligned_-_-ms-flex-line-pack:  distribute; --layout-around-aligned_-_-ms-align-content:  space-around; --layout-around-aligned_-_-webkit-align-content:  space-around; --layout-around-aligned_-_align-content:  space-around;;
+
+      
+
+      --layout-block_-_display:  block;;
+
+      --layout-invisible_-_visibility:  hidden !important;;
+
+      --layout-relative_-_position:  relative;;
+
+      --layout-fit_-_position:  absolute; --layout-fit_-_top:  0; --layout-fit_-_right:  0; --layout-fit_-_bottom:  0; --layout-fit_-_left:  0;;
+
+      --layout-scroll_-_-webkit-overflow-scrolling:  touch; --layout-scroll_-_overflow:  auto;;
+
+      --layout-fullbleed_-_margin:  0; --layout-fullbleed_-_height:  100vh;;
+
+      
+
+      --layout-fixed-top_-_position:  fixed; --layout-fixed-top_-_top:  0; --layout-fixed-top_-_left:  0; --layout-fixed-top_-_right:  0;;
+
+      --layout-fixed-right_-_position:  fixed; --layout-fixed-right_-_top:  0; --layout-fixed-right_-_right:  0; --layout-fixed-right_-_bottom:  0;;
+
+      --layout-fixed-bottom_-_position:  fixed; --layout-fixed-bottom_-_right:  0; --layout-fixed-bottom_-_bottom:  0; --layout-fixed-bottom_-_left:  0;;
+
+      --layout-fixed-left_-_position:  fixed; --layout-fixed-left_-_top:  0; --layout-fixed-left_-_bottom:  0; --layout-fixed-left_-_left:  0;;
+}
+
+</style>
+</custom-style><style>[hidden] { display: none !important; }</style><custom-style>
+  <style is="custom-style">html {
+  --google-red-100: #f4c7c3;
+      --google-red-300: #e67c73;
+      --google-red-500: #db4437;
+      --google-red-700: #c53929;
+
+      --google-blue-100: #c6dafc;
+      --google-blue-300: #7baaf7;
+      --google-blue-500: #4285f4;
+      --google-blue-700: #3367d6;
+
+      --google-green-100: #b7e1cd;
+      --google-green-300: #57bb8a;
+      --google-green-500: #0f9d58;
+      --google-green-700: #0b8043;
+
+      --google-yellow-100: #fce8b2;
+      --google-yellow-300: #f7cb4d;
+      --google-yellow-500: #f4b400;
+      --google-yellow-700: #f09300;
+
+      --google-grey-100: #f5f5f5;
+      --google-grey-300: #e0e0e0;
+      --google-grey-500: #9e9e9e;
+      --google-grey-700: #616161;
+
+      
+
+      --paper-red-50: #ffebee;
+      --paper-red-100: #ffcdd2;
+      --paper-red-200: #ef9a9a;
+      --paper-red-300: #e57373;
+      --paper-red-400: #ef5350;
+      --paper-red-500: #f44336;
+      --paper-red-600: #e53935;
+      --paper-red-700: #d32f2f;
+      --paper-red-800: #c62828;
+      --paper-red-900: #b71c1c;
+      --paper-red-a100: #ff8a80;
+      --paper-red-a200: #ff5252;
+      --paper-red-a400: #ff1744;
+      --paper-red-a700: #d50000;
+
+      --paper-pink-50: #fce4ec;
+      --paper-pink-100: #f8bbd0;
+      --paper-pink-200: #f48fb1;
+      --paper-pink-300: #f06292;
+      --paper-pink-400: #ec407a;
+      --paper-pink-500: #e91e63;
+      --paper-pink-600: #d81b60;
+      --paper-pink-700: #c2185b;
+      --paper-pink-800: #ad1457;
+      --paper-pink-900: #880e4f;
+      --paper-pink-a100: #ff80ab;
+      --paper-pink-a200: #ff4081;
+      --paper-pink-a400: #f50057;
+      --paper-pink-a700: #c51162;
+
+      --paper-purple-50: #f3e5f5;
+      --paper-purple-100: #e1bee7;
+      --paper-purple-200: #ce93d8;
+      --paper-purple-300: #ba68c8;
+      --paper-purple-400: #ab47bc;
+      --paper-purple-500: #9c27b0;
+      --paper-purple-600: #8e24aa;
+      --paper-purple-700: #7b1fa2;
+      --paper-purple-800: #6a1b9a;
+      --paper-purple-900: #4a148c;
+      --paper-purple-a100: #ea80fc;
+      --paper-purple-a200: #e040fb;
+      --paper-purple-a400: #d500f9;
+      --paper-purple-a700: #aa00ff;
+
+      --paper-deep-purple-50: #ede7f6;
+      --paper-deep-purple-100: #d1c4e9;
+      --paper-deep-purple-200: #b39ddb;
+      --paper-deep-purple-300: #9575cd;
+      --paper-deep-purple-400: #7e57c2;
+      --paper-deep-purple-500: #673ab7;
+      --paper-deep-purple-600: #5e35b1;
+      --paper-deep-purple-700: #512da8;
+      --paper-deep-purple-800: #4527a0;
+      --paper-deep-purple-900: #311b92;
+      --paper-deep-purple-a100: #b388ff;
+      --paper-deep-purple-a200: #7c4dff;
+      --paper-deep-purple-a400: #651fff;
+      --paper-deep-purple-a700: #6200ea;
+
+      --paper-indigo-50: #e8eaf6;
+      --paper-indigo-100: #c5cae9;
+      --paper-indigo-200: #9fa8da;
+      --paper-indigo-300: #7986cb;
+      --paper-indigo-400: #5c6bc0;
+      --paper-indigo-500: #3f51b5;
+      --paper-indigo-600: #3949ab;
+      --paper-indigo-700: #303f9f;
+      --paper-indigo-800: #283593;
+      --paper-indigo-900: #1a237e;
+      --paper-indigo-a100: #8c9eff;
+      --paper-indigo-a200: #536dfe;
+      --paper-indigo-a400: #3d5afe;
+      --paper-indigo-a700: #304ffe;
+
+      --paper-blue-50: #e3f2fd;
+      --paper-blue-100: #bbdefb;
+      --paper-blue-200: #90caf9;
+      --paper-blue-300: #64b5f6;
+      --paper-blue-400: #42a5f5;
+      --paper-blue-500: #2196f3;
+      --paper-blue-600: #1e88e5;
+      --paper-blue-700: #1976d2;
+      --paper-blue-800: #1565c0;
+      --paper-blue-900: #0d47a1;
+      --paper-blue-a100: #82b1ff;
+      --paper-blue-a200: #448aff;
+      --paper-blue-a400: #2979ff;
+      --paper-blue-a700: #2962ff;
+
+      --paper-light-blue-50: #e1f5fe;
+      --paper-light-blue-100: #b3e5fc;
+      --paper-light-blue-200: #81d4fa;
+      --paper-light-blue-300: #4fc3f7;
+      --paper-light-blue-400: #29b6f6;
+      --paper-light-blue-500: #03a9f4;
+      --paper-light-blue-600: #039be5;
+      --paper-light-blue-700: #0288d1;
+      --paper-light-blue-800: #0277bd;
+      --paper-light-blue-900: #01579b;
+      --paper-light-blue-a100: #80d8ff;
+      --paper-light-blue-a200: #40c4ff;
+      --paper-light-blue-a400: #00b0ff;
+      --paper-light-blue-a700: #0091ea;
+
+      --paper-cyan-50: #e0f7fa;
+      --paper-cyan-100: #b2ebf2;
+      --paper-cyan-200: #80deea;
+      --paper-cyan-300: #4dd0e1;
+      --paper-cyan-400: #26c6da;
+      --paper-cyan-500: #00bcd4;
+      --paper-cyan-600: #00acc1;
+      --paper-cyan-700: #0097a7;
+      --paper-cyan-800: #00838f;
+      --paper-cyan-900: #006064;
+      --paper-cyan-a100: #84ffff;
+      --paper-cyan-a200: #18ffff;
+      --paper-cyan-a400: #00e5ff;
+      --paper-cyan-a700: #00b8d4;
+
+      --paper-teal-50: #e0f2f1;
+      --paper-teal-100: #b2dfdb;
+      --paper-teal-200: #80cbc4;
+      --paper-teal-300: #4db6ac;
+      --paper-teal-400: #26a69a;
+      --paper-teal-500: #009688;
+      --paper-teal-600: #00897b;
+      --paper-teal-700: #00796b;
+      --paper-teal-800: #00695c;
+      --paper-teal-900: #004d40;
+      --paper-teal-a100: #a7ffeb;
+      --paper-teal-a200: #64ffda;
+      --paper-teal-a400: #1de9b6;
+      --paper-teal-a700: #00bfa5;
+
+      --paper-green-50: #e8f5e9;
+      --paper-green-100: #c8e6c9;
+      --paper-green-200: #a5d6a7;
+      --paper-green-300: #81c784;
+      --paper-green-400: #66bb6a;
+      --paper-green-500: #4caf50;
+      --paper-green-600: #43a047;
+      --paper-green-700: #388e3c;
+      --paper-green-800: #2e7d32;
+      --paper-green-900: #1b5e20;
+      --paper-green-a100: #b9f6ca;
+      --paper-green-a200: #69f0ae;
+      --paper-green-a400: #00e676;
+      --paper-green-a700: #00c853;
+
+      --paper-light-green-50: #f1f8e9;
+      --paper-light-green-100: #dcedc8;
+      --paper-light-green-200: #c5e1a5;
+      --paper-light-green-300: #aed581;
+      --paper-light-green-400: #9ccc65;
+      --paper-light-green-500: #8bc34a;
+      --paper-light-green-600: #7cb342;
+      --paper-light-green-700: #689f38;
+      --paper-light-green-800: #558b2f;
+      --paper-light-green-900: #33691e;
+      --paper-light-green-a100: #ccff90;
+      --paper-light-green-a200: #b2ff59;
+      --paper-light-green-a400: #76ff03;
+      --paper-light-green-a700: #64dd17;
+
+      --paper-lime-50: #f9fbe7;
+      --paper-lime-100: #f0f4c3;
+      --paper-lime-200: #e6ee9c;
+      --paper-lime-300: #dce775;
+      --paper-lime-400: #d4e157;
+      --paper-lime-500: #cddc39;
+      --paper-lime-600: #c0ca33;
+      --paper-lime-700: #afb42b;
+      --paper-lime-800: #9e9d24;
+      --paper-lime-900: #827717;
+      --paper-lime-a100: #f4ff81;
+      --paper-lime-a200: #eeff41;
+      --paper-lime-a400: #c6ff00;
+      --paper-lime-a700: #aeea00;
+
+      --paper-yellow-50: #fffde7;
+      --paper-yellow-100: #fff9c4;
+      --paper-yellow-200: #fff59d;
+      --paper-yellow-300: #fff176;
+      --paper-yellow-400: #ffee58;
+      --paper-yellow-500: #ffeb3b;
+      --paper-yellow-600: #fdd835;
+      --paper-yellow-700: #fbc02d;
+      --paper-yellow-800: #f9a825;
+      --paper-yellow-900: #f57f17;
+      --paper-yellow-a100: #ffff8d;
+      --paper-yellow-a200: #ffff00;
+      --paper-yellow-a400: #ffea00;
+      --paper-yellow-a700: #ffd600;
+
+      --paper-amber-50: #fff8e1;
+      --paper-amber-100: #ffecb3;
+      --paper-amber-200: #ffe082;
+      --paper-amber-300: #ffd54f;
+      --paper-amber-400: #ffca28;
+      --paper-amber-500: #ffc107;
+      --paper-amber-600: #ffb300;
+      --paper-amber-700: #ffa000;
+      --paper-amber-800: #ff8f00;
+      --paper-amber-900: #ff6f00;
+      --paper-amber-a100: #ffe57f;
+      --paper-amber-a200: #ffd740;
+      --paper-amber-a400: #ffc400;
+      --paper-amber-a700: #ffab00;
+
+      --paper-orange-50: #fff3e0;
+      --paper-orange-100: #ffe0b2;
+      --paper-orange-200: #ffcc80;
+      --paper-orange-300: #ffb74d;
+      --paper-orange-400: #ffa726;
+      --paper-orange-500: #ff9800;
+      --paper-orange-600: #fb8c00;
+      --paper-orange-700: #f57c00;
+      --paper-orange-800: #ef6c00;
+      --paper-orange-900: #e65100;
+      --paper-orange-a100: #ffd180;
+      --paper-orange-a200: #ffab40;
+      --paper-orange-a400: #ff9100;
+      --paper-orange-a700: #ff6500;
+
+      --paper-deep-orange-50: #fbe9e7;
+      --paper-deep-orange-100: #ffccbc;
+      --paper-deep-orange-200: #ffab91;
+      --paper-deep-orange-300: #ff8a65;
+      --paper-deep-orange-400: #ff7043;
+      --paper-deep-orange-500: #ff5722;
+      --paper-deep-orange-600: #f4511e;
+      --paper-deep-orange-700: #e64a19;
+      --paper-deep-orange-800: #d84315;
+      --paper-deep-orange-900: #bf360c;
+      --paper-deep-orange-a100: #ff9e80;
+      --paper-deep-orange-a200: #ff6e40;
+      --paper-deep-orange-a400: #ff3d00;
+      --paper-deep-orange-a700: #dd2c00;
+
+      --paper-brown-50: #efebe9;
+      --paper-brown-100: #d7ccc8;
+      --paper-brown-200: #bcaaa4;
+      --paper-brown-300: #a1887f;
+      --paper-brown-400: #8d6e63;
+      --paper-brown-500: #795548;
+      --paper-brown-600: #6d4c41;
+      --paper-brown-700: #5d4037;
+      --paper-brown-800: #4e342e;
+      --paper-brown-900: #3e2723;
+
+      --paper-grey-50: #fafafa;
+      --paper-grey-100: #f5f5f5;
+      --paper-grey-200: #eeeeee;
+      --paper-grey-300: #e0e0e0;
+      --paper-grey-400: #bdbdbd;
+      --paper-grey-500: #9e9e9e;
+      --paper-grey-600: #757575;
+      --paper-grey-700: #616161;
+      --paper-grey-800: #424242;
+      --paper-grey-900: #212121;
+
+      --paper-blue-grey-50: #eceff1;
+      --paper-blue-grey-100: #cfd8dc;
+      --paper-blue-grey-200: #b0bec5;
+      --paper-blue-grey-300: #90a4ae;
+      --paper-blue-grey-400: #78909c;
+      --paper-blue-grey-500: #607d8b;
+      --paper-blue-grey-600: #546e7a;
+      --paper-blue-grey-700: #455a64;
+      --paper-blue-grey-800: #37474f;
+      --paper-blue-grey-900: #263238;
+
+      
+      --dark-divider-opacity: 0.12;
+      --dark-disabled-opacity: 0.38; 
+      --dark-secondary-opacity: 0.54;
+      --dark-primary-opacity: 0.87;
+
+      
+      --light-divider-opacity: 0.12;
+      --light-disabled-opacity: 0.3; 
+      --light-secondary-opacity: 0.7;
+      --light-primary-opacity: 1.0;
+}
+
+</style>
+</custom-style><custom-style>
+  <style is="custom-style">html {
+  --primary-text-color: var(--light-theme-text-color);
+      --primary-background-color: var(--light-theme-background-color);
+      --secondary-text-color: var(--light-theme-secondary-color);
+      --disabled-text-color: var(--light-theme-disabled-color);
+      --divider-color: var(--light-theme-divider-color);
+      --error-color: var(--paper-deep-orange-a700);
+
+      
+      --primary-color: var(--paper-indigo-500);
+      --light-primary-color: var(--paper-indigo-100);
+      --dark-primary-color: var(--paper-indigo-700);
+
+      --accent-color: var(--paper-pink-a200);
+      --light-accent-color: var(--paper-pink-a100);
+      --dark-accent-color: var(--paper-pink-a400);
+
+
+      
+      --light-theme-background-color: #ffffff;
+      --light-theme-base-color: #000000;
+      --light-theme-text-color: var(--paper-grey-900);
+      --light-theme-secondary-color: #737373;  
+      --light-theme-disabled-color: #9b9b9b;  
+      --light-theme-divider-color: #dbdbdb;
+
+      
+      --dark-theme-background-color: var(--paper-grey-900);
+      --dark-theme-base-color: #ffffff;
+      --dark-theme-text-color: #ffffff;
+      --dark-theme-secondary-color: #bcbcbc;  
+      --dark-theme-disabled-color: #646464;  
+      --dark-theme-divider-color: #3c3c3c;
+
+      
+      --text-primary-color: var(--dark-theme-text-color);
+      --default-primary-color: var(--primary-color);
+}
+
+</style>
+</custom-style><script async="" src="./Running AI Platform Pipelines _ Qwiklabs_files/lazy.min.js.download"></script><script src="./Running AI Platform Pipelines _ Qwiklabs_files/loader.js.download"></script>
+<!--[if lt IE 9]>
+<script src='http://html5shim.googlecode.com/svn/trunk/html5.js' type='text/javascript'></script>
+<![endif]-->
+<!--[endif]>  <![endif]-->
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "WebSite",
+  "url": "https://www.qwiklabs.com/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://www.qwiklabs.com/catalog?keywords={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script id="ze-snippet" src="./Running AI Platform Pipelines _ Qwiklabs_files/snippet.js.download"></script>
+
+
+<meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="1wzIuozLIJaCUlhz+nss9F5rCTAkaWjR3e5IIyoDIKcI2UDbBW2osf2u9lHRAmA9OACgP9OI8kBNNBeUp+znCw==">
+<meta content="width=device-width, initial-scale=1.0, user-scalable=yes" name="viewport">
+<meta content="1rRsY0INj8RvwB5EF5pwdxt2A2P9aDgAlsICaJ0d5w0" name="google-site-verification">
+<meta content="#3681E4" property="msapplication-TileColor">
+<meta content="/favicon-144.png" property="msapplication-TileImage">
+<meta content="[{&quot;id&quot;:&quot;recaptcha_experiment&quot;,&quot;optimize_id&quot;:&quot;dpViOcLkT3qS4TvL2mRojA&quot;,&quot;title&quot;:&quot;No Recaptcha shown for trusted users&quot;,&quot;variant_index&quot;:0,&quot;variant&quot;:&quot;original&quot;}]" name="active-experiments">
+<meta content="{&quot;userId&quot;:5037645}" name="help-api-product-data">
+<meta content="In this lab you will set up a manged Kubeflow Pipelines instance to run production ML Pipelines, then construct and execute a pipline using Cloud AI Platform services, as well as a pipeline using simple python functions as components." name="description">
+<meta content="Qwiklabs" name="author">
+<meta content="Running AI Platform Pipelines | Qwiklabs" property="og:title">
+<meta content="website" property="og:type">
+<meta content="/favicon-144.png" property="og:image">
+<meta content="Qwiklabs" property="og:site_name">
+<meta content="In this lab you will set up a manged Kubeflow Pipelines instance to run production ML Pipelines, then construct and execute a pipline using Cloud AI Platform services, as well as a pipeline using simple python functions as components." property="og:description">
+<meta content="/qwiklabs_logo_900x887.png" property="og:logo" size="900x887">
+<meta content="/qwiklabs_logo_994x187.png" property="og:logo" size="994x187">
+
+
+<link href="https://googlecoursera.qwiklabs.com/favicon-32.png" rel="shortcut icon">
+<link color="#3681E4" href="https://googlecoursera.qwiklabs.com/favicon-svg.svg" rel="mask-icon">
+<link href="https://googlecoursera.qwiklabs.com/favicon-180.png" rel="apple-touch-icon-precomposed">
+
+
+
+<link rel="stylesheet" media="screen" href="./Running AI Platform Pipelines _ Qwiklabs_files/css">
+
+
+<link rel="stylesheet" media="all" href="./Running AI Platform Pipelines _ Qwiklabs_files/application-3ab403ee0674afd6a834b28b445d7d274cc7b32bd5ff385502229126859dba26.css">
+
+
+
+</head>
+<body class="lab-show l-full no-nav application-new focuses focuses-show lab-show l-full no-nav ">
+<noscript>
+<iframe height='0' src='https://www.googletagmanager.com/ns.html?id=GTM-TQR88QK' style='display:none;visibility:hidden;' width='0'></iframe>
+</noscript>
+<span class="hidden" id="flash-sibling-before"></span>
+
+<div class="header-container">
+<div class="header">
+<ql-icon-button class="js-nav-toggle header__nav-panel-button l-mrm">menu</ql-icon-button>
+<div class="header__title">
+<ql-icon-button label="Back" href="https://www.coursera.org/" id="cb9743b744144148" target="_self" tabindex="0">arrow_back</ql-icon-button><div class="mdl-tooltip" data-mdl-for="cb9743b744144148" data-upgraded=",MaterialTooltip">Back</div>
+
+<h1 class="headline-5">
+Running AI Platform Pipelines
+</h1>
+</div>
+<div class="header__actions">
+<ql-icon-button class="header__button--search js-header-search-bar-button">search</ql-icon-button>
+<ql-icon-button id="control-panel-target" style="display: none;" aria-haspopup="true" aria-controls="control-panel-menu">
+dashboard
+</ql-icon-button>
+<ql-menu for="control-panel-target" id="control-panel-menu" style="left: -1000px; top: -1000px; opacity: 0; visibility: hidden;" role="menu" aria-labelledby="control-panel-target"></ql-menu>
+
+<ql-icon-button icon="help" id="help-menu-button" label="Open help menu" tip="Help" aria-haspopup="true" aria-controls="help-menu"></ql-icon-button>
+<ql-menu for="help-menu-button" id="help-menu" style="left: -1000px; top: -1000px; opacity: 0; visibility: hidden;" role="menu" aria-labelledby="help-menu-button">
+<ql-menu-item>
+<ql-help context="lab" data-analytics-action="opened_help" data-analytics-label="lab" productdata="{&quot;userId&quot;:5037645}">
+Help Center
+</ql-help>
+</ql-menu-item>
+<ql-menu-item>
+<a target="_blank" class="ql-body-1" href="https://support.google.com/qwiklabs/contact/contact_us" tabindex="-1" role="menuitem">Email support</a>
+</ql-menu-item>
+<ql-menu-item>
+<a class="ql-body-1" onclick="ql.chat.open()" tabindex="-1" role="menuitem">Chat support</a>
+</ql-menu-item>
+</ql-menu>
+
+<ql-icon-button id="language">language</ql-icon-button>
+<div class="mdl-menu__container is-upgraded"><div class="mdl-menu__outline"></div><div class="mdl-menu mdl-menu__bottom-right mdl-js-menu elevation-3" for="language" data-upgraded=",MaterialMenu">
+<a class="mdl-menu__item locale-link" data-analytics-action="changed_locale" data-analytics-label="ar" href="https://googlecoursera.qwiklabs.com/focuses/16840546?locale=ar&amp;parent=lti_session" tabindex="-1">العربية‬‎
+</a><a class="mdl-menu__item locale-link" data-analytics-action="changed_locale" data-analytics-label="de" href="https://googlecoursera.qwiklabs.com/focuses/16840546?locale=de&amp;parent=lti_session" tabindex="-1">Deutsch
+</a><a class="mdl-menu__item locale-link" data-analytics-action="changed_locale" data-analytics-label="en" href="https://googlecoursera.qwiklabs.com/focuses/16840546?locale=en&amp;parent=lti_session" tabindex="-1">English
+</a><a class="mdl-menu__item locale-link" data-analytics-action="changed_locale" data-analytics-label="es" href="https://googlecoursera.qwiklabs.com/focuses/16840546?locale=es&amp;parent=lti_session" tabindex="-1">español (Latinoamérica)
+</a><a class="mdl-menu__item locale-link" data-analytics-action="changed_locale" data-analytics-label="fr" href="https://googlecoursera.qwiklabs.com/focuses/16840546?locale=fr&amp;parent=lti_session" tabindex="-1">français
+</a><a class="mdl-menu__item locale-link" data-analytics-action="changed_locale" data-analytics-label="id" href="https://googlecoursera.qwiklabs.com/focuses/16840546?locale=id&amp;parent=lti_session" tabindex="-1">bahasa Indonesia
+</a><a class="mdl-menu__item locale-link" data-analytics-action="changed_locale" data-analytics-label="it" href="https://googlecoursera.qwiklabs.com/focuses/16840546?locale=it&amp;parent=lti_session" tabindex="-1">Italiano
+</a><a class="mdl-menu__item locale-link" data-analytics-action="changed_locale" data-analytics-label="ja" href="https://googlecoursera.qwiklabs.com/focuses/16840546?locale=ja&amp;parent=lti_session" tabindex="-1">日本語
+</a><a class="mdl-menu__item locale-link" data-analytics-action="changed_locale" data-analytics-label="ko" href="https://googlecoursera.qwiklabs.com/focuses/16840546?locale=ko&amp;parent=lti_session" tabindex="-1">한국어
+</a><a class="mdl-menu__item locale-link" data-analytics-action="changed_locale" data-analytics-label="pl" href="https://googlecoursera.qwiklabs.com/focuses/16840546?locale=pl&amp;parent=lti_session" tabindex="-1">Polski
+</a><a class="mdl-menu__item locale-link" data-analytics-action="changed_locale" data-analytics-label="pt_BR" href="https://googlecoursera.qwiklabs.com/focuses/16840546?locale=pt_BR&amp;parent=lti_session" tabindex="-1">português (Brasil)
+</a><a class="mdl-menu__item locale-link" data-analytics-action="changed_locale" data-analytics-label="pt_PT" href="https://googlecoursera.qwiklabs.com/focuses/16840546?locale=pt_PT&amp;parent=lti_session" tabindex="-1">português (Portugal)
+</a><a class="mdl-menu__item locale-link" data-analytics-action="changed_locale" data-analytics-label="ru" href="https://googlecoursera.qwiklabs.com/focuses/16840546?locale=ru&amp;parent=lti_session" tabindex="-1">русский
+</a><a class="mdl-menu__item locale-link" data-analytics-action="changed_locale" data-analytics-label="tr" href="https://googlecoursera.qwiklabs.com/focuses/16840546?locale=tr&amp;parent=lti_session" tabindex="-1">Türkçe
+</a><a class="mdl-menu__item locale-link" data-analytics-action="changed_locale" data-analytics-label="zh" href="https://googlecoursera.qwiklabs.com/focuses/16840546?locale=zh&amp;parent=lti_session" tabindex="-1">简体中文
+</a><a class="mdl-menu__item locale-link" data-analytics-action="changed_locale" data-analytics-label="zh_TW" href="https://googlecoursera.qwiklabs.com/focuses/16840546?locale=zh_TW&amp;parent=lti_session" tabindex="-1">繁體中文
+</a></div></div>
+<button aria-label="My account" class="icon-button" id="my_account" aria-haspopup="true" aria-controls="my_account_menu">
+<ql-avatar></ql-avatar>
+</button>
+<ql-menu for="my_account" id="my_account_menu" style="left: -1000px; top: -1000px; opacity: 0; visibility: hidden;" role="menu" aria-labelledby="my_account">
+<div class="my-account-menu">
+<ql-avatar class="l-mtl l-mbl" size="120"></ql-avatar>
+<div class="my-account-menu__user-info l-mbl">
+<h4 class="ql-subhead-1">Bishnu Poudel</h4>
+<p class="ql-body-2 text--light">replytobishnu@yahoo.com</p>
+<p class="ql-body-2 text--light">
+</p>
+<a class="text--green ql-subhead-2" href="https://googlecoursera.qwiklabs.com/my_account/payments"><ql-chip positive="">
+0 Credits
+</ql-chip>
+</a></div>
+<div class="buttons l-mbl">
+<a class="button button--hairline" id="settings" href="https://googlecoursera.qwiklabs.com/my_account/profile">Settings</a>
+</div>
+<hr>
+<ql-button data-analytics-action="clicked_sign_out" href="/users/sign_out" method="delete">
+Sign Out
+</ql-button>
+<div class="privacy l-mtl">
+<a class="ql-caption text--light" href="https://googlecoursera.qwiklabs.com/privacy_policy">Privacy</a>
+<span class="ql-caption text--light l-mls l-mrs">·</span>
+<a class="ql-caption text--light" href="https://googlecoursera.qwiklabs.com/terms_of_service">Terms</a>
+</div>
+</div>
+</ql-menu>
+
+</div>
+</div>
+<div class="header__search-bar js-header-search-bar">
+<form class="js-search-form-mobile" onsubmit="ql.searchFilter(); return false;" action="https://googlecoursera.qwiklabs.com/searches/elasticsearch" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="1wzIuozLIJaCUlhz+nss9F5rCTAkaWjR3e5IIyoDIKcI2UDbBW2osf2u9lHRAmA9OACgP9OI8kBNNBeUp+znCw==">
+<input type="text" name="keywords" id="search" placeholder="Search" maxlength="255" aria-label="catalog search bar">
+</form>
+
+<ql-icon-button class="js-close-search-bar">close</ql-icon-button>
+</div>
+</div>
+
+<nav class="nav-bar">
+<a class="nav-bar__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/"><ql-icon class="nav-bar__item__icon">
+home
+</ql-icon>
+<span class="nav-bar__item__label">
+Home
+</span>
+</a>
+<a class="nav-bar__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/catalog"><ql-icon class="nav-bar__item__icon">
+school
+</ql-icon>
+<span class="nav-bar__item__label">
+Catalog
+</span>
+</a>
+<a class="nav-bar__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_learning"><ql-icon class="nav-bar__item__icon">
+event_note
+</ql-icon>
+<span class="nav-bar__item__label">
+My Learning
+</span>
+</a>
+</nav>
+
+<nav class="nav-panel js-nav-panel">
+<div class="nav-panel__logo">
+<div class="logo logo--blue" title="Logo"></div>
+</div>
+<a title="Home" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/"><ql-icon class="nav-panel__item__icon">
+home
+</ql-icon>
+<div class="nav-panel__item__label">
+Home
+</div>
+</a>
+<a title="Catalog" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/catalog"><ql-icon class="nav-panel__item__icon">
+school
+</ql-icon>
+<div class="nav-panel__item__label">
+Catalog
+</div>
+</a>
+<a title="My Learning" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_learning"><ql-icon class="nav-panel__item__icon">
+event_note
+</ql-icon>
+<div class="nav-panel__item__label">
+My Learning
+</div>
+</a>
+<div class="nav-panel__spacer"></div>
+<a title="Profile" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_account/profile"><ql-icon class="nav-panel__item__icon">
+account_circle
+</ql-icon>
+<div class="nav-panel__item__label">
+Profile
+</div>
+</a>
+<a title="Credits &amp; Subscriptions" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_account/credits"><ql-icon class="nav-panel__item__icon">
+money
+</ql-icon>
+<div class="nav-panel__item__label">
+Credits &amp; Subscriptions
+</div>
+</a>
+<a title="Security" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_account/security"><ql-icon class="nav-panel__item__icon">
+security
+</ql-icon>
+<div class="nav-panel__item__label">
+Security
+</div>
+</a>
+<div class="nav-panel__spacer"></div>
+<a class="nav-panel__item" tabindex="-1" href="https://googlecoursera.qwiklabs.com/focuses/16840546?parent=lti_session#"><ql-help>
+<div class="nav-panel__help-item">
+<ql-icon class="nav-panel__item__icon">help</ql-icon>
+<div class="nav-panel__item__label">
+Help
+</div>
+</div>
+</ql-help>
+</a><div class="nav-panel__small-links">
+<a tabindex="-1" href="https://googlecoursera.qwiklabs.com/privacy_policy">Privacy</a>
+<a tabindex="-1" href="https://googlecoursera.qwiklabs.com/terms_of_service">Terms</a>
+</div>
+</nav>
+<div class="nav-panel__overlay js-nav-toggle"></div>
+
+<main class="js-main">
+<div class="l-main-wrapper" id="main-wrapper">
+
+
+
+
+
+
+
+<div class="lab-assessment__tab js-open-lab-assessment-panel">
+<h6 class="js-lab-assessment-total-score">0/30</h6>
+</div>
+<div class="lab-assessment__panel js-lab-assessment-panel">
+<div class="lab-assessment__panel__header">
+<h4>Checkpoints</h4>
+<ql-icon-button class="js-close-lab-assessment-panel">arrow_forward</ql-icon-button>
+</div>
+<div class="lab-assessment__step">
+<p class="lab-assessment__step__title">
+Setup AI Platform Pipelines Instance
+</p>
+<div class="lab-assessment__step__action">
+<a class="button js-show-run-step-button" step_no="1">
+Check my progress
+</a>
+<p class="lab-assessment__step__score">
+<span class="js-assessment-step-score-1">0</span>
+/ 20
+</p>
+</div>
+</div>
+
+<div class="lab-assessment__step">
+<p class="lab-assessment__step__title">
+Run an Example Pipeline
+</p>
+<div class="lab-assessment__step__action">
+<a class="button js-show-run-step-button" step_no="2">
+Check my progress
+</a>
+<p class="lab-assessment__step__score">
+<span class="js-assessment-step-score-2">0</span>
+/ 10
+</p>
+</div>
+</div>
+
+</div>
+<ql-drawer-container class="js-lab-state" data-analytics-payload="{&quot;label&quot;:&quot;Running AI Platform Pipelines&quot;,&quot;lab_name&quot;:&quot;Running AI Platform Pipelines&quot;,&quot;classroom_name&quot;:null,&quot;deployment&quot;:&quot;googlecoursera-run&quot;}" data-focus-id="16840546" data-lab-billing-limit="0.0" data-lab-duration="7200" data-parent="lti_session" data-recaptcha-enabled="" id="lab-container">
+<ql-drawer id="terminal-drawer" slot="drawer" style="width: calc(100% - 480px)" mode="side">
+<iframe allow="clipboard-read" class="terminal" id="embedded-resource" data-gtm-yt-inspected-1_25="true" src="./Running AI Platform Pipelines _ Qwiklabs_files/saved_resource(3).html"></iframe>
+</ql-drawer>
+<ql-drawer-content class="js-lab-wrapper" id="lab-content" slot="drawer-content">
+<ql-drawer-container id="lab-content-container">
+<ql-drawer id="control-panel-drawer" open="" slot="drawer" width="320" mode="side" style="width: 320px;">
+<ql-lab-control-panel class="ql-lab-control-panel__max-height control-panel js-lab-control-panel" connectionfiles="[]" labcontrolbutton="{&quot;disabled&quot;:false,&quot;pending&quot;:false,&quot;running&quot;:false}" labdetails="[]" labtimer="{&quot;ticking&quot;:false,&quot;secondsRemaining&quot;:7200}" studentresources="[]">
+<script src="./Running AI Platform Pipelines _ Qwiklabs_files/api.js.download"></script>
+        <script>
+          // Define function so that we can call it again later if we need to reset it
+          // This executes reCAPTCHA and then calls our callback.
+          function executeRecaptchaForStartLab() {
+            grecaptcha.ready(function() {
+              grecaptcha.execute('6LeVI8IUAAAAAJNdox5eTkYrw9SbvhZ1TFyv3iHr', {action: 'start_lab'}).then(function(token) {
+                setInputWithRecaptchaResponseTokenForStartLab('g-recaptcha-response-data-start-lab', token)
+              });
+            });
+          };
+          // Invoke immediately
+          executeRecaptchaForStartLab()
+
+          // Async variant so you can await this function from another async function (no need for
+          // an explicit callback function then!)
+          // Returns a Promise that resolves with the response token.
+          async function executeRecaptchaForStartLabAsync() {
+            return new Promise((resolve, reject) => {
+              grecaptcha.ready(async function() {
+                resolve(await grecaptcha.execute('6LeVI8IUAAAAAJNdox5eTkYrw9SbvhZ1TFyv3iHr', {action: 'start_lab'}))
+              });
+            })
+          };
+
+                    var setInputWithRecaptchaResponseTokenForStartLab = function(id, token) {
+            var element = document.getElementById(id);
+            element.value = token;
+          }
+
+        </script>
+<input type="hidden" name="g-recaptcha-response-data[start_lab]" id="g-recaptcha-response-data-start-lab" data-sitekey="6LeVI8IUAAAAAJNdox5eTkYrw9SbvhZ1TFyv3iHr" class="g-recaptcha g-recaptcha-response " style="" value="03AGdBq26tNPadfokm3gGDKSS6g3LDeKBERm_8Tj37lJ19hR40NkLrimFJFXhN4bucZR8MaGzRY9-PO1EZfYLSnsXyYEYiZOCWMYtgU5YQXhXuOqf_qYUlmDf0hc_WPEtqSqWL16ElMdzly-FfeHe_FdySjZmtkNhEJOOPut5A5RaFIKEpYi7ef-85XVsYVoLeZFIDRaFSIjvIcnntQEeOoKgvdtHMLFDM4q_KJ_iLfzhkcwXbzBcyE78FeiiG4Cg47GV9gtTrN4NaZo3X_BlUaDOuTwawansAlxyOxVv-qS-7DkjWd7Dt-c3yQsyfRVbZcpRFqazTiCnKCFHvUK2gqKvcLztNCyc2nFCFKpiJyvzWBMYp6n4qGJVAAiwDb38VR0xXCsgrd3duRB0WbA195UMPv3uk4pIBp_9xcuklnjmCaWhn-yoUf9uAxp-W_DHFVlZHBvCKenN2YThcppYCpMaJXA1lTpC76Ymm4VEpxgcGVogEUVG3GkCgVKUX6JGWvVkB1xlRWABBuFP-frXYukTP5NfI_6BaEWxG6f6H8ACcDx7t-ZrJ3DUt-5Y5g4KGpTDxQ6rxsA340XymYpLQnXTvWyvGa-tDdf-CkLuU2wvPojOSP9USnqKJqb9XjF6KJGa3W8nd8kXnGr41w5r1-xTBfUegY7YhXFCNVmM-ECl8c6AJGH0KaZJw7KGXVIXKCAmDgukhPRQwzHk0C-1cz6e9FRdE2ZUJe4u7rWlnSgt5BNS1E15L-JZbCGw9DjQi_UlK4AnYxzcZBQh7hkNUiJwbx7L_FRGP04WesZ_xponGJcE7WJeIUPrxDBbexgj1tvXoRQLrSnBsI3uLd2h06wuN7gm_TjyZL-3vz5QOgTvl08Ni_1TASc2ff9hJmwceHx61FRJJDuLnF115aZZGMv4T7_91Qz9KJM2_JbE0_rvNiJscOKvDsdeGVHVyvDgDPF5qRMRbki0oLeQAZyCtUEkoxQvW9T00rBuLnb3V-L9FwcK1k9-WJWCeVIxi2HsNr88h_BqIjGvwCUGLnUznLPWYvjl0ZMripLIeIW_mGk4IICmezLki7Edrkq-QB7Z558Tk0Y74sftaaQPfcEDiy10eeoUMmx3lVwnxJhUBLQkzttuW4fK_hgYKKWeeWXpCgw1jNwthlYb4CeraDSnTap9-ZnXvW1xEdA"><div style="width: 304px; height: 78px;"><div><iframe title="reCAPTCHA" src="./Running AI Platform Pipelines _ Qwiklabs_files/anchor.html" width="304" height="78" role="presentation" name="a-dk7lw93934di" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox" data-gtm-yt-inspected-1_25="true"></iframe></div><textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div></input>
+
+<div class="hidden" id="recaptcha-v2-start-lab" slot="recaptcha">
+<script src="./Running AI Platform Pipelines _ Qwiklabs_files/api.js(1).download" async="" defer=""></script>
+<div data-sitekey="6LeOI8IUAAAAAPkHlMAE9NReCD_1WD81iYlBlCnV" data-callback="recaptchaComplete" data-expired-callback="expireV2Token" class="g-recaptcha "><div style="width: 304px; height: 78px;"><div><iframe title="reCAPTCHA" src="./Running AI Platform Pipelines _ Qwiklabs_files/anchor(1).html" width="304" height="78" role="presentation" name="a-7315e4p2dxwg" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox" data-gtm-yt-inspected-1_25="true"></iframe></div><textarea id="g-recaptcha-response-1" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div><iframe data-gtm-yt-inspected-1_25="true" style="display: none;" src="./Running AI Platform Pipelines _ Qwiklabs_files/saved_resource(4).html"></iframe></div>
+          <noscript>
+            <div>
+              <div style="width: 302px; height: 422px; position: relative;">
+                <div style="width: 302px; height: 422px; position: absolute;">
+                  <iframe
+                    src="https://www.recaptcha.net/recaptcha/api/fallback?k=6LeOI8IUAAAAAPkHlMAE9NReCD_1WD81iYlBlCnV"
+                    name="ReCAPTCHA"
+                    style="width: 302px; height: 422px; border-style: none; border: 0; overflow: hidden;">
+                  </iframe>
+                </div>
+              </div>
+              <div style="width: 300px; height: 60px; border-style: none;
+                bottom: 12px; left: 25px; margin: 0px; padding: 0px; right: 25px;
+                background: #f9f9f9; border: 1px solid #c1c1c1; border-radius: 3px;">
+                <textarea id="g-recaptcha-response" name="g-recaptcha-response"
+                  class="g-recaptcha-response"
+                  style="width: 250px; height: 40px; border: 1px solid #c1c1c1;
+                  margin: 10px 25px; padding: 0px; resize: none;">
+                </textarea>
+              </div>
+            </div>
+          </noscript>
+
+</div>
+</ql-lab-control-panel>
+</ql-drawer>
+<ql-drawer-content id="lab-instructions" slot="drawer-content">
+<div class="alert alert--fake js-alert">
+<p class="alert__message js-alert-message"></p>
+<a class="alert__close js-alert-close">
+<i class="fa fa-times"></i>
+</a>
+<iframe class="l-ie-iframe-fix" data-gtm-yt-inspected-1_25="true" src="./Running AI Platform Pipelines _ Qwiklabs_files/saved_resource(5).html"></iframe>
+</div>
+<div class="js-lab-content lab-content__renderable-instructions">
+<div class="lab-preamble">
+<h1 class="lab-preamble__title">
+Running AI Platform Pipelines
+</h1>
+<div class="lab-preamble__details subtitle-headline-1">
+<span>2 hours </span>
+<span>Free</span>
+<div class="lab__rating">
+<a href="https://googlecoursera.qwiklabs.com/focuses/16840546/reviews?parent=lti_session"><div class="rateit" data-rateit-readonly="true" data-rateit-value="4.0493"><div class="rateit-reset" style="display: none;"></div><div class="rateit-range" style="width: 80px; height: 16px;"><div class="rateit-selected" style="height: 16px; width: 64.7888px;"></div><div class="rateit-hover" style="height:16px"></div></div></div>
+
+</a></div>
+</div>
+</div>
+
+<div class="js-markdown-instructions markdown-lab-instructions" id="markdown-lab-instructions">
+
+
+
+<h2 id="step1">Overview</h2>
+<p>In this lab learn how to configure and create an AI Platform Pipelines instance. Once AI Platform Pipelines are configured, you are going to run an example pipeline and visualize it's graph. This will give you an idea of what different metrics, logs, parameters etc are available to modify and visualize.</p>
+<h2 id="step2">Objectives</h2>
+<p>In this lab, you will perform the following tasks:</p>
+<ul>
+<li>
+<p>Create a Kubernetes cluster and configure AI Platform pipelines</p>
+</li>
+<li>
+<p>Launch pipelines dashboard</p>
+</li>
+<li>
+<p>Create and run an experiment from an example end-to-end ML Pipeline</p>
+</li>
+<li>
+<p>Examine and verify the output of each step</p>
+</li>
+<li>
+<p>Inspect the pipeline graph, various metrics, logs, charts and parameters.</p>
+</li>
+</ul>
+<h2 id="step3">Setup and Requirements</h2>
+<h4>Before you click the Start Lab button</h4>
+<p>Read these instructions. Labs are timed and you cannot pause them. The timer, which starts when you click <strong>Start Lab</strong>, shows how long Google Cloud resources will be made available to you.</p>
+<p>This Qwiklabs hands-on lab lets you do the lab activities yourself in a real cloud environment, not in a simulation or demo environment. It does so by giving you new, temporary credentials that you use to sign in and access Google Cloud for the duration of the lab.</p>
+<h4>What you need</h4>
+<p>To complete this lab, you need:</p>
+<ul>
+<li>Access to a standard internet browser (Chrome browser recommended).</li>
+<li>Time to complete the lab.</li>
+</ul>
+<p><strong>Note:</strong> If you already have your own personal Google Cloud account or project, do not use it for this lab.</p>
+<p><strong>Note:</strong> If you are using a Pixelbook, open an Incognito window to run this lab.</p>
+
+<h4>Log in to Google Cloud Console</h4>
+<p>Using the Qwiklabs browser tab/window or the separate browser you are using for the Qwiklabs session, copy the Username from the Connection Details panel and click the <strong>Open Google Console</strong> button.</p>
+<p>You'll be asked to Choose an account. Click <strong>Use another account</strong>.
+<img alt="Google_choose_Account" src="./Running AI Platform Pipelines _ Qwiklabs_files/wNoohdL+wyBavWAhxkN5euPH2ulJhiOzoBlmi1+mGSw="></p>
+<p>Paste in the Username, and then the Password as prompted:</p>
+<p><img alt="Sign in to continue to Google Cloud Platform" src="./Running AI Platform Pipelines _ Qwiklabs_files/rP81bHN99Vr7kaKU7fqy2IuSj1rjjNXkD1iunRSBWBw="></p>
+<p>Accept the terms and conditions.</p>
+<p>Since this is a temporary account, which you will only have to access for this one lab:</p>
+<ul>
+<li>Do not add recovery options</li>
+<li>Do not sign up for free trials</li>
+</ul>
+<aside>
+<strong>Note:</strong> You can view the list of services by clicking the GCP Navigation menu button at the top-left next to “Google Cloud Platform”.
+
+  <img alt="Cloud Console Menu" src="./Running AI Platform Pipelines _ Qwiklabs_files/RIuVVYUkGtVaWhxtIFJugxyy_ORWQYw7OrLR0bJlReI=">
+</aside>
+
+<h3>Check project permissions</h3>
+<p>Before you begin your work on Google Cloud, you need to ensure that your project has the correct permissions within Identity and Access Management (IAM).</p>
+<ol>
+<li>
+<p>In the Google Cloud console, on the <strong>Navigation menu</strong> (<img alt="nav-menu.png" src="./Running AI Platform Pipelines _ Qwiklabs_files/ITyhQn00xPCVZIksELAC4wax+QdPdrH2DNGLazXJKgw=">), click <strong>IAM &amp; Admin</strong> &gt; <strong>IAM</strong>.</p>
+</li>
+<li>
+<p>Confirm that the default compute Service Account <code>{project-number}-compute@developer.gserviceaccount.com</code> is present and has the <code>editor</code> role assigned. The account prefix is the project number, which you can find on <strong>Navigation menu</strong> &gt; <strong>Home</strong>.</p>
+</li>
+</ol>
+<p><img alt="check-sa.png" src="./Running AI Platform Pipelines _ Qwiklabs_files/PaSJwLiQ6db41cptCuYECEHZtayQHGZpUJaR0fLIqTw="></p>
+<p>If the account is not present in IAM or does not have the <code>editor</code> role, follow the steps below to assign the required role.</p>
+<ul>
+<li>
+<p>In the Google Cloud console, on the <strong>Navigation menu</strong>, click <strong>Home</strong>.</p>
+</li>
+<li>
+<p>Copy the project number (e.g. <code>729328892908</code>).</p>
+</li>
+<li>
+<p>On the <strong>Navigation menu</strong>, click <strong>IAM &amp; Admin</strong> &gt; <strong>IAM</strong>.</p>
+</li>
+<li>
+<p>At the top of the <strong>IAM</strong> page, click <strong>Add</strong>.</p>
+</li>
+<li>
+<p>For <strong>New members</strong>, type:</p>
+</li>
+</ul>
+<pre><code>{project-number}-compute@developer.gserviceaccount.com
+</code><button class="button button--text button--small copy-button js-copy-button-0"><ql-icon>content_copy</ql-icon></button></pre>
+<p>Replace <code>{project-number}</code> with your project number.</p>
+<ul>
+<li>For <strong>Role</strong>, select <strong>Project</strong> (or Basic) &gt; <strong>Editor</strong>. Click <strong>Save</strong>.</li>
+</ul>
+<p><img alt="add-sa.png" src="./Running AI Platform Pipelines _ Qwiklabs_files/TJdJBvKxMtTArw6djkzJinwSxZq+Ya7fwXf54ROeHUM="></p>
+
+<h2 id="step4">Setup AI Platform Pipelines Instance</h2>
+<p>You will be deploying Kubeflow Pipelines as a Kuberenetes App, which are solutions with simple click to deploy to Google Kubernetes Engine, and the flexibility to deploy to Kubernetes clusters on-premises or in third-party clouds. You will see Kubeflow Pipelines integrated into your Google Cloud environment as <strong>AI Platform Pipelines</strong>. If interested, read more on Kubeflow Pipelines <a href="https://www.kubeflow.org/docs/pipelines/overview/pipelines-overview/" target="_blank">here</a> during installation steps.</p>
+<ol>
+<li>From the the Navigation menu, scroll down to <strong>AI Platform</strong> and pin the section for easier access later in the lab.</li>
+</ol>
+<p><img alt="ai_platform_pin.png" src="./Running AI Platform Pipelines _ Qwiklabs_files/Fg8_eMr_yFLm0G3LgjsuRuGyzNE3XO92swp6Gh6HTLI="></p>
+<ol start="2">
+<li>Click <strong>Pipelines</strong>.</li>
+</ol>
+<p><img alt="pipelines_button.png" src="./Running AI Platform Pipelines _ Qwiklabs_files/+GdM4TO8fdwon1uZ7WuuZuGxuk_RJfym6GaJQowqmoM="></p>
+<ol start="3">
+<li>Then click <strong>New Instance</strong>.</li>
+</ol>
+<p><img alt="new_pipelines_instance" src="./Running AI Platform Pipelines _ Qwiklabs_files/tADefcYXM7Ior2LE7eUJruvfmJ3o4neoU8XjihwoImg="></p>
+<ol start="4">
+<li>Click <strong>Configure</strong>.</li>
+</ol>
+<p><img alt="kfp_configure_button.png" src="./Running AI Platform Pipelines _ Qwiklabs_files/8atLf6A0l3AjxxshK8W5LIg3f3pUZYp0dE+2151vZXA="></p>
+<ol start="5">
+<li>Check <strong>Allow access to the following Cloud APIs</strong>, leave the name as is, and then click <strong>Create Cluster</strong>.</li>
+</ol>
+<p><img alt="create_cluster.png" src="./Running AI Platform Pipelines _ Qwiklabs_files/Qtg_LReUZe564BM0t2751zgaQLFTIb8pdVU8eiMOpl4="></p>
+<p>This should take 2-3 minutes to complete. Wait for the cluster to finish before proceeding to the next step. In the first tab opened, you can view the Cluster Creation taking place in the <a href="https://console.cloud.google.com/kubernetes/" target="_blank">GKE section of the Cloud Console</a>, or see the individual VMs spinning up in the <a href="https://console.cloud.google.com/compute/" target="_blank">GCE section of the Cloud Console</a>.</p>
+<ol start="6">
+<li>When the cluster creation is complete, check the <strong>Terms of Service</strong> box, leave other settings unchanged, and then click <strong>Deploy</strong>. You will see the individual services of KFP deployed to your GKE cluster. Proceed to the next step while installation occurs.</li>
+</ol>
+<p><img alt="kfp_deploy.png" src="./Running AI Platform Pipelines _ Qwiklabs_files/Zqe0C3CDgXFYuVdayUijBYhRCeYfFWwOJhnIdsuWEtI="></p>
+<p>Click <em>Check my progress</em> to verify the objective.
+<ql-activity-tracking step="1" labinstanceid="32122447">
+Setup AI Platform Pipelines Instance
+</ql-activity-tracking></p>
+<h2 id="step5">Run an Example Pipeline</h2>
+<ol>
+<li>Back in the original window/tab where you had launched Cloud Console, under the <strong>AI Platform</strong> &gt; <strong>Pipelines</strong> section, you will notice the newly created Pipelines instance listed. Click on the <strong>OPEN PIPELINES DASHBOARD</strong> link next to your instance name.</li>
+</ol>
+<p><img alt="open-dashboards.png" src="./Running AI Platform Pipelines _ Qwiklabs_files/UwHCOYVeAAT__HYp8XbQk0T+Nu0I6QTjlbUPyiladMg="></p>
+<ol start="2">
+<li>In the new page that loads, on the Navigation Menu on the left, click on <strong>Pipelines</strong>. You will see a list of pipelines that have been provided for demo and tutorial purposes. For this lab, we will use the <strong>[Demo] XGBoost - Iterative model training</strong> sample pipeline. This sample demonstrates continuous training using a train-eval-check recursive loop, in which the model is trained iteratively until the model evaluation metrics are adequate.</li>
+</ol>
+<p><img alt="demo-pipelines.png" src="./Running AI Platform Pipelines _ Qwiklabs_files/ND1qxX9K9AUtFybKP4drEyWoT1B6t_9QtluHD9LrUTk="></p>
+<ol start="3">
+<li>Click on the <strong>[Demo] XGBoost - Iterative model training</strong> pipeline. When it loads, you can see what the graph for this pipeline looks like. Next, you will create a run to test this pipeline.</li>
+</ol>
+<p><img alt="demo-xgboost-pipeline.png" src="./Running AI Platform Pipelines _ Qwiklabs_files/G4qaB0fUZspqS9GC137ANVFB7PZx+1N8AQ+SkS1gRtY="></p>
+<ol start="4">
+<li>
+<p>Click on <strong>Create experiment</strong> on the top right to associate a new experiment for the run. Use the name <strong>my-first-experiment</strong> in the form that loads. Click <strong>Next</strong> and then click the <strong>Start</strong>. This will run the pipeline. Note that the run may take a few minutes to complete.</p>
+</li>
+<li>
+<p>Once finished, you can see your fully generated graph as well as performance metrics and graphs and so on. The green check marks means every part of the pipeline ran successfully. You can click on any box and see the outputs for that part like visualizations, Input/output, logs, events etc.</p>
+</li>
+</ol>
+<p><img alt="xgboost-demo-result.png" src="./Running AI Platform Pipelines _ Qwiklabs_files/1V5YeX9bz8U86kSGJKDnibKWvRkio4njjcaf3yYNoII="></p>
+<p>Click <em>Check my progress</em> to verify the objective.
+<ql-activity-tracking step="2" labinstanceid="32122447">
+Run an Example Pipeline
+</ql-activity-tracking></p>
+<h3>Congratulations!</h3>
+<p>In this lab, you used Kubeflow Pipelines to create and orchestrate an ML pipeline on Cloud AI Platform.</p>
+<h5>Manual Last Updated December 11, 2020</h5>
+<h5>Lab Last Tested December 11, 2020</h5>
+<p>©2021 Google LLC All rights reserved. Google and the Google logo are trademarks of Google LLC. All other company and product names may be trademarks of the respective companies with which they are associated.</p>
+
+
+
+</div>
+</div>
+
+
+<div class="hidden js-end-lab-button-container lab-content__end-lab-button">
+<ql-lab-control-button class="js-end-lab-button" running=""></ql-lab-control-button>
+</div>
+<!-- / TODO: Move recommendations into the end lab modal -->
+</ql-drawer-content>
+<ql-drawer end="" id="outline-drawer" open="" slot="drawer" width="320" mode="side" style="width: 320px;">
+<div class="js-lab-content-outline lab-content__outline">
+<a href="https://googlecoursera.qwiklabs.com/focuses/16840546?parent=lti_session#step1" class="">Overview</a><a href="https://googlecoursera.qwiklabs.com/focuses/16840546?parent=lti_session#step2" class="">Objectives</a><a href="https://googlecoursera.qwiklabs.com/focuses/16840546?parent=lti_session#step3" class="">Setup and Requirements</a><a href="https://googlecoursera.qwiklabs.com/focuses/16840546?parent=lti_session#step4" class="is-active">Setup AI Platform Pipelines Instance</a><a href="https://googlecoursera.qwiklabs.com/focuses/16840546?parent=lti_session#step5">Run an Example Pipeline</a>
+</div>
+</ql-drawer>
+</ql-drawer-container>
+</ql-drawer-content>
+</ql-drawer-container>
+<div class="lab-introduction js-lab-introduction is-hidden">
+<div class="lab-introduction__inner">
+<h1 class="headline-1">Welcome to Your First Lab!</h1>
+<ql-icon-button class="js-skip-button">close</ql-icon-button>
+<div class="lab-introduction__video">
+<iframe allow="autoplay; encrypted-media" allowfullscreen="" frameborder="0" id="lab-introduction" src="./Running AI Platform Pipelines _ Qwiklabs_files/yF7EDXKTmoQ.html" data-gtm-yt-inspected-1_25="true"></iframe>
+</div>
+<a class="js-skip-button button button--outline">Skip this video</a>
+</div>
+</div>
+
+
+
+</div>
+</main>
+
+
+<div class="modal fade" id="lab-details-modal">
+<div class="modal-container">
+<div class="mdl-shadow--24dp modal-content">
+<div class="modal-body">
+<p class="l-mbm">
+In this lab you will set up a manged Kubeflow Pipelines instance to run production ML Pipelines, then construct and execute a pipline using Cloud AI Platform services, as well as a pipeline using simple python functions as components.
+</p>
+<p class="small-label l-mbs">
+<strong>
+Duration:
+</strong>
+0m setup
+·
+120m access
+·
+120m completion
+</p>
+<p class="small-label l-mbs">
+<span><strong>Levels: </strong>advanced</span>
+</p>
+<p class="small-label">
+<strong>
+Permalink:
+</strong>
+<a href="https://googlecoursera.qwiklabs.com/catalog_lab/3148">https://googlecoursera.qwiklabs.com/catalog_lab/3148</a>
+</p>
+</div>
+<div class="modal-actions">
+<a class="button button--text" data-dismiss="modal">
+Got It
+</a>
+</div>
+
+
+</div>
+</div>
+<iframe class="l-ie-iframe-fix" data-gtm-yt-inspected-1_25="true" src="./Running AI Platform Pipelines _ Qwiklabs_files/saved_resource(6).html"></iframe>
+</div>
+<div class="modal fade" id="lab-review-modal">
+<div class="modal-container">
+<div class="mdl-shadow--24dp modal-content">
+<form class="simple_form js-lab-review-form" id="new_lab_review" action="https://googlecoursera.qwiklabs.com/lab_reviews" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓"><div class="modal-body">
+<p class="label">
+How satisfied are you with this lab?*
+</p>
+<div class="rateit js-rateit" data-rateit-max="5" data-rateit-min="0" data-rateit-resetable="false" data-rateit-step="1" data-rateit-value="0"><div class="rateit-reset" style="display: none;"></div><div class="rateit-range" style="width: 80px; height: 16px;"><div class="rateit-selected" style="height: 16px; width: 0px;"></div><div class="rateit-hover" style="height:16px"></div></div></div>
+<div class="l-mtm">
+
+<div class="control-group hidden lab_review_user_id"><div class="controls"><input class="hidden" type="hidden" value="5037645" name="lab_review[user_id]" id="lab_review_user_id"></div></div>
+<div class="control-group hidden lab_review_classroom_id"><div class="controls"><input class="hidden" type="hidden" name="lab_review[classroom_id]" id="lab_review_classroom_id"></div></div>
+<div class="control-group hidden lab_review_lab_id"><div class="controls"><input class="hidden" type="hidden" value="3148" name="lab_review[lab_id]" id="lab_review_lab_id"></div></div>
+<div class="control-group hidden lab_review_focus_id"><div class="controls"><input class="hidden" type="hidden" name="lab_review[focus_id]" id="lab_review_focus_id"></div></div>
+<div class="control-group hidden lab_review_rating"><div class="controls"><input class="hidden js-rating-input" type="hidden" name="lab_review[rating]" id="lab_review_rating"></div></div>
+<div class="control-group text optional lab_review_comment"><label class="text optional control-label" for="lab_review_comment">Comment</label><div class="controls"><textarea class="text optional" name="lab_review[comment]" id="lab_review_comment"></textarea></div></div>
+</div>
+</div>
+<div class="modal-actions">
+<a class="button button--text" data-dismiss="modal">
+Cancel
+</a>
+<input type="submit" name="commit" value="Submit" disabled="disabled" id="submit" data-disabled="false" class="button" data-disable-with="Submit">
+</div>
+</form>
+
+</div>
+</div>
+<iframe class="l-ie-iframe-fix" data-gtm-yt-inspected-1_25="true" src="./Running AI Platform Pipelines _ Qwiklabs_files/saved_resource(7).html"></iframe>
+</div>
+
+
+<script>
+  $( function() {
+    ql.initMaterialInputs();
+    initChosen();
+    initSearch();
+    initTabs();
+    ql.list.init();
+    ql.favoriting.init();
+    ql.header.myAccount.init();
+    initTooltips();
+    ql.autocomplete.init();
+    ql.modals.init();
+    ql.toggleButtons.init();
+    ql.analytics.init();
+    ql.labControlPanel.addRecaptchaErrorHandler();
+  initLabContent();
+  ql.labOutline.links.init();
+  initLabReviewModal();
+  ql.labAssessment.init();
+  ql.labIntroduction.init( true );
+  ql.labData.init();
+  initLabTranslations( {"are_you_sure":"All done? If you end this lab, you will lose all your work. You may not be able to restart the lab if there is a quota limit. Are you sure you want to end this lab?\n","in_progress":"*In Progress*","ending":"*Ending*","starting":"*Starting, please wait*","end_concurrent_labs":"Sorry, you can only run one lab at a time. To start this lab, please confirm that you want all of your existing labs to end.\n","copied":"Copied","no_resource":"Error retrieving resource.","no_support":"No Support","mac_press":"Press ⌘-C to copy","thanks_review":"Thanks for reviewing this lab.","windows_press":"Press Ctrl-C to copy","days":"days"} );
+  ql.labRun.init();
+  ql.chat.init();
+  ql.initHeader();
+  ql.navigation.init();
+  ql.navPanel.init();
+  ql.navigation.init();
+  
+  });
+</script>
+
+
+
+
+<iframe data-product="web_widget" title="No content" tabindex="-1" aria-hidden="true" src="./Running AI Platform Pipelines _ Qwiklabs_files/saved_resource(8).html" data-gtm-yt-inspected-1_25="true" style="width: 0px; height: 0px; border: 0px; position: absolute; top: -9999px;"></iframe><div><div class="grecaptcha-badge" data-style="bottomright" style="width: 256px; height: 60px; display: block; transition: right 0.3s ease 0s; position: fixed; bottom: 14px; right: -186px; box-shadow: gray 0px 0px 5px; border-radius: 2px; overflow: hidden;"><div class="grecaptcha-logo"><iframe title="reCAPTCHA" src="./Running AI Platform Pipelines _ Qwiklabs_files/anchor(2).html" width="256" height="60" role="presentation" name="a-dq3szww4kvls" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox" data-gtm-yt-inspected-1_25="true"></iframe></div><div class="grecaptcha-error"></div><textarea id="g-recaptcha-response-100000" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div></div><div><iframe title="Opens a widget where you can chat to one of our agents" id="launcher" tabindex="-1" data-gtm-yt-inspected-1_25="true" style="width: 107px; height: 50px; padding: 0px; margin: 10px 20px; position: fixed; bottom: 30px; overflow: visible; opacity: 0; border: 0px; z-index: 999998; transition-duration: 250ms; transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1); transition-property: opacity, top, bottom; top: -9999px; visibility: hidden;" src="./Running AI Platform Pipelines _ Qwiklabs_files/saved_resource(9).html"></iframe></div><div style="background-color: rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204); box-shadow: rgba(0, 0, 0, 0.2) 2px 2px 3px; position: absolute; transition: visibility 0s linear 0.3s, opacity 0.3s linear 0s; opacity: 0; visibility: hidden; z-index: 2000000000; left: 0px; top: -10000px;"><div style="width: 100%; height: 100%; position: fixed; top: 0px; left: 0px; z-index: 2000000000; background-color: rgb(255, 255, 255); opacity: 0.05;"></div><div class="g-recaptcha-bubble-arrow" style="border: 11px solid transparent; width: 0px; height: 0px; position: absolute; pointer-events: none; margin-top: -11px; z-index: 2000000000;"></div><div class="g-recaptcha-bubble-arrow" style="border: 10px solid transparent; width: 0px; height: 0px; position: absolute; pointer-events: none; margin-top: -10px; z-index: 2000000000;"></div><div style="z-index: 2000000000; position: relative;"><iframe title="recaptcha challenge" src="./Running AI Platform Pipelines _ Qwiklabs_files/bframe.html" name="c-7315e4p2dxwg" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox" data-gtm-yt-inspected-1_25="true" style="width: 100%; height: 100%;"></iframe></div></div></body></html>
