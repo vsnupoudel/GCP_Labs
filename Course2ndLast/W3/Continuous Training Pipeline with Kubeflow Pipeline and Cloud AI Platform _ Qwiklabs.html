@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html lang="en" class="mdl-js"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform | Qwiklabs</title>
+<script type="text/javascript" async="" src="./Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform _ Qwiklabs_files/js"></script><script type="text/javascript" async="" src="./Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform _ Qwiklabs_files/analytics.js.download"></script><script type="text/javascript" async="" src="./Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform _ Qwiklabs_files/js(1)"></script><script type="text/javascript" async="" src="./Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform _ Qwiklabs_files/recaptcha__en.js.download" crossorigin="anonymous" integrity="sha384-5dRM1m7eE6AZoDz0NjK5VHNVPCC+oM2lfoqs/UmLHmgRBeoZvH2dwAP837BPJXaQ"></script><script type="text/javascript" async="" src="./Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform _ Qwiklabs_files/analytics.min.js.download"></script><script type="text/javascript" async="" src="./Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform _ Qwiklabs_files/recaptcha__en.js.download" crossorigin="anonymous" integrity="sha384-5dRM1m7eE6AZoDz0NjK5VHNVPCC+oM2lfoqs/UmLHmgRBeoZvH2dwAP837BPJXaQ"></script><script async="" src="./Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform _ Qwiklabs_files/gtm.js.download"></script><script>
+//<![CDATA[
+window.gon={};gon.current_user={"firstname":"Bishnu","lastname":"Poudel","fullname":"Bishnu Poudel","company":"Coursera","email":"replytobishnu@yahoo.com","origin":"googlecoursera-run, lti-coursera","subscriptions":0,"id":"024695ed22bf9de3de73cb0272a95fe9","qlCreatedAt":"2021-06-09 06:07:35 UTC","optIn":null,"current_organization_id":null,"current_organization_role":null};gon.segment="j4Im8pqIko0Lxq4wVVZWMPMM0EroHUvb";gon.deployment="googlecoursera-run";gon.content={"type":"Lab","id":3650,"name":"Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform"};
+//]]>
+</script>
+<script>
+  dataLayer = [
+    {user: gon.current_user},
+    {content: gon.content}
+  ];
+</script>
+<script>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer',"GTM-TQR88QK");
+</script>
+<script>
+  EVENT_SOURCE_BASE_URL = "https://googlecoursera-run.qwiklabs.com/nchan-sub?id=";
+</script>
+<script src="./Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform _ Qwiklabs_files/webcomponents-loader-bc6366f057e8ef5484398e321627c4f68460bc628567bfa2c568757fb504a477.js.download"></script>
+<script src="./Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform _ Qwiklabs_files/vendor-45d462772c30000424907184f70c7157e95fb6227698d1671c5051818a6f60d8.js.download"></script>
+<script src="./Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform _ Qwiklabs_files/application-7b4cac5d95c12acfbde99d31ff6a34446a8a67039edbaf88d7c5dd4fbd54c3a1.js.download"></script>
+<script src="./Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform _ Qwiklabs_files/hallofmirrors-8cd5e8a7f97bc3c69b6f6f48b5022985e64b4071b9c6ed26fe5e60bf3f593839.js.download"></script>
+<custom-style>
+  <style is="custom-style">[hidden] {
+  display: none !important;
+}
+
+</style>
+</custom-style>
+<custom-style>
+  <style is="custom-style">html {
+  --layout_-_display:  flex;;
+
+      --layout-inline_-_display:  inline-flex;;
+
+      --layout-horizontal_-_display:  var(--layout_-_display); --layout-horizontal_-_-ms-flex-direction:  row; --layout-horizontal_-_-webkit-flex-direction:  row; --layout-horizontal_-_flex-direction:  row;;
+
+      --layout-horizontal-reverse_-_display:  var(--layout_-_display); --layout-horizontal-reverse_-_-ms-flex-direction:  row-reverse; --layout-horizontal-reverse_-_-webkit-flex-direction:  row-reverse; --layout-horizontal-reverse_-_flex-direction:  row-reverse;;
+
+      --layout-vertical_-_display:  var(--layout_-_display); --layout-vertical_-_-ms-flex-direction:  column; --layout-vertical_-_-webkit-flex-direction:  column; --layout-vertical_-_flex-direction:  column;;
+
+      --layout-vertical-reverse_-_display:  var(--layout_-_display); --layout-vertical-reverse_-_-ms-flex-direction:  column-reverse; --layout-vertical-reverse_-_-webkit-flex-direction:  column-reverse; --layout-vertical-reverse_-_flex-direction:  column-reverse;;
+
+      --layout-wrap_-_-ms-flex-wrap:  wrap; --layout-wrap_-_-webkit-flex-wrap:  wrap; --layout-wrap_-_flex-wrap:  wrap;;
+
+      --layout-wrap-reverse_-_-ms-flex-wrap:  wrap-reverse; --layout-wrap-reverse_-_-webkit-flex-wrap:  wrap-reverse; --layout-wrap-reverse_-_flex-wrap:  wrap-reverse;;
+
+      --layout-flex-auto_-_-ms-flex:  1 1 auto; --layout-flex-auto_-_-webkit-flex:  1 1 auto; --layout-flex-auto_-_flex:  1 1 auto;;
+
+      --layout-flex-none_-_-ms-flex:  none; --layout-flex-none_-_-webkit-flex:  none; --layout-flex-none_-_flex:  none;;
+
+      --layout-flex_-_-ms-flex:  1 1 0.000000001px; --layout-flex_-_-webkit-flex:  1; --layout-flex_-_flex:  1; --layout-flex_-_-webkit-flex-basis:  0.000000001px; --layout-flex_-_flex-basis:  0.000000001px;;
+
+      --layout-flex-2_-_-ms-flex:  2; --layout-flex-2_-_-webkit-flex:  2; --layout-flex-2_-_flex:  2;;
+
+      --layout-flex-3_-_-ms-flex:  3; --layout-flex-3_-_-webkit-flex:  3; --layout-flex-3_-_flex:  3;;
+
+      --layout-flex-4_-_-ms-flex:  4; --layout-flex-4_-_-webkit-flex:  4; --layout-flex-4_-_flex:  4;;
+
+      --layout-flex-5_-_-ms-flex:  5; --layout-flex-5_-_-webkit-flex:  5; --layout-flex-5_-_flex:  5;;
+
+      --layout-flex-6_-_-ms-flex:  6; --layout-flex-6_-_-webkit-flex:  6; --layout-flex-6_-_flex:  6;;
+
+      --layout-flex-7_-_-ms-flex:  7; --layout-flex-7_-_-webkit-flex:  7; --layout-flex-7_-_flex:  7;;
+
+      --layout-flex-8_-_-ms-flex:  8; --layout-flex-8_-_-webkit-flex:  8; --layout-flex-8_-_flex:  8;;
+
+      --layout-flex-9_-_-ms-flex:  9; --layout-flex-9_-_-webkit-flex:  9; --layout-flex-9_-_flex:  9;;
+
+      --layout-flex-10_-_-ms-flex:  10; --layout-flex-10_-_-webkit-flex:  10; --layout-flex-10_-_flex:  10;;
+
+      --layout-flex-11_-_-ms-flex:  11; --layout-flex-11_-_-webkit-flex:  11; --layout-flex-11_-_flex:  11;;
+
+      --layout-flex-12_-_-ms-flex:  12; --layout-flex-12_-_-webkit-flex:  12; --layout-flex-12_-_flex:  12;;
+
+      
+
+      --layout-start_-_-ms-flex-align:  start; --layout-start_-_-webkit-align-items:  flex-start; --layout-start_-_align-items:  flex-start;;
+
+      --layout-center_-_-ms-flex-align:  center; --layout-center_-_-webkit-align-items:  center; --layout-center_-_align-items:  center;;
+
+      --layout-end_-_-ms-flex-align:  end; --layout-end_-_-webkit-align-items:  flex-end; --layout-end_-_align-items:  flex-end;;
+
+      --layout-baseline_-_-ms-flex-align:  baseline; --layout-baseline_-_-webkit-align-items:  baseline; --layout-baseline_-_align-items:  baseline;;
+
+      
+
+      --layout-start-justified_-_-ms-flex-pack:  start; --layout-start-justified_-_-webkit-justify-content:  flex-start; --layout-start-justified_-_justify-content:  flex-start;;
+
+      --layout-center-justified_-_-ms-flex-pack:  center; --layout-center-justified_-_-webkit-justify-content:  center; --layout-center-justified_-_justify-content:  center;;
+
+      --layout-end-justified_-_-ms-flex-pack:  end; --layout-end-justified_-_-webkit-justify-content:  flex-end; --layout-end-justified_-_justify-content:  flex-end;;
+
+      --layout-around-justified_-_-ms-flex-pack:  distribute; --layout-around-justified_-_-webkit-justify-content:  space-around; --layout-around-justified_-_justify-content:  space-around;;
+
+      --layout-justified_-_-ms-flex-pack:  justify; --layout-justified_-_-webkit-justify-content:  space-between; --layout-justified_-_justify-content:  space-between;;
+
+      --layout-center-center_-_-ms-flex-align:  var(--layout-center_-_-ms-flex-align); --layout-center-center_-_-webkit-align-items:  var(--layout-center_-_-webkit-align-items); --layout-center-center_-_align-items:  var(--layout-center_-_align-items); --layout-center-center_-_-ms-flex-pack:  var(--layout-center-justified_-_-ms-flex-pack); --layout-center-center_-_-webkit-justify-content:  var(--layout-center-justified_-_-webkit-justify-content); --layout-center-center_-_justify-content:  var(--layout-center-justified_-_justify-content);;
+
+      
+
+      --layout-self-start_-_-ms-align-self:  flex-start; --layout-self-start_-_-webkit-align-self:  flex-start; --layout-self-start_-_align-self:  flex-start;;
+
+      --layout-self-center_-_-ms-align-self:  center; --layout-self-center_-_-webkit-align-self:  center; --layout-self-center_-_align-self:  center;;
+
+      --layout-self-end_-_-ms-align-self:  flex-end; --layout-self-end_-_-webkit-align-self:  flex-end; --layout-self-end_-_align-self:  flex-end;;
+
+      --layout-self-stretch_-_-ms-align-self:  stretch; --layout-self-stretch_-_-webkit-align-self:  stretch; --layout-self-stretch_-_align-self:  stretch;;
+
+      --layout-self-baseline_-_-ms-align-self:  baseline; --layout-self-baseline_-_-webkit-align-self:  baseline; --layout-self-baseline_-_align-self:  baseline;;
+
+      
+
+      --layout-start-aligned_-_-ms-flex-line-pack:  start; --layout-start-aligned_-_-ms-align-content:  flex-start; --layout-start-aligned_-_-webkit-align-content:  flex-start; --layout-start-aligned_-_align-content:  flex-start;;
+
+      --layout-end-aligned_-_-ms-flex-line-pack:  end; --layout-end-aligned_-_-ms-align-content:  flex-end; --layout-end-aligned_-_-webkit-align-content:  flex-end; --layout-end-aligned_-_align-content:  flex-end;;
+
+      --layout-center-aligned_-_-ms-flex-line-pack:  center; --layout-center-aligned_-_-ms-align-content:  center; --layout-center-aligned_-_-webkit-align-content:  center; --layout-center-aligned_-_align-content:  center;;
+
+      --layout-between-aligned_-_-ms-flex-line-pack:  justify; --layout-between-aligned_-_-ms-align-content:  space-between; --layout-between-aligned_-_-webkit-align-content:  space-between; --layout-between-aligned_-_align-content:  space-between;;
+
+      --layout-around-aligned_-_-ms-flex-line-pack:  distribute; --layout-around-aligned_-_-ms-align-content:  space-around; --layout-around-aligned_-_-webkit-align-content:  space-around; --layout-around-aligned_-_align-content:  space-around;;
+
+      
+
+      --layout-block_-_display:  block;;
+
+      --layout-invisible_-_visibility:  hidden !important;;
+
+      --layout-relative_-_position:  relative;;
+
+      --layout-fit_-_position:  absolute; --layout-fit_-_top:  0; --layout-fit_-_right:  0; --layout-fit_-_bottom:  0; --layout-fit_-_left:  0;;
+
+      --layout-scroll_-_-webkit-overflow-scrolling:  touch; --layout-scroll_-_overflow:  auto;;
+
+      --layout-fullbleed_-_margin:  0; --layout-fullbleed_-_height:  100vh;;
+
+      
+
+      --layout-fixed-top_-_position:  fixed; --layout-fixed-top_-_top:  0; --layout-fixed-top_-_left:  0; --layout-fixed-top_-_right:  0;;
+
+      --layout-fixed-right_-_position:  fixed; --layout-fixed-right_-_top:  0; --layout-fixed-right_-_right:  0; --layout-fixed-right_-_bottom:  0;;
+
+      --layout-fixed-bottom_-_position:  fixed; --layout-fixed-bottom_-_right:  0; --layout-fixed-bottom_-_bottom:  0; --layout-fixed-bottom_-_left:  0;;
+
+      --layout-fixed-left_-_position:  fixed; --layout-fixed-left_-_top:  0; --layout-fixed-left_-_bottom:  0; --layout-fixed-left_-_left:  0;;
+}
+
+</style>
+</custom-style><style>[hidden] { display: none !important; }</style><custom-style>
+  <style is="custom-style">html {
+  --google-red-100: #f4c7c3;
+      --google-red-300: #e67c73;
+      --google-red-500: #db4437;
+      --google-red-700: #c53929;
+
+      --google-blue-100: #c6dafc;
+      --google-blue-300: #7baaf7;
+      --google-blue-500: #4285f4;
+      --google-blue-700: #3367d6;
+
+      --google-green-100: #b7e1cd;
+      --google-green-300: #57bb8a;
+      --google-green-500: #0f9d58;
+      --google-green-700: #0b8043;
+
+      --google-yellow-100: #fce8b2;
+      --google-yellow-300: #f7cb4d;
+      --google-yellow-500: #f4b400;
+      --google-yellow-700: #f09300;
+
+      --google-grey-100: #f5f5f5;
+      --google-grey-300: #e0e0e0;
+      --google-grey-500: #9e9e9e;
+      --google-grey-700: #616161;
+
+      
+
+      --paper-red-50: #ffebee;
+      --paper-red-100: #ffcdd2;
+      --paper-red-200: #ef9a9a;
+      --paper-red-300: #e57373;
+      --paper-red-400: #ef5350;
+      --paper-red-500: #f44336;
+      --paper-red-600: #e53935;
+      --paper-red-700: #d32f2f;
+      --paper-red-800: #c62828;
+      --paper-red-900: #b71c1c;
+      --paper-red-a100: #ff8a80;
+      --paper-red-a200: #ff5252;
+      --paper-red-a400: #ff1744;
+      --paper-red-a700: #d50000;
+
+      --paper-pink-50: #fce4ec;
+      --paper-pink-100: #f8bbd0;
+      --paper-pink-200: #f48fb1;
+      --paper-pink-300: #f06292;
+      --paper-pink-400: #ec407a;
+      --paper-pink-500: #e91e63;
+      --paper-pink-600: #d81b60;
+      --paper-pink-700: #c2185b;
+      --paper-pink-800: #ad1457;
+      --paper-pink-900: #880e4f;
+      --paper-pink-a100: #ff80ab;
+      --paper-pink-a200: #ff4081;
+      --paper-pink-a400: #f50057;
+      --paper-pink-a700: #c51162;
+
+      --paper-purple-50: #f3e5f5;
+      --paper-purple-100: #e1bee7;
+      --paper-purple-200: #ce93d8;
+      --paper-purple-300: #ba68c8;
+      --paper-purple-400: #ab47bc;
+      --paper-purple-500: #9c27b0;
+      --paper-purple-600: #8e24aa;
+      --paper-purple-700: #7b1fa2;
+      --paper-purple-800: #6a1b9a;
+      --paper-purple-900: #4a148c;
+      --paper-purple-a100: #ea80fc;
+      --paper-purple-a200: #e040fb;
+      --paper-purple-a400: #d500f9;
+      --paper-purple-a700: #aa00ff;
+
+      --paper-deep-purple-50: #ede7f6;
+      --paper-deep-purple-100: #d1c4e9;
+      --paper-deep-purple-200: #b39ddb;
+      --paper-deep-purple-300: #9575cd;
+      --paper-deep-purple-400: #7e57c2;
+      --paper-deep-purple-500: #673ab7;
+      --paper-deep-purple-600: #5e35b1;
+      --paper-deep-purple-700: #512da8;
+      --paper-deep-purple-800: #4527a0;
+      --paper-deep-purple-900: #311b92;
+      --paper-deep-purple-a100: #b388ff;
+      --paper-deep-purple-a200: #7c4dff;
+      --paper-deep-purple-a400: #651fff;
+      --paper-deep-purple-a700: #6200ea;
+
+      --paper-indigo-50: #e8eaf6;
+      --paper-indigo-100: #c5cae9;
+      --paper-indigo-200: #9fa8da;
+      --paper-indigo-300: #7986cb;
+      --paper-indigo-400: #5c6bc0;
+      --paper-indigo-500: #3f51b5;
+      --paper-indigo-600: #3949ab;
+      --paper-indigo-700: #303f9f;
+      --paper-indigo-800: #283593;
+      --paper-indigo-900: #1a237e;
+      --paper-indigo-a100: #8c9eff;
+      --paper-indigo-a200: #536dfe;
+      --paper-indigo-a400: #3d5afe;
+      --paper-indigo-a700: #304ffe;
+
+      --paper-blue-50: #e3f2fd;
+      --paper-blue-100: #bbdefb;
+      --paper-blue-200: #90caf9;
+      --paper-blue-300: #64b5f6;
+      --paper-blue-400: #42a5f5;
+      --paper-blue-500: #2196f3;
+      --paper-blue-600: #1e88e5;
+      --paper-blue-700: #1976d2;
+      --paper-blue-800: #1565c0;
+      --paper-blue-900: #0d47a1;
+      --paper-blue-a100: #82b1ff;
+      --paper-blue-a200: #448aff;
+      --paper-blue-a400: #2979ff;
+      --paper-blue-a700: #2962ff;
+
+      --paper-light-blue-50: #e1f5fe;
+      --paper-light-blue-100: #b3e5fc;
+      --paper-light-blue-200: #81d4fa;
+      --paper-light-blue-300: #4fc3f7;
+      --paper-light-blue-400: #29b6f6;
+      --paper-light-blue-500: #03a9f4;
+      --paper-light-blue-600: #039be5;
+      --paper-light-blue-700: #0288d1;
+      --paper-light-blue-800: #0277bd;
+      --paper-light-blue-900: #01579b;
+      --paper-light-blue-a100: #80d8ff;
+      --paper-light-blue-a200: #40c4ff;
+      --paper-light-blue-a400: #00b0ff;
+      --paper-light-blue-a700: #0091ea;
+
+      --paper-cyan-50: #e0f7fa;
+      --paper-cyan-100: #b2ebf2;
+      --paper-cyan-200: #80deea;
+      --paper-cyan-300: #4dd0e1;
+      --paper-cyan-400: #26c6da;
+      --paper-cyan-500: #00bcd4;
+      --paper-cyan-600: #00acc1;
+      --paper-cyan-700: #0097a7;
+      --paper-cyan-800: #00838f;
+      --paper-cyan-900: #006064;
+      --paper-cyan-a100: #84ffff;
+      --paper-cyan-a200: #18ffff;
+      --paper-cyan-a400: #00e5ff;
+      --paper-cyan-a700: #00b8d4;
+
+      --paper-teal-50: #e0f2f1;
+      --paper-teal-100: #b2dfdb;
+      --paper-teal-200: #80cbc4;
+      --paper-teal-300: #4db6ac;
+      --paper-teal-400: #26a69a;
+      --paper-teal-500: #009688;
+      --paper-teal-600: #00897b;
+      --paper-teal-700: #00796b;
+      --paper-teal-800: #00695c;
+      --paper-teal-900: #004d40;
+      --paper-teal-a100: #a7ffeb;
+      --paper-teal-a200: #64ffda;
+      --paper-teal-a400: #1de9b6;
+      --paper-teal-a700: #00bfa5;
+
+      --paper-green-50: #e8f5e9;
+      --paper-green-100: #c8e6c9;
+      --paper-green-200: #a5d6a7;
+      --paper-green-300: #81c784;
+      --paper-green-400: #66bb6a;
+      --paper-green-500: #4caf50;
+      --paper-green-600: #43a047;
+      --paper-green-700: #388e3c;
+      --paper-green-800: #2e7d32;
+      --paper-green-900: #1b5e20;
+      --paper-green-a100: #b9f6ca;
+      --paper-green-a200: #69f0ae;
+      --paper-green-a400: #00e676;
+      --paper-green-a700: #00c853;
+
+      --paper-light-green-50: #f1f8e9;
+      --paper-light-green-100: #dcedc8;
+      --paper-light-green-200: #c5e1a5;
+      --paper-light-green-300: #aed581;
+      --paper-light-green-400: #9ccc65;
+      --paper-light-green-500: #8bc34a;
+      --paper-light-green-600: #7cb342;
+      --paper-light-green-700: #689f38;
+      --paper-light-green-800: #558b2f;
+      --paper-light-green-900: #33691e;
+      --paper-light-green-a100: #ccff90;
+      --paper-light-green-a200: #b2ff59;
+      --paper-light-green-a400: #76ff03;
+      --paper-light-green-a700: #64dd17;
+
+      --paper-lime-50: #f9fbe7;
+      --paper-lime-100: #f0f4c3;
+      --paper-lime-200: #e6ee9c;
+      --paper-lime-300: #dce775;
+      --paper-lime-400: #d4e157;
+      --paper-lime-500: #cddc39;
+      --paper-lime-600: #c0ca33;
+      --paper-lime-700: #afb42b;
+      --paper-lime-800: #9e9d24;
+      --paper-lime-900: #827717;
+      --paper-lime-a100: #f4ff81;
+      --paper-lime-a200: #eeff41;
+      --paper-lime-a400: #c6ff00;
+      --paper-lime-a700: #aeea00;
+
+      --paper-yellow-50: #fffde7;
+      --paper-yellow-100: #fff9c4;
+      --paper-yellow-200: #fff59d;
+      --paper-yellow-300: #fff176;
+      --paper-yellow-400: #ffee58;
+      --paper-yellow-500: #ffeb3b;
+      --paper-yellow-600: #fdd835;
+      --paper-yellow-700: #fbc02d;
+      --paper-yellow-800: #f9a825;
+      --paper-yellow-900: #f57f17;
+      --paper-yellow-a100: #ffff8d;
+      --paper-yellow-a200: #ffff00;
+      --paper-yellow-a400: #ffea00;
+      --paper-yellow-a700: #ffd600;
+
+      --paper-amber-50: #fff8e1;
+      --paper-amber-100: #ffecb3;
+      --paper-amber-200: #ffe082;
+      --paper-amber-300: #ffd54f;
+      --paper-amber-400: #ffca28;
+      --paper-amber-500: #ffc107;
+      --paper-amber-600: #ffb300;
+      --paper-amber-700: #ffa000;
+      --paper-amber-800: #ff8f00;
+      --paper-amber-900: #ff6f00;
+      --paper-amber-a100: #ffe57f;
+      --paper-amber-a200: #ffd740;
+      --paper-amber-a400: #ffc400;
+      --paper-amber-a700: #ffab00;
+
+      --paper-orange-50: #fff3e0;
+      --paper-orange-100: #ffe0b2;
+      --paper-orange-200: #ffcc80;
+      --paper-orange-300: #ffb74d;
+      --paper-orange-400: #ffa726;
+      --paper-orange-500: #ff9800;
+      --paper-orange-600: #fb8c00;
+      --paper-orange-700: #f57c00;
+      --paper-orange-800: #ef6c00;
+      --paper-orange-900: #e65100;
+      --paper-orange-a100: #ffd180;
+      --paper-orange-a200: #ffab40;
+      --paper-orange-a400: #ff9100;
+      --paper-orange-a700: #ff6500;
+
+      --paper-deep-orange-50: #fbe9e7;
+      --paper-deep-orange-100: #ffccbc;
+      --paper-deep-orange-200: #ffab91;
+      --paper-deep-orange-300: #ff8a65;
+      --paper-deep-orange-400: #ff7043;
+      --paper-deep-orange-500: #ff5722;
+      --paper-deep-orange-600: #f4511e;
+      --paper-deep-orange-700: #e64a19;
+      --paper-deep-orange-800: #d84315;
+      --paper-deep-orange-900: #bf360c;
+      --paper-deep-orange-a100: #ff9e80;
+      --paper-deep-orange-a200: #ff6e40;
+      --paper-deep-orange-a400: #ff3d00;
+      --paper-deep-orange-a700: #dd2c00;
+
+      --paper-brown-50: #efebe9;
+      --paper-brown-100: #d7ccc8;
+      --paper-brown-200: #bcaaa4;
+      --paper-brown-300: #a1887f;
+      --paper-brown-400: #8d6e63;
+      --paper-brown-500: #795548;
+      --paper-brown-600: #6d4c41;
+      --paper-brown-700: #5d4037;
+      --paper-brown-800: #4e342e;
+      --paper-brown-900: #3e2723;
+
+      --paper-grey-50: #fafafa;
+      --paper-grey-100: #f5f5f5;
+      --paper-grey-200: #eeeeee;
+      --paper-grey-300: #e0e0e0;
+      --paper-grey-400: #bdbdbd;
+      --paper-grey-500: #9e9e9e;
+      --paper-grey-600: #757575;
+      --paper-grey-700: #616161;
+      --paper-grey-800: #424242;
+      --paper-grey-900: #212121;
+
+      --paper-blue-grey-50: #eceff1;
+      --paper-blue-grey-100: #cfd8dc;
+      --paper-blue-grey-200: #b0bec5;
+      --paper-blue-grey-300: #90a4ae;
+      --paper-blue-grey-400: #78909c;
+      --paper-blue-grey-500: #607d8b;
+      --paper-blue-grey-600: #546e7a;
+      --paper-blue-grey-700: #455a64;
+      --paper-blue-grey-800: #37474f;
+      --paper-blue-grey-900: #263238;
+
+      
+      --dark-divider-opacity: 0.12;
+      --dark-disabled-opacity: 0.38; 
+      --dark-secondary-opacity: 0.54;
+      --dark-primary-opacity: 0.87;
+
+      
+      --light-divider-opacity: 0.12;
+      --light-disabled-opacity: 0.3; 
+      --light-secondary-opacity: 0.7;
+      --light-primary-opacity: 1.0;
+}
+
+</style>
+</custom-style><custom-style>
+  <style is="custom-style">html {
+  --primary-text-color: var(--light-theme-text-color);
+      --primary-background-color: var(--light-theme-background-color);
+      --secondary-text-color: var(--light-theme-secondary-color);
+      --disabled-text-color: var(--light-theme-disabled-color);
+      --divider-color: var(--light-theme-divider-color);
+      --error-color: var(--paper-deep-orange-a700);
+
+      
+      --primary-color: var(--paper-indigo-500);
+      --light-primary-color: var(--paper-indigo-100);
+      --dark-primary-color: var(--paper-indigo-700);
+
+      --accent-color: var(--paper-pink-a200);
+      --light-accent-color: var(--paper-pink-a100);
+      --dark-accent-color: var(--paper-pink-a400);
+
+
+      
+      --light-theme-background-color: #ffffff;
+      --light-theme-base-color: #000000;
+      --light-theme-text-color: var(--paper-grey-900);
+      --light-theme-secondary-color: #737373;  
+      --light-theme-disabled-color: #9b9b9b;  
+      --light-theme-divider-color: #dbdbdb;
+
+      
+      --dark-theme-background-color: var(--paper-grey-900);
+      --dark-theme-base-color: #ffffff;
+      --dark-theme-text-color: #ffffff;
+      --dark-theme-secondary-color: #bcbcbc;  
+      --dark-theme-disabled-color: #646464;  
+      --dark-theme-divider-color: #3c3c3c;
+
+      
+      --text-primary-color: var(--dark-theme-text-color);
+      --default-primary-color: var(--primary-color);
+}
+
+</style>
+</custom-style><script async="" src="./Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform _ Qwiklabs_files/lazy.min.js.download"></script><script src="./Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform _ Qwiklabs_files/loader.js.download"></script>
+<!--[if lt IE 9]>
+<script src='http://html5shim.googlecode.com/svn/trunk/html5.js' type='text/javascript'></script>
+<![endif]-->
+<!--[endif]>  <![endif]-->
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "WebSite",
+  "url": "https://www.qwiklabs.com/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://www.qwiklabs.com/catalog?keywords={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script id="ze-snippet" src="./Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform _ Qwiklabs_files/snippet.js.download"></script>
+
+
+<meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="MztCuSPOIy6AIT1qOi4xrXDWVd+HzTJ66yuECh6kEjQ5KYz1H2SxrgUXDf196WS7FN39XyrRFD8lNhqWaVXQdg==">
+<meta content="width=device-width, initial-scale=1.0, user-scalable=yes" name="viewport">
+<meta content="1rRsY0INj8RvwB5EF5pwdxt2A2P9aDgAlsICaJ0d5w0" name="google-site-verification">
+<meta content="#3681E4" property="msapplication-TileColor">
+<meta content="/favicon-144.png" property="msapplication-TileImage">
+<meta content="[{&quot;id&quot;:&quot;recaptcha_experiment&quot;,&quot;optimize_id&quot;:&quot;dpViOcLkT3qS4TvL2mRojA&quot;,&quot;title&quot;:&quot;No Recaptcha shown for trusted users&quot;,&quot;variant_index&quot;:0,&quot;variant&quot;:&quot;original&quot;}]" name="active-experiments">
+<meta content="{&quot;userId&quot;:5037645}" name="help-api-product-data">
+<meta content="In this lab, you will build, deploy, and run a KFP pipeline that orchestrates BigQuery and Cloud AI Platform services to train, tune, and deploy a scikit-learn model." name="description">
+<meta content="Qwiklabs" name="author">
+<meta content="Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform | Qwiklabs" property="og:title">
+<meta content="website" property="og:type">
+<meta content="/favicon-144.png" property="og:image">
+<meta content="Qwiklabs" property="og:site_name">
+<meta content="In this lab, you will build, deploy, and run a KFP pipeline that orchestrates BigQuery and Cloud AI Platform services to train, tune, and deploy a scikit-learn model." property="og:description">
+<meta content="/qwiklabs_logo_900x887.png" property="og:logo" size="900x887">
+<meta content="/qwiklabs_logo_994x187.png" property="og:logo" size="994x187">
+
+
+<link href="https://googlecoursera.qwiklabs.com/favicon-32.png" rel="shortcut icon">
+<link color="#3681E4" href="https://googlecoursera.qwiklabs.com/favicon-svg.svg" rel="mask-icon">
+<link href="https://googlecoursera.qwiklabs.com/favicon-180.png" rel="apple-touch-icon-precomposed">
+
+
+
+<link rel="stylesheet" media="screen" href="./Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform _ Qwiklabs_files/css">
+
+
+<link rel="stylesheet" media="all" href="./Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform _ Qwiklabs_files/application-52638c7e16534efc1503a8ac61f25bf53865b44fde6a930e15323cbf76eba451.css">
+
+<style>
+  :root {
+    --primary-text-on-surface-color: #1A73E8;
+    --primary-surface-color: #1A73E8;
+    --primary-surface-color-rgb: 26,115,232;
+    --primary-surface-color-light: #d1e3fa;
+    --text-on-primary-color: #FFFFFF;
+    --accent-text-on-surface-color: #F29900;
+    --accent-surface-color: #F9AB00;
+    --accent-surface-color-rgb: 249,171,0;
+    --accent-surface-color-light: #ffefcc;
+    --text-on-accent-color: #202124;
+  }
+</style>
+
+
+
+</head>
+<body class="lab-show l-full no-nav application-new focuses focuses-show lab-show l-full no-nav ">
+<noscript>
+<iframe height='0' src='https://www.googletagmanager.com/ns.html?id=GTM-TQR88QK' style='display:none;visibility:hidden;' width='0'></iframe>
+</noscript>
+<span class="hidden" id="flash-sibling-before"></span>
+
+<div class="header-container">
+<div class="header">
+<ql-icon-button class="js-nav-toggle header__nav-panel-button l-mrm" aria-label="menu">menu</ql-icon-button>
+<div class="header__title">
+<ql-icon-button label="Back" href="https://www.coursera.org/" id="72d5d4d32ecc2485" target="_self" tip="Back" aria-label="Back">arrow_back</ql-icon-button>
+
+<h1 class="headline-5">
+Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform
+</h1>
+</div>
+<div class="header__actions">
+<ql-icon-button class="header__button--search js-header-search-bar-button" aria-label="search">search</ql-icon-button>
+<ql-icon-button id="control-panel-target" style="display: none;" aria-label="dashboard">
+dashboard
+</ql-icon-button>
+<ql-menu for="control-panel-target" id="control-panel-menu" style="left: -1000px; top: -1000px; opacity: 0; visibility: hidden;" role="menu" aria-labelledby="control-panel-target"></ql-menu>
+
+<ql-icon-button icon="help" id="help-menu-button" label="Open help menu" tip="Help" aria-label="Open help menu"></ql-icon-button>
+<ql-menu for="help-menu-button" id="help-menu" style="left: -1000px; top: -1000px; opacity: 0; visibility: hidden;" role="menu" aria-labelledby="help-menu-button">
+<ql-menu-item href="https://support.google.com/qwiklabs/contact/contact_us" label="Email support" target="_blank"></ql-menu-item>
+<ql-menu-item label="Chat support" onclick="ql.chat.open()"></ql-menu-item>
+</ql-menu>
+
+<ql-icon-button id="language" aria-label="language">language</ql-icon-button>
+<div class="mdl-menu__container is-upgraded"><div class="mdl-menu__outline"></div><div class="mdl-menu mdl-menu__bottom-right mdl-js-menu elevation-3" for="language" data-upgraded=",MaterialMenu">
+<a class="mdl-menu__item locale-link" data-analytics-action="changed_locale" data-analytics-label="ar" href="https://googlecoursera.qwiklabs.com/focuses/16961605?locale=ar&amp;parent=lti_session" tabindex="-1">العربية‬‎
+</a><a class="mdl-menu__item locale-link" data-analytics-action="changed_locale" data-analytics-label="de" href="https://googlecoursera.qwiklabs.com/focuses/16961605?locale=de&amp;parent=lti_session" tabindex="-1">Deutsch
+</a><a class="mdl-menu__item locale-link" data-analytics-action="changed_locale" data-analytics-label="en" href="https://googlecoursera.qwiklabs.com/focuses/16961605?locale=en&amp;parent=lti_session" tabindex="-1">English
+</a><a class="mdl-menu__item locale-link" data-analytics-action="changed_locale" data-analytics-label="es" href="https://googlecoursera.qwiklabs.com/focuses/16961605?locale=es&amp;parent=lti_session" tabindex="-1">español (Latinoamérica)
+</a><a class="mdl-menu__item locale-link" data-analytics-action="changed_locale" data-analytics-label="fr" href="https://googlecoursera.qwiklabs.com/focuses/16961605?locale=fr&amp;parent=lti_session" tabindex="-1">français
+</a><a class="mdl-menu__item locale-link" data-analytics-action="changed_locale" data-analytics-label="id" href="https://googlecoursera.qwiklabs.com/focuses/16961605?locale=id&amp;parent=lti_session" tabindex="-1">bahasa Indonesia
+</a><a class="mdl-menu__item locale-link" data-analytics-action="changed_locale" data-analytics-label="it" href="https://googlecoursera.qwiklabs.com/focuses/16961605?locale=it&amp;parent=lti_session" tabindex="-1">Italiano
+</a><a class="mdl-menu__item locale-link" data-analytics-action="changed_locale" data-analytics-label="ja" href="https://googlecoursera.qwiklabs.com/focuses/16961605?locale=ja&amp;parent=lti_session" tabindex="-1">日本語
+</a><a class="mdl-menu__item locale-link" data-analytics-action="changed_locale" data-analytics-label="ko" href="https://googlecoursera.qwiklabs.com/focuses/16961605?locale=ko&amp;parent=lti_session" tabindex="-1">한국어
+</a><a class="mdl-menu__item locale-link" data-analytics-action="changed_locale" data-analytics-label="pl" href="https://googlecoursera.qwiklabs.com/focuses/16961605?locale=pl&amp;parent=lti_session" tabindex="-1">Polski
+</a><a class="mdl-menu__item locale-link" data-analytics-action="changed_locale" data-analytics-label="pt_BR" href="https://googlecoursera.qwiklabs.com/focuses/16961605?locale=pt_BR&amp;parent=lti_session" tabindex="-1">português (Brasil)
+</a><a class="mdl-menu__item locale-link" data-analytics-action="changed_locale" data-analytics-label="pt_PT" href="https://googlecoursera.qwiklabs.com/focuses/16961605?locale=pt_PT&amp;parent=lti_session" tabindex="-1">português (Portugal)
+</a><a class="mdl-menu__item locale-link" data-analytics-action="changed_locale" data-analytics-label="ru" href="https://googlecoursera.qwiklabs.com/focuses/16961605?locale=ru&amp;parent=lti_session" tabindex="-1">русский
+</a><a class="mdl-menu__item locale-link" data-analytics-action="changed_locale" data-analytics-label="tr" href="https://googlecoursera.qwiklabs.com/focuses/16961605?locale=tr&amp;parent=lti_session" tabindex="-1">Türkçe
+</a><a class="mdl-menu__item locale-link" data-analytics-action="changed_locale" data-analytics-label="zh" href="https://googlecoursera.qwiklabs.com/focuses/16961605?locale=zh&amp;parent=lti_session" tabindex="-1">简体中文
+</a><a class="mdl-menu__item locale-link" data-analytics-action="changed_locale" data-analytics-label="zh_TW" href="https://googlecoursera.qwiklabs.com/focuses/16961605?locale=zh_TW&amp;parent=lti_session" tabindex="-1">繁體中文
+</a></div></div>
+<ql-icon-button icon="account_circle_filled" id="my_account" label="My account" tip="My account" aria-label="My account"></ql-icon-button>
+<ql-menu for="my_account" id="my_account_menu" style="max-height: 640px; left: -1000px; top: -1000px; opacity: 0; visibility: hidden;" role="menu" aria-labelledby="my_account">
+<div class="my-account-menu">
+<ql-avatar class="l-mtl l-mbl" size="120"></ql-avatar>
+<div class="my-account-menu__user-info l-mbl">
+<h4 class="ql-subhead-1">Bishnu Poudel</h4>
+<p class="ql-body-2 text--light">replytobishnu@yahoo.com</p>
+<p class="ql-body-2 text--light">
+</p>
+<a class="text--green ql-subhead-2" href="https://googlecoursera.qwiklabs.com/my_account/payments"><ql-chip positive="">
+0 Credits
+</ql-chip>
+</a></div>
+<div class="buttons l-mbl">
+<a class="button button--hairline" id="settings" href="https://googlecoursera.qwiklabs.com/my_account/profile">Settings</a>
+</div>
+<hr>
+<ql-button data-analytics-action="clicked_sign_out" href="/users/sign_out" method="delete">
+Sign Out
+</ql-button>
+<div class="privacy l-mtl">
+<a class="ql-caption text--light" href="https://googlecoursera.qwiklabs.com/privacy_policy">Privacy</a>
+<span class="ql-caption text--light l-mls l-mrs">·</span>
+<a class="ql-caption text--light" href="https://googlecoursera.qwiklabs.com/terms_of_service">Terms</a>
+</div>
+</div>
+</ql-menu>
+
+</div>
+</div>
+<div class="header__search-bar js-header-search-bar">
+<form class="js-search-form-mobile" onsubmit="ql.searchFilter(); return false;" action="https://googlecoursera.qwiklabs.com/searches/elasticsearch" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="MztCuSPOIy6AIT1qOi4xrXDWVd+HzTJ66yuECh6kEjQ5KYz1H2SxrgUXDf196WS7FN39XyrRFD8lNhqWaVXQdg==">
+<input type="text" name="keywords" id="search" placeholder="Search" maxlength="255" aria-label="catalog search bar">
+</form>
+
+<ql-icon-button class="js-close-search-bar" aria-label="close">close</ql-icon-button>
+</div>
+</div>
+
+<nav class="nav-bar">
+<a class="nav-bar__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/"><ql-icon class="nav-bar__item__icon">
+home
+</ql-icon>
+<span class="nav-bar__item__label">
+Home
+</span>
+</a>
+<a class="nav-bar__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/catalog"><ql-icon class="nav-bar__item__icon">
+school
+</ql-icon>
+<span class="nav-bar__item__label">
+Catalog
+</span>
+</a>
+<a class="nav-bar__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_learning"><ql-icon class="nav-bar__item__icon">
+event_note
+</ql-icon>
+<span class="nav-bar__item__label">
+My Learning
+</span>
+</a>
+</nav>
+
+<nav class="nav-panel js-nav-panel">
+<div class="nav-panel__logo">
+<div class="logo logo--blue" title="Logo"></div>
+</div>
+<a title="Home" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/"><ql-icon class="nav-panel__item__icon">
+home
+</ql-icon>
+<div class="nav-panel__item__label">
+Home
+</div>
+</a>
+<a title="Catalog" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/catalog"><ql-icon class="nav-panel__item__icon">
+school
+</ql-icon>
+<div class="nav-panel__item__label">
+Catalog
+</div>
+</a>
+<a title="My Learning" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_learning"><ql-icon class="nav-panel__item__icon">
+event_note
+</ql-icon>
+<div class="nav-panel__item__label">
+My Learning
+</div>
+</a>
+<div class="nav-panel__spacer"></div>
+<a title="Profile" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_account/profile"><ql-icon class="nav-panel__item__icon">
+account_circle
+</ql-icon>
+<div class="nav-panel__item__label">
+Profile
+</div>
+</a>
+<a title="Credits &amp; Subscriptions" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_account/credits"><ql-icon class="nav-panel__item__icon">
+money
+</ql-icon>
+<div class="nav-panel__item__label">
+Credits &amp; Subscriptions
+</div>
+</a>
+<a title="Security" tabindex="-1" class="nav-panel__item js-navigation-button" href="https://googlecoursera.qwiklabs.com/my_account/security"><ql-icon class="nav-panel__item__icon">
+security
+</ql-icon>
+<div class="nav-panel__item__label">
+Security
+</div>
+</a>
+<div class="nav-panel__spacer"></div>
+<a class="nav-panel__item" tabindex="-1" href="https://googlecoursera.qwiklabs.com/focuses/16961605?parent=lti_session#"><ql-help>
+<div class="nav-panel__help-item">
+<ql-icon class="nav-panel__item__icon">help</ql-icon>
+<div class="nav-panel__item__label">
+Help
+</div>
+</div>
+</ql-help>
+</a><div class="nav-panel__small-links">
+<a tabindex="-1" href="https://googlecoursera.qwiklabs.com/privacy_policy">Privacy</a>
+<a tabindex="-1" href="https://googlecoursera.qwiklabs.com/terms_of_service">Terms</a>
+</div>
+</nav>
+<div class="nav-panel__overlay js-nav-toggle"></div>
+
+<main class="js-main">
+<div class="l-main-wrapper" id="main-wrapper">
+
+
+
+
+
+
+<div class="lab-assessment__tab js-open-lab-assessment-panel">
+<h6 class="js-lab-assessment-total-score">
+—/100
+</h6>
+</div>
+<div class="lab-assessment__panel js-lab-assessment-panel">
+<div class="lab-assessment__panel__header">
+<h4>Checkpoints</h4>
+<ql-icon-button class="js-close-lab-assessment-panel" aria-label="arrow_forward">arrow_forward</ql-icon-button>
+</div>
+<div class="lab-assessment__step">
+<p class="lab-assessment__step__title">
+Creating an instance of AI Platform Pipelines
+</p>
+<div class="lab-assessment__step__action">
+<a class="button js-show-run-step-button" step_no="1">
+Check my progress
+</a>
+<p class="lab-assessment__step__score">
+<span class="js-assessment-step-score-1">
+</span>
+/ 20
+</p>
+</div>
+</div>
+
+<div class="lab-assessment__step">
+<p class="lab-assessment__step__title">
+Create an instance of AI Platform Notebooks
+</p>
+<div class="lab-assessment__step__action">
+<a class="button js-show-run-step-button" step_no="2">
+Check my progress
+</a>
+<p class="lab-assessment__step__score">
+<span class="js-assessment-step-score-2">
+</span>
+/ 10
+</p>
+</div>
+</div>
+
+<div class="lab-assessment__step">
+<p class="lab-assessment__step__title">
+Clone the mlops-on-gcp repo within your AI Platform Notebooks instance
+</p>
+<div class="lab-assessment__step__action">
+<a class="button js-show-run-step-button" step_no="3">
+Check my progress
+</a>
+<p class="lab-assessment__step__score">
+<span class="js-assessment-step-score-3">
+</span>
+/ 10
+</p>
+</div>
+</div>
+
+<div class="lab-assessment__step">
+<p class="lab-assessment__step__title">
+Build the trainer image and base image for custom components
+</p>
+<div class="lab-assessment__step__action">
+<a class="button js-show-run-step-button" step_no="4">
+Check my progress
+</a>
+<p class="lab-assessment__step__score">
+<span class="js-assessment-step-score-4">
+</span>
+/ 20
+</p>
+</div>
+</div>
+
+<div class="lab-assessment__step">
+<p class="lab-assessment__step__title">
+Compile the pipeline
+</p>
+<div class="lab-assessment__step__action">
+<a class="button js-show-run-step-button" step_no="5">
+Check my progress
+</a>
+<p class="lab-assessment__step__score">
+<span class="js-assessment-step-score-5">
+</span>
+/ 20
+</p>
+</div>
+</div>
+
+<div class="lab-assessment__step">
+<p class="lab-assessment__step__title">
+Submitting pipeline runs
+</p>
+<div class="lab-assessment__step__action">
+<a class="button js-show-run-step-button" step_no="6">
+Check my progress
+</a>
+<p class="lab-assessment__step__score">
+<span class="js-assessment-step-score-6">
+</span>
+/ 20
+</p>
+</div>
+</div>
+
+</div>
+<ql-drawer-container class="js-lab-state" data-analytics-payload="{&quot;label&quot;:&quot;Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform&quot;,&quot;lab_name&quot;:&quot;Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform&quot;,&quot;classroom_name&quot;:null,&quot;deployment&quot;:&quot;googlecoursera-run&quot;}" data-focus-id="16961605" data-lab-billing-limit="0.0" data-lab-duration="7200" data-parent="lti_session" data-recaptcha-enabled="" id="lab-container">
+<ql-drawer id="terminal-drawer" slot="drawer" style="width: calc(100% - 480px)" mode="side">
+<iframe allow="clipboard-read" class="terminal" id="embedded-resource" src="./Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform _ Qwiklabs_files/saved_resource(2).html"></iframe>
+</ql-drawer>
+<ql-drawer-content class="js-lab-wrapper" id="lab-content" slot="drawer-content">
+<ql-drawer-container id="lab-content-container">
+<ql-drawer id="control-panel-drawer" open="" slot="drawer" width="320" mode="side" style="width: 320px;">
+<ql-lab-control-panel class="ql-lab-control-panel__max-height control-panel js-lab-control-panel" connectionfiles="[]" labcontrolbutton="{&quot;disabled&quot;:false,&quot;pending&quot;:false,&quot;running&quot;:false}" labdetails="[]" labtimer="{&quot;ticking&quot;:false,&quot;secondsRemaining&quot;:7200}" studentresources="[]">
+<script src="./Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform _ Qwiklabs_files/api.js.download"></script>
+        <script>
+          // Define function so that we can call it again later if we need to reset it
+          // This executes reCAPTCHA and then calls our callback.
+          function executeRecaptchaForStartLab() {
+            grecaptcha.ready(function() {
+              grecaptcha.execute('6LeVI8IUAAAAAJNdox5eTkYrw9SbvhZ1TFyv3iHr', {action: 'start_lab'}).then(function(token) {
+                setInputWithRecaptchaResponseTokenForStartLab('g-recaptcha-response-data-start-lab', token)
+              });
+            });
+          };
+          // Invoke immediately
+          executeRecaptchaForStartLab()
+
+          // Async variant so you can await this function from another async function (no need for
+          // an explicit callback function then!)
+          // Returns a Promise that resolves with the response token.
+          async function executeRecaptchaForStartLabAsync() {
+            return new Promise((resolve, reject) => {
+              grecaptcha.ready(async function() {
+                resolve(await grecaptcha.execute('6LeVI8IUAAAAAJNdox5eTkYrw9SbvhZ1TFyv3iHr', {action: 'start_lab'}))
+              });
+            })
+          };
+
+                    var setInputWithRecaptchaResponseTokenForStartLab = function(id, token) {
+            var element = document.getElementById(id);
+            element.value = token;
+          }
+
+        </script>
+<input type="hidden" name="g-recaptcha-response-data[start_lab]" id="g-recaptcha-response-data-start-lab" data-sitekey="6LeVI8IUAAAAAJNdox5eTkYrw9SbvhZ1TFyv3iHr" class="g-recaptcha g-recaptcha-response " style="" value="03AGdBq269TwzydVuAhB5-40GmLIPTnBoYbT4HGfleHZDDhGAtXyN8lOr3ZeT_3WzoledZ11569iFAsCx55aUaOtRj4043wNqcyu8nihfzfgHIx-jhwcdrk5H0nzysJH4mRQ6JS2skph-8LleGr5Ae52YNKkaJkg7g6dGPzw_rHXK9DfppaY76FijZZ72s6AWxmVevVafAAtT6pzGZrXjpQnGirCFpgCoL2HZTUQiyyeMV39L_x7oNn9kUSCjvWhM39pEV9ofQCX5Pgxyntqsi0fArEd12-Ir30DhfBK7ZSmj16Y7EHwEQ3TSp1zZU71wjXb_H2JwwteqFJfhG2gQ9v121jWWfBonPbUmA7yfcwLkTDDmLrdyN8unUlMGaCvyaS-gmPUB-7s_1uFNJbFlQDsOtIduzWyOLG9VgHVPbNnm7zIG9P0I3AiC_S54IkwAOPC53PsDxkK69y3ClT3fxWlhmA4Gv4p8PkcAOZBCHQOZX_Lll854bXNA2b43IY6X19lHbTPjEr77EGyonZjYTr2q5jQ6BXmG6einWxevS-2dR_yJPnvW4yOx2RRPVocrlTC7Dx4v1JVcs8kPLx2sAFS0694NaB5PlTMBot8gqnOkQck-T8g_7jgFclZI-LBicDoMMKZcpP6DIDj-SzkisZkVSoo2F9g-WvJbBTuI85sSe3drQ6Svjn6zP9OmvLywFS4TBd7mFxEtlw1e9a0r63TKCRcSpG6DkguHAmY9xk9ka1mjTsTU3yBb90iOQVQLy_ozuirflc4J_Arh6SfKqGz09ddyZFZP4CL6si1gMFyjIOag13Gm9XapHvuYoi1zs2Z_Yx63CUcb3_srFkZulVRsCxXI95sVPXDJtKjNuGIIcBon8sU6UajgCm5Qs5vWmN_LS9XKwhqw183Ga3BW6Z9ZgXe9g_Kv1dcWJ9bntG01xaBZkd7-ld0oFl6TU9-aScwQwQMe75hhV3hacRFPv9XFEpVyXy--q9iu1oqwC-InfFKssYpYu0OB4KVmcKjXv1upEU121_WBBp3wugmHRb94IHKsPuC9mo0lVqYdKeeiFT2i3xmcZtR3nJc9Mmbvcn1fF7T6lKLlrJCi73u5LKw_N6xJcNBENluYzJKWBgdXkLF6n_AaLoZY-gbuLiXo7GpFtcsnl_XnBbxvPRVYmf1pid2XiEbN2-g"><div style="width: 304px; height: 78px;"><div><iframe title="reCAPTCHA" src="./Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform _ Qwiklabs_files/anchor.html" width="304" height="78" role="presentation" name="a-4vyivz2fb87k" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe></div><textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div></input>
+
+<div class="hidden" id="recaptcha-v2-start-lab" slot="recaptcha">
+<script src="./Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform _ Qwiklabs_files/api.js(1).download" async="" defer=""></script>
+<div data-sitekey="6LeOI8IUAAAAAPkHlMAE9NReCD_1WD81iYlBlCnV" data-callback="recaptchaComplete" data-expired-callback="expireV2Token" class="g-recaptcha "><div style="width: 304px; height: 78px;"><div><iframe title="reCAPTCHA" src="./Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform _ Qwiklabs_files/anchor(1).html" width="304" height="78" role="presentation" name="a-ku84u5ap61q" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe></div><textarea id="g-recaptcha-response-1" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div><iframe style="display: none;" src="./Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform _ Qwiklabs_files/saved_resource(3).html"></iframe></div>
+          <noscript>
+            <div>
+              <div style="width: 302px; height: 422px; position: relative;">
+                <div style="width: 302px; height: 422px; position: absolute;">
+                  <iframe
+                    src="https://www.recaptcha.net/recaptcha/api/fallback?k=6LeOI8IUAAAAAPkHlMAE9NReCD_1WD81iYlBlCnV"
+                    name="ReCAPTCHA"
+                    style="width: 302px; height: 422px; border-style: none; border: 0; overflow: hidden;">
+                  </iframe>
+                </div>
+              </div>
+              <div style="width: 300px; height: 60px; border-style: none;
+                bottom: 12px; left: 25px; margin: 0px; padding: 0px; right: 25px;
+                background: #f9f9f9; border: 1px solid #c1c1c1; border-radius: 3px;">
+                <textarea id="g-recaptcha-response" name="g-recaptcha-response"
+                  class="g-recaptcha-response"
+                  style="width: 250px; height: 40px; border: 1px solid #c1c1c1;
+                  margin: 10px 25px; padding: 0px; resize: none;">
+                </textarea>
+              </div>
+            </div>
+          </noscript>
+
+</div>
+</ql-lab-control-panel>
+</ql-drawer>
+<ql-drawer-content id="lab-instructions" slot="drawer-content">
+<div class="alert alert--fake js-alert">
+<p class="alert__message js-alert-message"></p>
+<a class="alert__close js-alert-close">
+<i class="fa fa-times"></i>
+</a>
+<iframe class="l-ie-iframe-fix" src="./Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform _ Qwiklabs_files/saved_resource(4).html"></iframe>
+</div>
+<div class="lab-content__renderable-instructions js-lab-content">
+<div class="lab-preamble">
+<h1 class="lab-preamble__title">
+Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform
+</h1>
+<div class="lab-preamble__details subtitle-headline-1">
+<span>2 hours </span>
+<span>Free</span>
+<div class="lab__rating">
+<a aria-label="Lab Reviews" href="https://googlecoursera.qwiklabs.com/focuses/16961605/reviews?parent=lti_session"><div class="rateit" data-rateit-readonly="true" data-rateit-value="3.1004"><div class="rateit-reset" style="display: none;"></div><div class="rateit-range" style="width: 80px; height: 16px;"><div class="rateit-selected" style="height: 16px; width: 49.6064px;"></div><div class="rateit-hover" style="height:16px"></div></div></div>
+
+</a></div>
+</div>
+</div>
+
+<div class="markdown-lab-instructions js-markdown-instructions" id="markdown-lab-instructions">
+
+
+
+<h2 id="step1">Overview</h2>
+<p>In this lab, you build, deploy, and run a Kubeflow Pipeline (KFP) that orchestrates BigQuery and AI Platform services to train, tune, and deploy a Scikit-learn model.</p>
+<h2 id="step2">Objectives</h2>
+<ul>
+<li>
+<p>Use Kubeflow pre-build components (BigQuery query, AI Platform train, and AI Platform prediction).</p>
+</li>
+<li>
+<p>Use Kubeflow lightweight Python components.</p>
+</li>
+<li>
+<p>Build a KFP with these components.</p>
+</li>
+<li>
+<p>Compile, upload, and run a KFP with the command line.</p>
+</li>
+</ul>
+<h2 id="step3">Task 0. Setup</h2>
+<p>For each lab, you get a new Google Cloud project and set of resources for a fixed time at no cost.</p>
+<ol>
+<li>
+<p>Make sure you signed into Qwiklabs using an <strong>incognito window</strong>.</p>
+</li>
+<li>
+<p>Note the lab's access time (for example, <img alt="img/time.png" src="./Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform _ Qwiklabs_files/aZQJ4BT7uCmM9XR6BTXgTRP1Hfu1T7q6V+cnbdEsbpU="> and make sure you can finish in that time block.</p>
+</li>
+</ol>
+<aside> <p>
+  There is no pause feature. You can restart if needed, but you have to start at the beginning.
+  </p>
+
+</aside>
+<ol start="3">
+<li>
+<p>When ready, click <img alt="img/start_lab.png" src="./Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform _ Qwiklabs_files/XE8x7uvQokyubNwnYKKc+vBBNrMlo5iNZiDDzQQ3Ddo=">.</p>
+</li>
+<li>
+<p>Note your lab credentials. You will use them to sign in to the Google Cloud Console.
+<img alt="img/open_google_console.png" src="./Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform _ Qwiklabs_files/0d78dhX6IVMVWmixCPPSBbmi5O2GPokCXf1Ps1AkTgI="></p>
+</li>
+<li>
+<p>Click <strong>Open Google Console</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Use another account</strong> and copy/paste credentials for <strong>this</strong> lab into the prompts.</p>
+</li>
+</ol>
+<aside class="warning"><p>
+  If you use other credentials, you'll get errors or <strong>incur charges</strong>.
+  </p>
+</aside>
+<ol start="7">
+<li>Accept the terms and skip the recovery resource page.</li>
+</ol>
+<aside class="warning"><p>
+  Do not click <strong>End Lab</strong> unless you are finished with the lab or want to restart it. This clears your work and removes the project.
+  </p>
+</aside>
+
+<h3>Activate Cloud Shell</h3>
+<p>Cloud Shell is a virtual machine that is loaded with development tools. It offers a persistent 5GB home directory and runs on the Google Cloud. Cloud Shell provides command-line access to your Google Cloud resources.</p>
+<p>In the Cloud Console, in the top right toolbar, click the <strong>Activate Cloud Shell</strong> button.</p>
+<p><img alt="Cloud Shell icon" src="./Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform _ Qwiklabs_files/vdY5e_an9ZGXw5a_ZMb1agpXhRGozsOadHURcR8thAQ="></p>
+<p>Click <strong>Continue</strong>.</p>
+<p><img alt="cloudshell_continue.png" src="./Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform _ Qwiklabs_files/lr3PBRjWIrJ+MQnE8kCkOnRQQVgJnWSg4UWk16f0s_A="></p>
+<p>It takes a few moments to provision and connect to the environment. When you are connected, you are already authenticated, and the project is set to your <em>PROJECT_ID</em>. For example:</p>
+<p><img alt="Cloud Shell Terminal" src="./Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform _ Qwiklabs_files/hmMK0W41Txk+20bQyuDP9g60vCdBajIS+52iI2f4bYk="></p>
+<p><code>gcloud</code> is the command-line tool for Google Cloud. It comes pre-installed on Cloud Shell and supports tab-completion.</p>
+<p>You can list the active account name with this command:</p>
+<pre><code>gcloud auth list
+</code><button class="button button--text button--small copy-button js-copy-button-0"><ql-icon>content_copy</ql-icon></button></pre>
+<p>(Output)</p>
+<pre><code class="language-output prettyprint prettyprinted" style=""><span class="typ">Credentialed</span><span class="pln"> accounts</span><span class="pun">:</span><span class="pln">
+ </span><span class="pun">-</span><span class="pln"> </span><span class="str">&lt;myaccount&gt;</span><span class="pun">@&lt;</span><span class="pln">mydomain</span><span class="pun">&gt;.</span><span class="pln">com </span><span class="pun">(</span><span class="pln">active</span><span class="pun">)</span></code><button class="button button--text button--small copy-button js-copy-button-1"><ql-icon>content_copy</ql-icon></button></pre>
+<p>(Example output)</p>
+<pre><code class="language-Output prettyprint prettyprinted" style=""><span class="typ">Credentialed</span><span class="pln"> accounts</span><span class="pun">:</span><span class="pln">
+ </span><span class="pun">-</span><span class="pln"> google1623327_student@qwiklabs</span><span class="pun">.</span><span class="pln">net</span></code><button class="button button--text button--small copy-button js-copy-button-2"><ql-icon>content_copy</ql-icon></button></pre>
+<p>You can list the project ID with this command:</p>
+<pre><code>gcloud config list project
+</code><button class="button button--text button--small copy-button js-copy-button-3"><ql-icon>content_copy</ql-icon></button></pre>
+<p>(Output)</p>
+<pre><code class="language-output prettyprint prettyprinted" style=""><span class="pun">[</span><span class="pln">core</span><span class="pun">]</span><span class="pln">
+project </span><span class="pun">=</span><span class="pln"> </span><span class="str">&lt;project_ID&gt;</span></code><button class="button button--text button--small copy-button js-copy-button-4"><ql-icon>content_copy</ql-icon></button></pre>
+<p>(Example output)</p>
+<pre><code class="language-Output prettyprint prettyprinted" style=""><span class="pun">[</span><span class="pln">core</span><span class="pun">]</span><span class="pln">
+project </span><span class="pun">=</span><span class="pln"> qwiklabs</span><span class="pun">-</span><span class="pln">gcp</span><span class="pun">-</span><span class="lit">44776a13dea667a6</span></code><button class="button button--text button--small copy-button js-copy-button-5"><ql-icon>content_copy</ql-icon></button></pre>
+<aside>
+  For full documentation of <code>gcloud</code> see the <a href="https://cloud.google.com/sdk/gcloud" target="_blank">gcloud command-line tool overview</a>.
+
+</aside>
+
+<h2 id="step4">Task 1. Create an instance of AI Platform Pipelines</h2>
+<p>In this task, you deploy Kubeflow Pipelines as a Kuberenetes App, which are solutions with simple click to deploy to Google Kubernetes Engine and that have the flexibility to deploy to Kubernetes clusters on-premises or in third-party clouds. You will see Kubeflow Pipelines integrated into your Google Cloud environment as <strong>AI Platform Pipelines</strong>. If interested, learn more about Kubeflow Pipelines in the <a href="https://www.kubeflow.org/docs/pipelines/overview/pipelines-overview/" target="_blank">documentation</a> during installation steps.</p>
+<ol>
+<li>In the Google Cloud Console, on the Navigation menu, scroll down to <strong>AI Platform</strong> and pin the section for easier access later in the lab.</li>
+</ol>
+<p><img alt="ai_platform_pin.png" src="./Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform _ Qwiklabs_files/Fg8_eMr_yFLm0G3LgjsuRuGyzNE3XO92swp6Gh6HTLI=">.</p>
+<ol start="2">
+<li>
+<p>Open the Cloud Shell and enter the following command to create the required GKE cluster:.</p>
+</li>
+</ol>
+<pre><code>gcloud container clusters create cluster-1 --zone us-central1-a --cluster-version 1.18.17 --machine-type n1-standard-2 --enable-basic-auth --scopes=https://www.googleapis.com/auth/cloud-platform
+</code><button class="button button--text button--small copy-button js-copy-button-6"><ql-icon>content_copy</ql-icon></button></pre>
+<p>This should take 2-3 minutes to complete. Wait for the cluster to finish before proceeding to the next step.</p>
+<p>In another tab, you can view the Cluster Creation taking place in the <a href="https://console.cloud.google.com/kubernetes/" target="_blank">GKE section of the Cloud Console</a>, or see the individual VMs spinning up in the <a href="https://console.cloud.google.com/compute/" target="_blank">GCE section of the Cloud Console</a>.</p>
+<p>When the cluster is complete the cloud shell will show a status similar to the image below.</p>
+<p><img alt="Cluster_Created.png" src="./Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform _ Qwiklabs_files/zsbJfCxEFuj2KHTucPkvVN51wfLgEwVBGhpQKoddtzs="></p>
+<ol start="3">
+<li>Return to the <strong>AI Platform</strong> grouping and click <strong>Pipelines</strong>.</li>
+</ol>
+<p><img alt="pipelines_button.png" src="./Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform _ Qwiklabs_files/+GdM4TO8fdwon1uZ7WuuZuGxuk_RJfym6GaJQowqmoM="></p>
+<ol start="4">
+<li>Click <strong>New Instance</strong>.</li>
+</ol>
+<p><img alt="new_pipelines_instance" src="./Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform _ Qwiklabs_files/tADefcYXM7Ior2LE7eUJruvfmJ3o4neoU8XjihwoImg="></p>
+<ol start="5">
+<li>Click <strong>Configure</strong>.</li>
+</ol>
+<p><img alt="kfp_configure_button.png" src="./Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform _ Qwiklabs_files/8atLf6A0l3AjxxshK8W5LIg3f3pUZYp0dE+2151vZXA="></p>
+<ol start="6">
+<li>The cluster you created in Step 2 will appear by default in the selection window.</li>
+</ol>
+<p><img alt="Configure_Update.png" src="./Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform _ Qwiklabs_files/qerl1PG7F8p8_VcSbQ6ESmCccvCA7ansBBkuqgzHOxY="></p>
+<p>Scroll to the bottom of the page, accept the marketplace terms, and click <strong>Deploy</strong>.  You will see the individual services of KFP deployed to your GKE cluster. Wait for the deployment to finish before proceeding to the next task.</p>
+<p><img alt="Accept_Cluster.png" src="./Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform _ Qwiklabs_files/juNw7ItM7YUer4oKXNCAnpcRc42C55P_Cu8QD0QVfCI="></p>
+<p>Click <em>Check my progress</em> to verify the objective.
+<ql-activity-tracking step="1">
+Creating an instance of AI Platform Pipelines.
+</ql-activity-tracking></p>
+<h2 id="step5">Task 2. Create an instance of AI Platform Notebooks</h2>
+<p>An instance of AI Platform Notebooks is used as a primary experimentation/development workbench. The instance is configured using a custom container image that includes all Python packages required for this lab.</p>
+<ql-infobox>In this lab, the AI Notebook instance is created for you at the start time of the lab. <strong>Note: It may take 5 minutes</strong> for the notebook instance to appear in <strong>AI Platform </strong><strong>Notebooks</strong>. Wait for the instance to become available before proceeding to the next step.</ql-infobox>
+<p>Click <em>Check my progress</em> to verify the objective.
+<ql-activity-tracking step="2">
+Wait for instance of AI Platform Notebooks.
+</ql-activity-tracking></p>
+<h2 id="step6">Task 3. Clone the mlops-on-gcp repo within your AI Platform Notebooks instance</h2>
+<p>To clone the <code>mlops-on-gcp</code> notebook in your JupyterLab instance:</p>
+<p><strong>Step 1</strong></p>
+<p>In JupyterLab, click the <strong>Terminal</strong> icon to open a new terminal.</p>
+<p><img alt="Open Terminal" src="./Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform _ Qwiklabs_files/_O6thfL50E_SsL7MM3BUSEq9DKHHFdRUXj3+X_QrA9s="></p>
+<p><strong>Step 2</strong></p>
+<p>At the command-line prompt, type in the following command and press <strong>Enter</strong>.</p>
+<pre><code class="language-bash prettyprint prettyprinted" style=""><span class="pln">git clone https</span><span class="pun">://</span><span class="pln">github</span><span class="pun">.</span><span class="pln">com</span><span class="pun">/</span><span class="typ">GoogleCloudPlatform</span><span class="pun">/</span><span class="pln">mlops</span><span class="pun">-</span><span class="pln">on</span><span class="pun">-</span><span class="pln">gcp</span></code><button class="button button--text button--small copy-button js-copy-button-7"><ql-icon>content_copy</ql-icon></button></pre>
+<ql-infobox><strong>Note</strong><p>If the cloned repo does not appear in the JupyterLab UI you can use the top line menu and under <strong>Git</strong> --&gt; <strong>Clone a repository</strong>, clone the repo (https://github.com/GoogleCloudPlatform/mlops-on-gcp) using the UI.</p></ql-infobox>
+<p><img alt="Clone Repo" src="./Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform _ Qwiklabs_files/uQSeRm0zBS32Gmqh3cLKwp4cxMeg9waxoFAwYm8l+xg="></p>
+<p><strong>Step 3</strong></p>
+<p>Confirm that you have cloned the repository by double clicking on the <code>mlops-on-gcp</code> directory and ensuring that you can see its contents. The files for all the Jupyter notebook-based labs throughout this course are available in this directory.</p>
+<p><img alt="mlops-on-gcp1" src="./Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform _ Qwiklabs_files/WPjPUJNIod07IDRNsbzPUSxxE2VJlnxDBKise1Ek1Xk="></p>
+
+<p>Click <em>Check my progress</em> to verify the objective.
+<ql-activity-tracking step="3">
+Clone the mlops-on-gcp repo within your AI Platform Notebooks instance.
+</ql-activity-tracking></p>
+<h2 id="step7">Task 4. Navigate to the mlops-on-gcp notebook</h2>
+<p><strong>Step 1</strong></p>
+<p>In the notebook interface, navigate to <strong>mlops-on-gcp &gt; on_demand &gt; kfp-caip-sklearn &gt; lab-02-kfp-pipeline &gt; exercises</strong>, and open <strong>lab-02.ipynb</strong>.</p>
+<p><strong>Step 2</strong></p>
+<p>In the notebook interface, click on <strong>Edit &gt; Clear All Outputs</strong>.</p>
+<p>Carefully read through the notebook instructions and fill in lines marked with #TO DO where you need to complete the code.</p>
+<p>Tip: To run the current cell, click the cell and press SHIFT+ENTER. Other cell commands are listed in the notebook UI under <strong>Run</strong>.</p>
+<ul>
+<li>If you need more help, navigate to <strong>mlops-on-gcp &gt; on_demand &gt; kfp-caip-sklearn &gt; lab-02-kfp-pipeline</strong>, and open <strong>lab-02.ipynb</strong> to display the complete solution.</li>
+</ul>
+<p>Click <em>Check my progress</em> to verify the objective.
+<ql-activity-tracking step="4">
+Build the trainer image and base image for custom components.
+</ql-activity-tracking></p>
+<p>Click <em>Check my progress</em> to verify the objective.
+<ql-activity-tracking step="5">
+Compile the pipeline.
+</ql-activity-tracking></p>
+<p>Click <em>Check my progress</em> to verify the objective.
+<ql-activity-tracking step="6">
+Submit pipeline runs.
+</ql-activity-tracking></p>
+<h2 id="step8">Congratulations!</h2>
+<p>In this lab, you learned how to build, deploy, and run a KFP that orchestrates BigQuery and AI Platform services to train, tune, and deploy a Scikit-learn model.</p>
+<h2 id="step9">End your lab</h2>
+<p>When you have completed your lab, click <strong>End Lab</strong>. Qwiklabs removes the resources you’ve used and cleans the account for you.</p>
+<p>You will be given an opportunity to rate the lab experience. Select the applicable number of stars, type a comment, and then click <strong>Submit</strong>.</p>
+<p>The number of stars indicates the following:</p>
+<ul>
+<li>1 star = Very dissatisfied</li>
+<li>2 stars = Dissatisfied</li>
+<li>3 stars = Neutral</li>
+<li>4 stars = Satisfied</li>
+<li>5 stars = Very satisfied</li>
+</ul>
+<p>You can close the dialog box if you don't want to provide feedback.</p>
+<p>For feedback, suggestions, or corrections, please use the <strong>Support</strong> tab.</p>
+
+<p>©2021 Google LLC All rights reserved. Google and the Google logo are trademarks of Google LLC. All other company and product names may be trademarks of the respective companies with which they are associated.</p>
+
+
+
+</div>
+</div>
+
+
+<div class="lab-content__end-lab-button js-end-lab-button-container hidden">
+<ql-lab-control-button class="js-end-lab-button" running=""></ql-lab-control-button>
+</div>
+<!-- / TODO: Move recommendations into the end lab modal -->
+</ql-drawer-content>
+<ql-drawer end="" id="outline-drawer" open="" slot="drawer" width="320" mode="side" style="width: 320px;">
+<div class="lab-content__outline js-lab-content-outline">
+<a href="https://googlecoursera.qwiklabs.com/focuses/16961605?parent=lti_session#step1" class="">Overview</a><a href="https://googlecoursera.qwiklabs.com/focuses/16961605?parent=lti_session#step2" class="is-active">Objectives</a><a href="https://googlecoursera.qwiklabs.com/focuses/16961605?parent=lti_session#step3">Task 0. Setup</a><a href="https://googlecoursera.qwiklabs.com/focuses/16961605?parent=lti_session#step4">Task 1. Create an instance of AI Platform Pipelines</a><a href="https://googlecoursera.qwiklabs.com/focuses/16961605?parent=lti_session#step5">Task 2. Create an instance of AI Platform Notebooks</a><a href="https://googlecoursera.qwiklabs.com/focuses/16961605?parent=lti_session#step6">Task 3. Clone the mlops-on-gcp repo within your AI Platform Notebooks instance</a><a href="https://googlecoursera.qwiklabs.com/focuses/16961605?parent=lti_session#step7">Task 4. Navigate to the mlops-on-gcp notebook</a><a href="https://googlecoursera.qwiklabs.com/focuses/16961605?parent=lti_session#step8">Congratulations!</a><a href="https://googlecoursera.qwiklabs.com/focuses/16961605?parent=lti_session#step9">End your lab</a>
+</div>
+</ql-drawer>
+</ql-drawer-container>
+</ql-drawer-content>
+</ql-drawer-container>
+
+
+
+</div>
+</main>
+
+
+<div class="modal fade" id="lab-details-modal">
+<div class="modal-container">
+<div class="modal-content mdl-shadow--24dp">
+<div class="modal-body">
+<p class="l-mbm">
+In this lab, you will build, deploy, and run a KFP pipeline that orchestrates BigQuery and Cloud AI Platform services to train, tune, and deploy a scikit-learn model.
+</p>
+<p class="small-label l-mbs">
+<strong>
+Duration:
+</strong>
+7m setup
+·
+120m access
+·
+120m completion
+</p>
+<p class="small-label l-mbs">
+<span><strong>Levels: </strong>introductory</span>
+</p>
+<p class="small-label">
+<strong>
+Permalink:
+</strong>
+<a href="https://googlecoursera.qwiklabs.com/catalog_lab/3650">https://googlecoursera.qwiklabs.com/catalog_lab/3650</a>
+</p>
+</div>
+<div class="modal-actions">
+<a class="button button--text" data-dismiss="modal">
+Got It
+</a>
+</div>
+
+
+</div>
+</div>
+<iframe class="l-ie-iframe-fix" src="./Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform _ Qwiklabs_files/saved_resource(5).html"></iframe>
+</div>
+<div class="modal fade" id="lab-review-modal">
+<div class="modal-container">
+<div class="modal-content mdl-shadow--24dp">
+<form class="simple_form js-lab-review-form" id="new_lab_review" action="https://googlecoursera.qwiklabs.com/lab_reviews" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓"><div class="modal-body">
+<p class="label">
+How satisfied are you with this lab?*
+</p>
+<div class="rateit js-rateit" data-rateit-max="5" data-rateit-min="0" data-rateit-resetable="false" data-rateit-step="1" data-rateit-value="0"><div class="rateit-reset" style="display: none;"></div><div class="rateit-range" style="width: 80px; height: 16px;"><div class="rateit-selected" style="height: 16px; width: 0px;"></div><div class="rateit-hover" style="height:16px"></div></div></div>
+<div class="l-mtm">
+
+<div class="control-group hidden lab_review_user_id"><div class="controls"><input class="hidden" type="hidden" value="5037645" name="lab_review[user_id]" id="lab_review_user_id"></div></div>
+<div class="control-group hidden lab_review_classroom_id"><div class="controls"><input class="hidden" type="hidden" name="lab_review[classroom_id]" id="lab_review_classroom_id"></div></div>
+<div class="control-group hidden lab_review_lab_id"><div class="controls"><input class="hidden" type="hidden" value="3650" name="lab_review[lab_id]" id="lab_review_lab_id"></div></div>
+<div class="control-group hidden lab_review_focus_id"><div class="controls"><input class="hidden" type="hidden" name="lab_review[focus_id]" id="lab_review_focus_id"></div></div>
+<div class="control-group hidden lab_review_rating"><div class="controls"><input class="hidden js-rating-input" type="hidden" name="lab_review[rating]" id="lab_review_rating"></div></div>
+<div class="control-group text optional lab_review_comment"><label class="text optional control-label" for="lab_review_comment">Comment</label><div class="controls"><textarea class="text optional" name="lab_review[comment]" id="lab_review_comment"></textarea></div></div>
+</div>
+</div>
+<div class="modal-actions">
+<a class="button button--text" data-dismiss="modal">
+Cancel
+</a>
+<input type="submit" name="commit" value="Submit" disabled="disabled" id="submit" data-disabled="false" class="button" data-disable-with="Submit">
+</div>
+</form>
+
+</div>
+</div>
+<iframe class="l-ie-iframe-fix" src="./Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform _ Qwiklabs_files/saved_resource(6).html"></iframe>
+</div>
+
+
+<script>
+  $( function() {
+    ql.initMaterialInputs();
+    initChosen();
+    initSearch();
+    initTabs();
+    ql.list.init();
+    ql.favoriting.init();
+    ql.header.myAccount.init();
+    initTooltips();
+    ql.autocomplete.init();
+    ql.modals.init();
+    ql.toggleButtons.init();
+    ql.analytics.init();
+    ql.labControlPanel.addRecaptchaErrorHandler();
+  initLabContent();
+  ql.labOutline.links.init();
+  initLabReviewModal();
+  ql.labAssessment.init();
+  ql.labData.init();
+  initLabTranslations( {"are_you_sure":"All done? If you end this lab, you will lose all your work. You may not be able to restart the lab if there is a quota limit. Are you sure you want to end this lab?\n","in_progress":"*In Progress*","ending":"*Ending*","starting":"*Starting, please wait*","end_concurrent_labs":"Sorry, you can only run one lab at a time. To start this lab, please confirm that you want all of your existing labs to end.\n","copied":"Copied","no_resource":"Error retrieving resource.","no_support":"No Support","mac_press":"Press ⌘-C to copy","thanks_review":"Thanks for reviewing this lab.","windows_press":"Press Ctrl-C to copy","days":"days"} );
+  ql.labRun.init();
+  ql.chat.init();
+  ql.initHeader();
+  ql.navigation.init();
+  ql.navPanel.init();
+  ql.navigation.init();
+  
+  });
+</script>
+
+
+
+
+<div><div class="grecaptcha-badge" data-style="bottomright" style="width: 256px; height: 60px; display: block; transition: right 0.3s ease 0s; position: fixed; bottom: 14px; right: -186px; box-shadow: gray 0px 0px 5px; border-radius: 2px; overflow: hidden;"><div class="grecaptcha-logo"><iframe title="reCAPTCHA" src="./Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform _ Qwiklabs_files/anchor(2).html" width="256" height="60" role="presentation" name="a-pdoigzw38hgw" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe></div><div class="grecaptcha-error"></div><textarea id="g-recaptcha-response-100000" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div></div><div style="background-color: rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204); box-shadow: rgba(0, 0, 0, 0.2) 2px 2px 3px; position: absolute; transition: visibility 0s linear 0.3s, opacity 0.3s linear 0s; opacity: 0; visibility: hidden; z-index: 2000000000; left: 0px; top: -10000px;"><div style="width: 100%; height: 100%; position: fixed; top: 0px; left: 0px; z-index: 2000000000; background-color: rgb(255, 255, 255); opacity: 0.05;"></div><div class="g-recaptcha-bubble-arrow" style="border: 11px solid transparent; width: 0px; height: 0px; position: absolute; pointer-events: none; margin-top: -11px; z-index: 2000000000;"></div><div class="g-recaptcha-bubble-arrow" style="border: 10px solid transparent; width: 0px; height: 0px; position: absolute; pointer-events: none; margin-top: -10px; z-index: 2000000000;"></div><div style="z-index: 2000000000; position: relative;"><iframe title="recaptcha challenge" src="./Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform _ Qwiklabs_files/bframe.html" name="c-ku84u5ap61q" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox" style="width: 100%; height: 100%;"></iframe></div></div><iframe data-product="web_widget" title="No content" tabindex="-1" aria-hidden="true" src="./Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform _ Qwiklabs_files/saved_resource(7).html" style="width: 0px; height: 0px; border: 0px; position: absolute; top: -9999px;"></iframe><div><iframe title="Opens a widget where you can chat to one of our agents" id="launcher" tabindex="-1" style="width: 107px; height: 50px; padding: 0px; margin: 10px 20px; position: fixed; bottom: 30px; overflow: visible; opacity: 0; border: 0px; z-index: 999998; transition-duration: 250ms; transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1); transition-property: opacity, top, bottom; top: -9999px; visibility: hidden;" src="./Continuous Training Pipeline with Kubeflow Pipeline and Cloud AI Platform _ Qwiklabs_files/saved_resource(8).html"></iframe></div></body></html>
